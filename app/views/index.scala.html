@@ -1,3 +1,29 @@
 @(message: String)
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Taskim</title>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/bootstrap-theme.css"/>
+        <link rel="stylesheet" href="assets/stylesheets/main.css"/>
+    </head>
+    <body>
+        <div class="navbar navbar-default" role="navigation" bs-navbar>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Taskim</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li data-match-route="/"><a href="/">Home</a></li>
+                <li data-match-route="/login"><a href="/login">login</a></li>
+                <li data-match-route="/page-two.*"><a href="/page-two/sub-a">Menu</a></li>
+            </ul>
+        </div>
+        <div ng-view></div>
+    </body>
+    <script src="assets/library/jquery-1.9.0.min.js"></script>
+    <script src="assets/library/angular.js"></script>
+    <script src="assets/library/angular-strap.js"></script>
+    <script src="assets/app.js"></script>
+</html>
 
 
