@@ -1,4 +1,4 @@
-name := "Trello"
+name := "Taskim"
 
 version := "1.0-SNAPSHOT"
 
