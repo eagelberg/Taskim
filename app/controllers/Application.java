@@ -6,8 +6,8 @@ import views.html.index;
 
 public class Application extends Controller {
 
-    public  Result index() {
-        return ok(index.render(""));
+    public static Result main(String any) {
+        return ok(index.render());
     }
 
 }
