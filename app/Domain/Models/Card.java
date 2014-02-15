@@ -12,7 +12,6 @@ public class Card {
     @JsonIgnore
     private org.bson.types.ObjectId id;
 
-    @JsonProperty("title")
     private String title;
 
     //<editor-fold desc="Getters and Setters">

@@ -15,17 +15,21 @@ import java.util.List;
 /**
  * Created by itay on 2/15/14.
  */
-public class BoardsRepository {
+public class BoardsRepository implements IBoardsRepository {
 
     private JacksonDBCollection<Board, String> boardsCollection;
 
     @Inject
     public BoardsRepository(Application app) {
-        boardsCollection = app.plugin(MongoDBPlugin.class).getCollection("Boards", Board.class, String.class);
+        boardsCollection = app.plugin(MongoDBPlugin.class).getCollection("BoardsController", Board.class, String.class);
     }
 
     public void save(Board board){
         boardsCollection.save(board);
+    }
+
+    public Board getById(ObjectId objectId){
+        return boardsCollection.findOneById(objectId.toStringMongod());
     }
 
     public List<Board> all() {

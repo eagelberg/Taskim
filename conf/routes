@@ -9,4 +9,4 @@ GET     /                           @controllers.Application.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Boards
-GET    /Boards                      @controllers.Boards.get()
+GET    /Boards                      @controllers.BoardsController.get()

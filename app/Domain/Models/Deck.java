@@ -15,7 +15,6 @@ public class Deck {
     @JsonIgnore
     private org.bson.types.ObjectId id;
 
-    @JsonProperty("name")
     private String name;
 
     private ArrayList<Card> cards = new ArrayList<Card>();

@@ -11,7 +11,6 @@ public class Board  {
     // the id field @JsonProperty annotation is defined on it's getter and setter
     private String id;
 
-    @JsonProperty("name")
     private String name;
 
     private List<Deck> decks = new ArrayList<Deck>();
