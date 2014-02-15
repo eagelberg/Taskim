@@ -7,16 +7,11 @@ import org.mongojack.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by itay on 2/15/14.
- */
 public class Deck {
 
-    @JsonIgnore
-    private org.bson.types.ObjectId id;
-
+    @JsonProperty("_id")
+    private String id;
     private String name;
-
     private ArrayList<Card> cards = new ArrayList<Card>();
 
     public void AddCard(Card card) {
@@ -28,18 +23,14 @@ public class Deck {
     }
 
     //<editor-fold desc="Getters and Setters">
-    public org.bson.types.ObjectId getId() {
+    public String getId() {
         return id;
     }
-
-    public void setId(org.bson.types.ObjectId id) {
-        this.id = id;
-    }
+    public void setId(String id) { this.id = id; }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -49,12 +40,5 @@ public class Deck {
         cardListCopy.addAll(cards);
         return cardListCopy;
     }
-
-    @JsonProperty("_id")
-    public String getObjectIdAsString()
-    {
-        return this.id.toStringMongod();
-    }
-
     //</editor-fold>
 }

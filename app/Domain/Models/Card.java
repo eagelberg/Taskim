@@ -9,17 +9,13 @@ import org.mongojack.ObjectId;
  */
 public class Card {
 
-    @JsonIgnore
-    private org.bson.types.ObjectId id;
-
+    @JsonProperty("_id")
+    private String id;
     private String title;
 
     //<editor-fold desc="Getters and Setters">
-    @JsonProperty("_id")
-    public String getObjectIdAsString(){return id.toStringMongod();}
-
-    public org.bson.types.ObjectId getId() { return id; }
-    public void setId(org.bson.types.ObjectId id) { this.id = id; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
     public String getTitle() {
         return title;

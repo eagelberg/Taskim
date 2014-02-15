@@ -12,9 +12,6 @@ import play.mvc.Result;
 
 import java.util.List;
 
-/**
- * Created by itay on 2/15/14.
- */
 public class BoardsController extends Controller {
 
     private IBoardsRepository repository;
@@ -27,11 +24,14 @@ public class BoardsController extends Controller {
     }
 
     public Result get(String id) {
-        Board board = repository.getById(new ObjectId(id));
-        return ok(jsonMapper.toJson(board));
+        Board board = repository.getById(id);
+        if(board != null)
+            return ok(jsonMapper.toJson(board));
+
+        return ok("board not found");
     }
 
-    public Result get() {
+    public Result all() {
         List<Board> boards = repository.all();
         return ok(jsonMapper.toJson(boards));
     }
