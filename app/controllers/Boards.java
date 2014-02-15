@@ -22,7 +22,7 @@ public class Boards extends Controller {
     }
 
     public Result get() {
-        List<Board> boards = repository.All();
+        List<Board> boards = repository.all();
         return ok(Json.toJson(boards));
     }
 }
