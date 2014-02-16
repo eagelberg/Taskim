@@ -10,7 +10,6 @@ import java.util.List;
  */
 public interface IBoardsRepository {
     void save(Board board);
-    public Board getById(ObjectId objectId);
+    public Board getById(String objectId);
     public List<Board> all();
 }
-    
