@@ -1,3 +1,4 @@
+import Ioc.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import play.Application;
@@ -9,7 +10,7 @@ public class Global extends GlobalSettings {
 
     @Override
     public void onStart(Application application) {
-        injector = Guice.createInjector();
+        injector = Guice.createInjector(new Binder(application));
     }
 
     @Override
