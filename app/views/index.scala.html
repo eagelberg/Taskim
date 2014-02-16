@@ -21,22 +21,13 @@
         </div>
 
         <div class="canvas">
-            <div ng-repeat="deck in board.decks" class="deck">
-                <div class="deckName">
-                    {{deck.name}}
-                </div>
-                <div ng-repeat="card in deck.cards" class="card">
-                    {{card.title}}
-                </div>
-            </div>
-
-            <div ng-repeat="deck in board.decks" class="deck">
+            <div ng-repeat="deck in board.decks" class="deck list-group" >
                 <div class="deckName">
                   {{deck.name}}
                 </div>
-                <div ng-repeat="card in deck.cards" class="card">
+                <a ng-repeat="card in deck.cards" class="list-group-item">
                     {{card.title}}
-                </div>
+                </a>
             </div>
         </div>
 
