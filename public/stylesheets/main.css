@@ -1,0 +1,12 @@
+.deck {
+    width: 250px;
+    float: left;
+    background: none repeat scroll 0% 0% rgb(219, 219, 219);
+    margin: 0px 5px;
+    border-radius: 3px;
+    padding: 4px 3px 3px;
+}
+
+.deckName {
+    padding: 3px 26px 2px 6px;
+}

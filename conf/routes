@@ -2,14 +2,16 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Boards
+GET    /Boards                      @controllers.BoardsController.all()
+GET    /Boards/:id                  @controllers.BoardsController.get(id: String)
+
 # Home page
 GET     /                                   controllers.Application.main(any = "none")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-# Boards
-GET    /Boards                      @controllers.BoardsController.all()
-GET    /Boards/:id                  @controllers.BoardsController.get(id: String)
 
-GET     /*any                               controllers.Application.main(any)@tu
+
+GET     /*any                               controllers.Application.main(any)

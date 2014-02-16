@@ -15,8 +15,29 @@
             <ul class="nav navbar-nav">
                 <li data-match-route="/"><a href="/">Home</a></li>
                 <li data-match-route="/login"><a href="/login">login</a></li>
+                <li data-match-route="/Boards"><a href="#" ng-click="getBoard()">test</a></li>
                 <li data-match-route="page-two.*"><a href="/page-two/sub-a">Menu</a></li>
             </ul>
+        </div>
+
+        <div class="canvas">
+            <div ng-repeat="deck in board.decks" class="deck">
+                <div class="deckName">
+                    {{deck.name}}
+                </div>
+                <div ng-repeat="card in deck.cards" class="card">
+                    {{card.title}}
+                </div>
+            </div>
+
+            <div ng-repeat="deck in board.decks" class="deck">
+                <div class="deckName">
+                  {{deck.name}}
+                </div>
+                <div ng-repeat="card in deck.cards" class="card">
+                    {{card.title}}
+                </div>
+            </div>
         </div>
 
         <div ng-view></div>
