@@ -1,6 +1,7 @@
-var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ngRoute'])
+var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'])
     .config(["$routeProvider", function($routeProvider) {
-         $routeProvider.when("/login", {
+         $routeProvider.state("login", {
+            url: '/login',
             templateUrl: 'assets/partials/loginPage.html',
             controller: 'loginCtrl'
         }).otherwise({
