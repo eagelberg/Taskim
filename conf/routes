@@ -12,4 +12,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET    /Boards                      @controllers.BoardsController.all()
 GET    /Boards/:id                  @controllers.BoardsController.get(id: String)
 
-GET     /*any                               controllers.Application.main(any)
+GET     /*any                               controllers.Application.main(any)@
