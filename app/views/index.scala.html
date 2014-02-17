@@ -10,19 +10,18 @@
     <body  ng-controller="loginCtrl">
         <div class="navbar navbar-default" role="navigation" bs-navbar>
             <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="">Taskim</a>
+                <a class="navbar-brand" ui-sref="/">Taskim</a>
             </div>
             <ul class="nav navbar-nav">
                 <li data-match-route="/"><a ui-sref="/">Home</a></li>
-                <li data-match-route=""><a ui-sref="/page-two/sub-a">Menu</a></li>
+                <li data-match-route="/menu"><a ui-sref="menu">Menu</a></li>
             </ul>
         </div>
 
-        <div ng-view></div>
+        <div ui-view></div>
 
-        <script src="assets/library/jquery-1.9.0.min.js"></script>
         <script src="assets/library/angular.js"></script>
-        <script src="assets/library/angular-route.js"></script>
+        <script src="assets/library/angular-ui.js"></script>
         <script src="assets/library/angular-strap.js"></script>
         <script src="assets/app.js"></script>
         <script src="assets/javascripts/controllers/loginCtrl.js"></script>
