@@ -6,6 +6,8 @@
 GET    /Boards                      @controllers.BoardsController.all()
 GET    /Boards/:id                  @controllers.BoardsController.get(id: String)
 
+PUT   /Boards/:id                   @controllers.BoardsController.update(id: String)
+
 # Home page
 GET     /                           @controllers.Application.main(any = "none")
 

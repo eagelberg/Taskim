@@ -1,5 +1,6 @@
 package Infrastructure;
 
+import Domain.Models.Board;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**

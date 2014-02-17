@@ -6,5 +6,13 @@
         <a ng-repeat="card in deck.cards" class="list-group-item">
             {{card.title}}
         </a>
+
+        <input type="text" ng-model="newCardTitle">
+        <input type="button" value="save" ng-click="createNewCard($index, newCardTitle)">
     </div>
+</div>
+<div class="newList">
+    <h4>New List</h4>
+    <input type="text" ng-model="newDeckName"/>
+    <input type="button" value="Save" ng-click="createNewDeck()">
 </div>
