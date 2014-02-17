@@ -1,0 +1,10 @@
+<div class="canvas">
+    <div ng-repeat="deck in board.decks" class="deck list-group" >
+        <div class="deckName">
+            {{deck.name}}
+        </div>
+        <a ng-repeat="card in deck.cards" class="list-group-item">
+            {{card.title}}
+        </a>
+    </div>
+</div>

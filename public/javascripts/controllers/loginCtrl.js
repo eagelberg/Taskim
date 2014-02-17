@@ -1,9 +1,21 @@
-taskimApp.controller('loginCtrl',['$scope', '$http', function($scope, $http){
-      $scope.getBoard = function () {
-          $http.get('/Boards/52ff5e6044ae2e25ae9712ae').success(function (data) {
-              $scope.board = data;
-          })
-      }
+taskimApp.controller('loginCtrl',['$scope','loggedUserService','$http',function($scope,loggedUserService, $http){
+    $scope.user = {
+        name : '',
+        password : ''
+    };
 
     $scope.board = []
-}])
+
+    $scope.login = function(){
+        loggedUserService.login($scope.name,$scope.password);
+    }
+
+    $scope.reset = function(){
+        $scope.user = {
+            name : '',
+            password : ''
+        };
+    }
+
+
+}]);

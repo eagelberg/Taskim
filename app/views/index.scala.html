@@ -10,35 +10,24 @@
     <body  ng-controller="loginCtrl">
         <div class="navbar navbar-default" role="navigation" bs-navbar>
             <div class="navbar-header">
-                <a class="navbar-brand" href="">Taskim</a>
+                <a class="navbar-brand" ui-sref="/">Taskim</a>
             </div>
             <ul class="nav navbar-nav">
-                <li data-match-route="/"><a href="/">Home</a></li>
-                <li data-match-route="/login"><a href="/login">login</a></li>
-                <li data-match-route="/Boards"><a href="#" ng-click="getBoard()">test</a></li>
-                <li data-match-route="page-two.*"><a href="/page-two/sub-a">Menu</a></li>
+                <li data-match-route="/"><a ui-sref="/">Home</a></li>
+                <li data-match-route="/menu"><a ui-sref="menu">Menu</a></li>
+                <li data-match-route="/login"><a href="login">login</a></li>
+                <li data-match-route="/board"><a ui-sref="board">test</a></li>
             </ul>
         </div>
 
-        <div class="canvas">
-            <div ng-repeat="deck in board.decks" class="deck list-group" >
-                <div class="deckName">
-                  {{deck.name}}
-                </div>
-                <a ng-repeat="card in deck.cards" class="list-group-item">
-                    {{card.title}}
-                </a>
-            </div>
-        </div>
+        <div ui-view></div>
 
-        <div ng-view></div>
-
-        <script src="assets/library/jquery-1.9.0.min.js"></script>
         <script src="assets/library/angular.js"></script>
-        <script src="assets/library/angular-route.js"></script>
+        <script src="assets/library/angular-ui.js"></script>
         <script src="assets/library/angular-strap.js"></script>
         <script src="assets/app.js"></script>
         <script src="assets/javascripts/controllers/loginCtrl.js"></script>
+        <script src="assets/javascripts/controllers/boardCtrl.js"></script>
     </body>
 </html>
 

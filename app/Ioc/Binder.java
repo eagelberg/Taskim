@@ -7,9 +7,6 @@ import Infrastructure.JacksonJsonMapper;
 import com.google.inject.AbstractModule;
 import play.Application;
 
-/**
- * Created by guy on 2/9/14.
- */
 public class Binder extends AbstractModule{
 
     private Application application;
