@@ -33,17 +33,6 @@ taskimApp.service('loggedUserService',function(){
     }
 });
 
-taskimApp.service('boardManager',function($http, $q){
-    this.get = function(boardId){
-        var deferred= $q.defer();
-        $http.get('/Boards/'.concat(boardId)).success(function (data) {
-            deferred.resolve(data);
-        })
-
-        return deferred.promise;
-    };
-})
-
 taskimApp.run(['$rootScope',"$location",'loggedUserService', function($rootScope,$location,loggedUserService) {
         $rootScope.$on( "$stateChangeStart", function(event, next, current) {
             if ( loggedUserService.loggedUser == null) {
