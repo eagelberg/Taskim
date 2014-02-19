@@ -1,18 +1,25 @@
-<div class="canvas">
-    <div ng-repeat="deck in board.decks" class="deck list-group" >
-        <div class="deckName">
-            {{deck.name}}
-        </div>
-        <a ng-repeat="card in deck.cards" class="list-group-item">
-            {{card.title}}
-        </a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="canvas col-xs-12">
+            <div ng-repeat="deck in board.decks" class="deck list-group" >
+                <div class="deckName">
+                    {{deck.name}}
+                </div>
+                    <a ng-repeat="card in deck.cards" class="list-group-item card">
+                        {{card.title}}
+                    </a>
+                <a class="list-group-item">
+                    <div>
+                        <input type="text" ng-model="newCardTitle">
+                        <input type="button" value="save" ng-click="createNewCard($index, newCardTitle)">
+                    </div>
+                </a>
+            </div>
 
-        <input type="text" ng-model="newCardTitle">
-        <input type="button" value="save" ng-click="createNewCard($index, newCardTitle)">
+            <div class="newList">
+                <input type="text" ng-model="newDeckName"/>
+                <input type="button" value="Add List" ng-click="createNewDeck()">
+            </div>
+        </div>
     </div>
-</div>
-<div class="newList">
-    <h4>New List</h4>
-    <input type="text" ng-model="newDeckName"/>
-    <input type="button" value="Save" ng-click="createNewDeck()">
 </div>
