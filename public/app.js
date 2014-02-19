@@ -1,5 +1,6 @@
-var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'])
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular'])
+    .config(['$stateProvider', '$urlRouterProvider',
+                function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/login");
 
         $stateProvider.state("login", {
@@ -18,11 +19,15 @@ var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'
                     controller: 'boardCtrl'
             }
         );
-    }
-    ])
+    }])
     .config(["$locationProvider", function($locationProvider) {
          $locationProvider.html5Mode(true).hashPrefix("!");
-    }]);
+    }])
+    .config(function(RestangularProvider){
+        RestangularProvider.setRestangularFields({
+            id: '_id'
+        });
+    });
 
 taskimApp.service('loggedUserService',function(){
     this.loggedUser = null;

@@ -1,19 +1,9 @@
-taskimApp.service('boardManager',function($http, $q){
+taskimApp.service('boardManager',function(Restangular, $q){
     this.get = function(boardId){
-        var deferred= $q.defer();
-        $http.get('/Boards/'.concat(boardId)).success(function (data) {
-            deferred.resolve(data);
-        });
-
-        return deferred.promise;
+        return Restangular.one('Boards', boardId).get();
     };
 
     this.update = function(board){
-        var deferred = $q.defer();
-        $http.put('Boards/'.concat(board._id), board).success(function(data) {
-            deferred.resolve(data);
-        });
-
-        return deferred.resolve(data);
+        return board.put();
     }
 });
