@@ -4,14 +4,20 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
     $scope.canvasWidth = 100;
     $scope.maxHeight = ($window.innerHeight - 100);
 
-    $scope.getCanvasStyle = function() {
-        return {width: $scope.canvasWidth + 'px'};
-    }
-
-    $scope.$watch('canvasWidth', function(){
-        $scope.getCanvasStyle = function (){
-           return {width: $scope.canvasWidth + 'px'};
-        }});
+    $scope.dragOptions= {
+        revert: 'invalid',
+        helper: function(event) {
+            $copy = $(this).clone();
+            $copy.css('width', this.clientWidth);
+            $(this).css('opacity', 0.2);
+            return $copy;
+        },
+        appendTo: 'body',
+        stop: function (event, ui) {
+            $(this).css('opacity', 1);
+        },
+        placeholder: 'keep'
+    };
 
     $scope.getBoard = function () {
         boardManager.get('52ff5e6044ae2e25ae9712ae').then(function(board) {
