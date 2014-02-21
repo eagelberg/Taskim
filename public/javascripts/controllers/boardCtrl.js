@@ -42,8 +42,8 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
     $scope.createNewCard = function(deckIndex, cardTitle) {
         var newCard = {title: cardTitle, _id: ""};
         $scope.board.decks[deckIndex].cards.push(newCard);
-
         $scope.updateBoard();
+        $scope.newCardTitle = "";
     };
 
     $scope.getBoard();
