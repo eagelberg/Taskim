@@ -31,6 +31,15 @@
     float: left;
 }
 
-.canvas {
-    overflow-x: auto;
- }
+.dropDownContainer {
+    display: inline;
+    float: right;
+}
+
+.right-menu {
+    top: 30px;
+}
+
+.card-title {
+    width: 90%;
+}
