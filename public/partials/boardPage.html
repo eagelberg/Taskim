@@ -1,17 +1,27 @@
         <div class="canvas" ng-style="{width: canvasWidth + 'px'}">
-            <div ng-repeat="deck in board.decks" class="deck list-group" >
+            <div ng-repeat="deck in board.decks" class="deck" >
                 <div class="deckName">
                     {{deck.name}}
                 </div>
-                    <a ng-repeat="card in deck.cards" class="list-group-item card">
-                        {{card.title}}
-                    </a>
-                <a class="list-group-item">
-                    <div>
-                        <input type="text" ng-model="newCardTitle">
-                        <input type="button" value="save" ng-click="createNewCard($index, newCardTitle)">
+                <div class="list-group">
+                    <div ng-repeat="card in deck.cards" class="card list-group-item">
+                        <span class="dropDownContainer">
+                                <span class="glyphicon glyphicon-download" id="dropdownMenu1" data-toggle="dropdown"></span>
+                                <ul class="dropdown-menu dropdown-menu-right right-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action2</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action3</a></li>
+                                </ul>
+                        </span>
+                        <p class="card-title">{{card.title}}</p>
                     </div>
-                </a>
+                    <div class="list-group-item">
+                        <div>
+                            <input type="text" ng-model="newCardTitle">
+                            <input type="button" value="save" ng-click="createNewCard($index, newCardTitle)">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="newList">
