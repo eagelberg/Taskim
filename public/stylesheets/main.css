@@ -1,5 +1,5 @@
 .deck {
-    width: 250px;
+    width: 300px;
     float: left;
     background: none repeat scroll 0% 0% rgb(219, 219, 219);
     margin: 0px 0px;
@@ -31,6 +31,6 @@
     float: left;
 }
 
-.row {
-    padding-bottom: 10px;
-}
+.canvas {
+    overflow-x: auto;
+ }
