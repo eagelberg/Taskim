@@ -53,6 +53,10 @@
     top: 30px;
 }
 
+.card-list {
+    overflow-y: auto;
+}
+
 .card-title {
     width: 90%;
 }

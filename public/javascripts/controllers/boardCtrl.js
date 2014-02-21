@@ -1,7 +1,8 @@
-taskimApp.controller('boardCtrl',['$scope','boardManager',function($scope,boardManager){
+taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($scope,boardManager,$window){
 
     $scope.board = {};
     $scope.canvasWidth = 100;
+    $scope.maxHeight = ($window.innerHeight - 100);
 
     $scope.getCanvasStyle = function() {
         return {width: $scope.canvasWidth + 'px'};

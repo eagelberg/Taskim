@@ -1,9 +1,9 @@
         <div class="canvas" ng-style="{width: canvasWidth + 'px'}">
-            <div ng-repeat="deck in board.decks" class="deck" >
+            <div ng-repeat="deck in board.decks" class="deck" ng-style="{'max-height': maxHeight + 'px'}">
                 <div class="deckName">
                     {{deck.name}}
                 </div>
-                <div class="list-group">
+                <div class="list-group card-list" ng-style="{'max-height': (maxHeight-60) + 'px'}">
                     <div ng-repeat="card in deck.cards" class="card list-group-item">
                         <span class="dropDownContainer">
                                 <span class="glyphicon glyphicon-download icon" id="dropdownMenu1" data-toggle="dropdown"></span>
