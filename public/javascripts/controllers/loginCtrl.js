@@ -1,4 +1,4 @@
-taskimApp.controller('loginCtrl',['$scope','loggedUserService','$http',function($scope,loggedUserService, $http){
+taskimApp.controller('loginCtrl',['$scope','loggedUserService','$location',function($scope,loggedUserService, $location){
     $scope.user = {
         name : '',
         password : ''
@@ -7,7 +7,12 @@ taskimApp.controller('loginCtrl',['$scope','loggedUserService','$http',function(
     $scope.board = []
 
     $scope.login = function(){
-        loggedUserService.login($scope.name,$scope.password);
+        loggedUserService.login($scope.user.name,$scope.user.password);
+        loggedUserService.loggedUser.then(function(){
+            if(loggedUserService.loggedUser != null){
+                $location.path('/userPage');
+            }
+        });
     }
 
     $scope.reset = function(){
@@ -17,5 +22,8 @@ taskimApp.controller('loginCtrl',['$scope','loggedUserService','$http',function(
         };
     }
 
-
+    $scope.create = function(){
+        //todo modal
+        loggedUserService.create({name: "guy",password:"123456"})
+    }
 }]);

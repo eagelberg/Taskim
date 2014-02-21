@@ -609,11 +609,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *
      * * '/hello/' - Matches only if the path is exactly '/hello/'. There is no special treatment for
      *   trailing slashes, and patterns have to match the entire path, not just a prefix.
-     * * '/user/:id' - Matches '/user/bob' or '/user/1234!!!' or even '/user/' but not '/user' or
-     *   '/user/bob/details'. The second path segment will be captured as the parameter 'id'.
-     * * '/user/{id}' - Same as the previous example, but using curly brace syntax.
-     * * '/user/{id:[^/]*}' - Same as the previous example.
-     * * '/user/{id:[0-9a-fA-F]{1,8}}' - Similar to the previous example, but only matches if the id
+     * * '/User/:id' - Matches '/User/bob' or '/User/1234!!!' or even '/User/' but not '/User' or
+     *   '/User/bob/details'. The second path segment will be captured as the parameter 'id'.
+     * * '/User/{id}' - Same as the previous example, but using curly brace syntax.
+     * * '/User/{id:[^/]*}' - Same as the previous example.
+     * * '/User/{id:[0-9a-fA-F]{1,8}}' - Similar to the previous example, but only matches if the id
      *   parameter consists of 1 to 8 hex digits.
      * * '/files/{path:.*}' - Matches any URL starting with '/files/' and captures the rest of the
      *   path into the parameter 'path'.
@@ -703,8 +703,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * ### Example
      * The following two matchers are equivalent:
      * ```
-     * new UrlMatcher('/user/{id}?q').concat('/details?date');
-     * new UrlMatcher('/user/{id}/details?q&date');
+     * new UrlMatcher('/User/{id}?q').concat('/details?date');
+     * new UrlMatcher('/User/{id}/details?q&date');
      * ```
      *
      * @param {string} pattern  The pattern to append.
@@ -730,7 +730,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *
      * ### Example
      * ```
-     * new UrlMatcher('/user/{id}?q&r').exec('/user/bob', { x:'1', q:'hello' });
+     * new UrlMatcher('/User/{id}?q&r').exec('/User/bob', { x:'1', q:'hello' });
      * // returns { id:'bob', q:'hello', r:null }
      * ```
      *
@@ -770,8 +770,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *
      * ### Example
      * ```
-     * new UrlMatcher('/user/{id}?q').format({ id:'bob', q:'yes' });
-     * // returns '/user/bob?q=yes'
+     * new UrlMatcher('/User/{id}?q').format({ id:'bob', q:'yes' });
+     * // returns '/User/bob?q=yes'
      * ```
      *
      * @param {Object} values  the values to substitute for the parameters in this pattern.
@@ -925,7 +925,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * app.config(function ($urlRouterProvider) {
    *   // if the path doesn't match any of the urls you configured
-   *   // otherwise will take care of routing the user to the
+   *   // otherwise will take care of routing the User to the
    *   // specified url
    *   $urlRouterProvider.otherwise('/index');
    *
@@ -995,7 +995,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * </pre>
          *
          * @param {string|object} what The incoming path that you want to redirect.
-         * @param {string|object} handler The path you want to redirect your user to.
+         * @param {string|object} handler The path you want to redirect your User to.
          */
         this.when =
             function (what, handler) {
@@ -2427,7 +2427,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * <pre>
      * <ul>
      *   <li ui-sref-active="active" class="item active">
-     *     <a ui-sref="app.user({user: 'bilbobaggins'})" href="/users/bilbobaggins">@bilbobaggins</a>
+     *     <a ui-sref="app.User({User: 'bilbobaggins'})" href="/users/bilbobaggins">@bilbobaggins</a>
      *   </li>
      *   <!-- ... -->
      * </ul>

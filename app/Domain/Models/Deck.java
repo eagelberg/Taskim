@@ -12,7 +12,7 @@ public class Deck {
     @JsonProperty("_id")
     private String id;
     private String name;
-    private ArrayList<Card> cards = new ArrayList<Card>();
+    private List<Card> cards = new ArrayList<Card>();
 
     public void AddCard(Card card) {
         cards.add(card);

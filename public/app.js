@@ -8,10 +8,10 @@ var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'
             templateUrl: 'assets/partials/loginPage.html',
             controller: 'loginCtrl'
         })
-            .state("menu",{
-            url: '/menu',
-                templateUrl: 'assets/partials/loginPage.html',
-                controller: 'loginCtrl'
+            .state("userPage",{
+            url: '/userPage',
+                templateUrl: 'assets/partials/userPage.html',
+                controller: 'userCtrl'
         })
             .state("board",{
                     url: '/board',
@@ -28,22 +28,3 @@ var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'
             id: '_id'
         });
     });
-
-taskimApp.service('loggedUserService',function(){
-    this.loggedUser = null;
-
-    this.login = function(name,password){
-        //todo validate user
-        this.loggedUser = {name : 'fsd' ,permissions : 'public'};
-    }
-});
-
-taskimApp.run(['$rootScope',"$location",'loggedUserService', function($rootScope,$location,loggedUserService) {
-        $rootScope.$on( "$stateChangeStart", function(event, next, current) {
-            if ( loggedUserService.loggedUser == null) {
-                if ( next.templateUrl != "assets/partials/loginPage.html" ) {
-                    $location.path( "/login" );
-                }
-            }
-        });
-    }]);
