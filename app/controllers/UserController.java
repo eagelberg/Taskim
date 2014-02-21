@@ -7,11 +7,8 @@ import com.google.inject.Inject;
 import org.bson.types.ObjectId;
 import play.mvc.Result;
 import play.mvc.Controller;
-import Domain.Models.User;
 import Infrastructure.IJsonMapper;
 import play.libs.Json;
-import org.bson.types.ObjectId;
-import play.mvc.BodyParser;
 
 public class UserController extends Controller {
 
@@ -25,16 +22,16 @@ public class UserController extends Controller {
     }
 
     public Result login(String name,String password){
-        Domain.Models.User connectedUser = userRepository.getUser(name,password);
+        User connectedUser = userRepository.getUser(name,password);
         if(connectedUser == null){
-            return badRequest("user name or password doesnt exsits");
+            return badRequest("User name or password doesnt exsits");
         }
         return ok(jsonMapper.toJson(connectedUser));
     }
 
     public Result createUser(){
         JsonNode json = request().body().asJson();
-        User user = Json.fromJson(json, Domain.Models.user.class);
+        User user = Json.fromJson(json, User.class);
         user.setId(new ObjectId().toStringMongod());
 
         userRepository.save(user);

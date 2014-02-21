@@ -6,7 +6,7 @@ import org.mongojack.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Users {
+public class User {
 
     private String id;
     private String name;
