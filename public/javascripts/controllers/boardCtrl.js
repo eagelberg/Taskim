@@ -1,7 +1,8 @@
-taskimApp.controller('boardCtrl',['$scope','boardManager',function($scope,boardManager){
+taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($scope,boardManager,$window){
 
     $scope.board = {};
     $scope.canvasWidth = 100;
+    $scope.maxHeight = ($window.innerHeight - 100);
 
     $scope.getCanvasStyle = function() {
         return {width: $scope.canvasWidth + 'px'};
@@ -41,8 +42,8 @@ taskimApp.controller('boardCtrl',['$scope','boardManager',function($scope,boardM
     $scope.createNewCard = function(deckIndex, cardTitle) {
         var newCard = {title: cardTitle, _id: ""};
         $scope.board.decks[deckIndex].cards.push(newCard);
-
         $scope.updateBoard();
+        $scope.newCardTitle = "";
     };
 
     $scope.getBoard();
