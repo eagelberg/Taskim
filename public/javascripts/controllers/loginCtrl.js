@@ -1,4 +1,4 @@
-taskimApp.controller('loginCtrl',['$scope','loggedUserService','$location',function($scope,loggedUserService, $location){
+taskimApp.controller('loginCtrl',['$scope','loggedUserService',function($scope,loggedUserService){
     $scope.user = {
         name : '',
         password : ''
@@ -7,12 +7,7 @@ taskimApp.controller('loginCtrl',['$scope','loggedUserService','$location',funct
     $scope.board = []
 
     $scope.login = function(){
-        loggedUserService.login($scope.user.name,$scope.user.password);
-        loggedUserService.loggedUser.then(function(){
-            if(loggedUserService.loggedUser != null){
-                $location.path('/userPage');
-            }
-        });
+        loggedUserService.login($scope.user.name,$scope.user.password,'/userPage');
     }
 
     $scope.reset = function(){
