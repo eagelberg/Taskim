@@ -6,11 +6,9 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
 
     $scope.dropCallback = function (event, ui, deck) {
         if($scope.draggedFromDeck != deck) {
-            var card = angular.element(ui.draggable.get(0)).scope().card;
-            deck.cards.push(card);
-            $scope.draggedFromDeck.cards = _.without($scope.draggedFromDeck.cards, card);
+            deck.cards.push($scope.draggedCard);
+            $scope.draggedFromDeck.cards = _.without($scope.draggedFromDeck.cards, $scope.draggedCard);
             $scope.$apply();
-            $(ui.helper).hide();
             $scope.updateBoard();
         }
     };
@@ -18,10 +16,12 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
     $scope.dragStartCallback = function(event, ui, card, deck) {
         $scope.draggedCard = card;
         $scope.draggedFromDeck = deck;
+        $scope.dragged = event.target;
+        $($scope.dragged).css('opacity', 0.2);
     };
 
     $scope.dragStopCallback = function(event, ui) {
-        $(this).css('opacity', 1);
+        $($scope.dragged).css('opacity', 1);
     }
 
     $scope.dropOptions = {
@@ -39,7 +39,6 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
         helper: function(event) {
             $copy = $(this).clone();
             $copy.css('width', this.clientWidth);
-            $(this).css('opacity', 0.2);
             return $copy;
         },
         appendTo: 'body',
@@ -72,9 +71,9 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
         $scope.newDeckName = "";
     };
 
-    $scope.createNewCard = function(deckIndex, cardTitle) {
+    $scope.createNewCard = function(deck, cardTitle) {
         var newCard = {title: cardTitle, _id: ""};
-        $scope.board.decks[deckIndex].cards.push(newCard);
+        deck.cards.push(newCard);
         $scope.updateBoard();
         $scope.newCardTitle = "";
     };

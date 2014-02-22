@@ -8,7 +8,7 @@
                 <div class="list-group card-list" ng-style="{'max-height': (maxHeight-60) + 'px'}">
                     <div ng-repeat="card in deck.cards" class="card list-group-item"
                          data-drag="true" data-jqyoui-options="dragOptions"
-                         jqyoui-draggable="{animate:true, onStop:'stopDrag()', onStart:'dragStartCallback(card, deck)'}">
+                         jqyoui-draggable="{animate:true, onStop:'dragStopCallback', onStart:'dragStartCallback(card, deck)'}">
                     <span class="dropDownContainer">
                         <span class="glyphicon glyphicon-download icon" id="dropdownMenu1" data-toggle="dropdown"></span>
                         <ul class="dropdown-menu dropdown-menu-right right-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -23,7 +23,7 @@
                          data-jqyoui-options="{revert: 'invalid'}"  jqyoui-draggable="{animate:true}">
                         <div>
                             <input type="text" ng-model="newCardTitle">
-                            <input type="button" value="save" ng-click="createNewCard($index, newCardTitle)">
+                            <input type="button" value="save" ng-click="createNewCard(deck, newCardTitle)">
                         </div>
                     </div>
                 </div>
