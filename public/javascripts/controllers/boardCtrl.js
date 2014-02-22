@@ -4,6 +4,36 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
     $scope.canvasWidth = 100;
     $scope.maxHeight = ($window.innerHeight - 100);
 
+    $scope.dropCallback = function (event, ui, deck) {
+        if($scope.draggedFromDeck != deck) {
+            var card = angular.element(ui.draggable.get(0)).scope().card;
+            deck.cards.push(card);
+            $scope.draggedFromDeck.cards = _.without($scope.draggedFromDeck.cards, card);
+            $scope.$apply();
+            $(ui.helper).hide();
+            $scope.updateBoard();
+        }
+    };
+
+    $scope.dragStartCallback = function(event, ui, card, deck) {
+        $scope.draggedCard = card;
+        $scope.draggedFromDeck = deck;
+    };
+
+    $scope.dragStopCallback = function(event, ui) {
+        $(this).css('opacity', 1);
+    }
+
+    $scope.dropOptions = {
+        accept: function(dropElement) {
+            if(angular.element($(this).get(0)).scope().deck != $scope.draggedFromDeck) {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
     $scope.dragOptions= {
         revert: 'invalid',
         helper: function(event) {
@@ -13,9 +43,6 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
             return $copy;
         },
         appendTo: 'body',
-        stop: function (event, ui) {
-            $(this).css('opacity', 1);
-        },
         placeholder: 'keep'
     };
 
