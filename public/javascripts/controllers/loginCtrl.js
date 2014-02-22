@@ -16,9 +16,4 @@ taskimApp.controller('loginCtrl',['$scope','loggedUserService',function($scope,l
             password : ''
         };
     }
-
-    $scope.create = function(){
-        //todo modal
-        loggedUserService.create({name: "guy",password:"123456"})
-    }
 }]);
