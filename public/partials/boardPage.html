@@ -1,36 +1,34 @@
-        <div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
-            <div ng-repeat="deck in board.decks"  data-jqyoui-options="dropOptions" data-drop="true" ng-model=decks
-                 jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback(deck)'}"
-                 class="deck" ng-style="{'max-height': maxHeight + 'px'}">
-                <div class="deckName">
-                    {{deck.name}}
-                </div>
-                <div class="list-group card-list" ng-style="{'max-height': (maxHeight-60) + 'px'}">
-                    <div ng-repeat="card in deck.cards" class="card list-group-item"
-                         data-drag="true" data-jqyoui-options="dragOptions"
-                         jqyoui-draggable="{animate:true, onStop:'dragStopCallback', onStart:'dragStartCallback(card, deck)'}">
-                    <span class="dropDownContainer">
-                        <span class="glyphicon glyphicon-download icon" id="dropdownMenu1" data-toggle="dropdown"></span>
-                        <ul class="dropdown-menu dropdown-menu-right right-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action2</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action3</a></li>
-                        </ul>
-                    </span>
-                    <p class="card-title">{{card.title}}</p>
-                    </div>
-                    <div class="list-group-item" data-drag="true"
-                         data-jqyoui-options="{revert: 'invalid'}"  jqyoui-draggable="{animate:true}">
-                        <div>
-                            <input type="text" ng-model="newCardTitle">
-                            <input type="button" value="save" ng-click="createNewCard(deck, newCardTitle)">
-                        </div>
-                    </div>
-                </div>
+<div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
+    <div ng-repeat="deck in board.decks"  >
+         <div class="deck" ng-style="{'max-height': maxHeight + 'px'}">
+            <div class="deckName">
+                {{deck.name}}
             </div>
-
-            <div class="newList">
-                <input type="text" ng-model="newDeckName"/>
-                <input type="button" value="Add List" ng-click="createNewDeck()">
+            <div class="list-group card-list" ng-style="{'max-height': (maxHeight-60) + 'px'}">
+                <div class="sort" ui-sortable="sortableOptions" ng-model="deck.cards">
+                    <div ng-repeat="card in deck.cards" class="card list-group-item">
+                        <span class="dropDownContainer">
+                                <span class="glyphicon glyphicon-download icon" id="dropdownMenu1" data-toggle="dropdown"></span>
+                                <ul class="dropdown-menu dropdown-menu-right right-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action2</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action3</a></li>
+                                </ul>
+                            </span>
+                            <p class="card-title">{{card.title}}</p>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div>
+                        <input type="text" ng-model="newCardTitle">
+                        <input type="button" value="save" ng-click="createNewCard(deck, newCardTitle)">
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="newList">
+        <input type="text" ng-model="newDeckName"/>
+        <input type="button" value="Add List" ng-click="createNewDeck()">
+    </div>
+</div>
