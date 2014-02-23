@@ -1,4 +1,4 @@
-var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular','ngDragDrop', 'ui.sortable'])
+var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular','mgcrea.ngStrap.modal', 'ui.sortable'])
     .config(['$stateProvider', '$urlRouterProvider',
                 function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/login");
@@ -18,7 +18,12 @@ var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'
                     templateUrl: 'assets/partials/boardPage.html',
                     controller: 'boardCtrl'
             }
-        );
+        )
+            .state("createUser",{
+                url: '/createUser',
+                templateUrl: 'assets/partials/createUser.html',
+                controller: 'createUserCtrl'
+            })
     }])
     .config(["$locationProvider", function($locationProvider) {
          $locationProvider.html5Mode(true).hashPrefix("!");

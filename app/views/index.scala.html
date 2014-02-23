@@ -9,14 +9,13 @@
         <link rel="stylesheet" href="assets/stylesheets/bootstrap-theme.css"/>
         <link rel="stylesheet" href="assets/stylesheets/main.css"/>
     </head>
-    <body  ng-controller="loginCtrl">
+    <body>
         <div class="navbar navbar-default" role="navigation" bs-navbar>
             <div class="navbar-header">
                 <a class="navbar-brand" ui-sref="/">Taskim</a>
             </div>
             <ul class="nav navbar-nav">
                 <li data-match-route="/"><a ui-sref="/">Home</a></li>
-                <li data-match-route="/menu"><a ui-sref="menu">Menu</a></li>
                 <li data-match-route="/login"><a href="login">login</a></li>
                 <li data-match-route="/board"><a ui-sref="board">test</a></li>
             </ul>
@@ -38,6 +37,7 @@
         <script src="assets/javascripts/services/loggedUserService.js"></script>
         <script src="assets/javascripts/services/loginValidator.js"></script>
         <script src="assets/javascripts/services/boardManager.js"></script>
+        <script src="assets/javascripts/controllers/createUserCtrl.js"></script>
         <script src="assets/javascripts/controllers/loginCtrl.js"></script>
         <script src="assets/javascripts/controllers/boardCtrl.js"></script>
         <script src="assets/javascripts/controllers/userCtrl.js"></script>

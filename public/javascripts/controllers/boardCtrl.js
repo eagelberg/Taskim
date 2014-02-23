@@ -9,7 +9,6 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
           $scope.updateBoard();
         },
         connectWith: '.sort'
-        connectWith: '.sort'
     }
 
     $scope.getBoard = function () {
