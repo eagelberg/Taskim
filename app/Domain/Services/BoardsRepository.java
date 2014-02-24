@@ -29,6 +29,11 @@ public class BoardsRepository implements IBoardsRepository {
         return boardsCollection.findOneById(objectId);
     }
 
+    @Override
+    public List<Board> getByIds(List<String> objectIds) {
+        return boardsCollection.find(DBQuery.in("_id",objectIds)).toArray();
+    }
+
     public List<Board> all() {
         return boardsCollection.find().toArray();
     }

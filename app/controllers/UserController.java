@@ -1,6 +1,7 @@
 package controllers;
 
 import Domain.Models.User;
+import Domain.Services.IBoardsRepository;
 import Domain.Services.IUserRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
@@ -14,19 +15,26 @@ public class UserController extends Controller {
 
     private IUserRepository userRepository;
     private IJsonMapper jsonMapper;
+    private IBoardsRepository boardsRepository;
 
     @Inject
-    public UserController(IUserRepository userRepository,IJsonMapper jsonMapper) {
+    public UserController(IUserRepository userRepository,IJsonMapper jsonMapper,IBoardsRepository boardsRepository) {
         this.userRepository = userRepository;
         this.jsonMapper = jsonMapper;
+        this.boardsRepository = boardsRepository;
     }
 
     public Result login(String name,String password){
-        User connectedUser = userRepository.getUser(name,password);
+        User connectedUser = userRepository.getByLoginData(name, password);
         if(connectedUser == null){
             return badRequest("User name or password doesnt exsits");
         }
         return ok(jsonMapper.toJson(connectedUser));
+    }
+
+    public Result getUserBoards(String userId){
+        User user = userRepository.getById(userId);
+        return ok(jsonMapper.toJson(boardsRepository.getByIds(user.getBoards())));
     }
 
     public Result createUser(){

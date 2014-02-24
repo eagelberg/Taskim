@@ -11,5 +11,6 @@ import java.util.List;
 public interface IBoardsRepository {
     void save(Board board);
     public Board getById(String objectId);
+    public List<Board> getByIds(List<String> objectIds);
     public List<Board> all();
 }

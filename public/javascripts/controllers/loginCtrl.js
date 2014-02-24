@@ -7,7 +7,7 @@ taskimApp.controller('loginCtrl',['$scope','loggedUserService',function($scope,l
     $scope.board = []
 
     $scope.login = function(){
-        loggedUserService.login($scope.user.name,$scope.user.password,'/userPage');
+        loggedUserService.login($scope.user.name,$scope.user.password,'userPage');
     }
 
     $scope.reset = function(){

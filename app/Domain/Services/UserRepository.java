@@ -17,8 +17,13 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public User getUser(String name,String password){
+    public User getByLoginData(String name, String password){
         return userCollection.findOne(DBQuery.is("name",name).is("password",password));
+    }
+
+    @Override
+    public User getById(String id) {
+        return userCollection.findOneById(id);
     }
 
     @Override

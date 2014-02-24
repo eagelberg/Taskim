@@ -12,20 +12,20 @@ public class User {
     private String name;
     private String password;
 
-    private List<Board> boards = new ArrayList<Board>();
+    private List<String> boards = new ArrayList<String>();
 
-    public List<Board> getBoards() {
-        List<Board> boardListCopy = new ArrayList<Board>();
+    public List<String> getBoards() {
+        List<String> boardListCopy = new ArrayList<String>();
         boardListCopy.addAll(boards);
         return boardListCopy;
     }
 
-    public void setBoards(List<Board> boards) {
+    public void setBoards(List<String> boards) {
         this.boards = boards;
     }
 
     public void addBoard(Board board){
-        boards.add(board);
+        boards.add(board.getId());
     }
 
     public void removeBoard(Board board){

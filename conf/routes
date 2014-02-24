@@ -10,6 +10,7 @@ PUT   /Boards/:id                   @controllers.BoardsController.update(id: Str
 
 #User
 GET   /UserLogin                    @controllers.UserController.login(name: String ?= "",password: String ?= "")
+GET   /User/:id/Boards              @controllers.UserController.getUserBoards(id: String)
 
 POST  /User                         @controllers.UserController.createUser()
 

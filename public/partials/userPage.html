@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <h3>my boards</h3>
+    </div>
+    <div ng-repeat="board in boards">
+    <span ng-switch on="$index % 4">
+      <span ng-switch-when="0">
+        <div class="row">
+            <div class="my-board col-md-3" ng-show="boards[$index + 0]">{{boards[$index + 0].name}}</div>
+            <div class="my-board col-md-3" ng-show="boards[$index + 1]">{{boards[$index + 1].name}}</div>
+            <div class="my-board col-md-3" ng-show="boards[$index + 2]">{{boards[$index + 2].name}}</div>
+            <div class="my-board col-md-3" ng-show="boards[$index + 3]">{{boards[$index + 3].name}}</div>
+        </div>
+      </span>
+    </span>
+    </div>
+</div>

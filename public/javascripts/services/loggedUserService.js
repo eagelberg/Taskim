@@ -1,21 +1,23 @@
-taskimApp.service('loggedUserService',['Restangular','$location', function(Restangular,$location){
+taskimApp.service('loggedUserService',['Restangular','$state', function(Restangular,$state){
     this.loggedUser = null;
 
     this.login = function(name,password,redirectUrl){
-        Restangular.one('UserLogin').get({name: name,password: password}).then(function(result){
-            sessionStorage.name = name;
-            sessionStorage.password = password;
-            this.loggedUser = result.data;
-            $location.path(redirectUrl);
-        });
-
+        Restangular.one('UserLogin').get({name: name,password: password}).then(function(user){
+                          sessionStorage.user = JSON.stringify(user);
+                          this.loggedUser = user;
+                          $state.go(redirectUrl);
+                      });
     };
+
+    this.getUserBoards = function(){
+        return Restangular.one('User',this.loggedUser._id).all('Boards').getList();
+    }
 
     this.isUserLogged = function(){
         if(this.loggedUser == null)
         {
-            if(sessionStorage.name != null && sessionStorage.password != null){
-                this.loggedUser = Restangular.one('UserLogin').get({name: sessionStorage.name,password: sessionStorage.password});
+            if(sessionStorage.user != null ){
+                this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
                 return true;
             }
         }
