@@ -9,6 +9,11 @@
     overflow: visible;
 }
 
+.deck-menu {
+    left: 50px;
+    width: 200px;
+}
+
 .card {
     margin-bottom: 3px;
     border-radius: 3px;

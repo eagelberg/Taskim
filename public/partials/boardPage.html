@@ -1,14 +1,24 @@
 <div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
     <div ng-repeat="deck in board.decks"  >
          <div class="deck" ng-style="{'max-height': maxHeight + 'px'}">
-            <div class="deckName">
-                {{deck.name}}
-            </div>
-            <div class="list-group card-list" ng-style="{'max-height': (maxHeight-60) + 'px'}">
+             <div>
+                 <span class="dropDownContainer dropdown">
+                        <span class="glyphicon glyphicon-download icon" data-toggle="dropdown"></span>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action2</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action3</a></li>
+                        </ul>
+                    </span>
+                <div class="deckName">
+                    {{deck.name}}
+                </div>
+             </div>
+            <div class="list-group card-list dropdown" ng-style="{'max-height': (maxHeight-60) + 'px'}">
                 <div class="sort" ui-sortable="sortableOptions" ng-model="deck.cards">
                     <div ng-repeat="card in deck.cards" class="card list-group-item">
-                        <span class="dropDownContainer">
-                                <span class="glyphicon glyphicon-download icon" id="dropdownMenu1" data-toggle="dropdown"></span>
+                        <span class="dropDownContainer ">
+                                <span class="glyphicon glyphicon-download icon" data-toggle="dropdown"></span>
                                 <ul class="dropdown-menu dropdown-menu-right right-menu" role="menu" aria-labelledby="dropdownMenu1">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action2</a></li>
