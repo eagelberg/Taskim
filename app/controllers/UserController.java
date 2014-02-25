@@ -37,7 +37,16 @@ public class UserController extends Controller {
         return ok(jsonMapper.toJson(boardsRepository.getByIds(user.getBoards())));
     }
 
-    public Result createUser(){
+    public Result update(){
+        JsonNode json = request().body().asJson();
+        User user = Json.fromJson(json, User.class);
+
+        userRepository.save(user);
+
+        return ok();
+    }
+
+    public Result create(){
         JsonNode json = request().body().asJson();
         User user = Json.fromJson(json, User.class);
         user.setId(new ObjectId().toStringMongod());

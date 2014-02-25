@@ -1,11 +1,13 @@
-taskimApp.service('loggedUserService',['Restangular','$state', function(Restangular,$state){
+taskimApp.service('loggedUserService',['$rootScope','Restangular','$state', function($rootScope,Restangular,$state){
     this.loggedUser = null;
 
     this.login = function(name,password,redirectUrl){
         Restangular.one('UserLogin').get({name: name,password: password}).then(function(user){
                           sessionStorage.user = JSON.stringify(user);
                           this.loggedUser = user;
-                          $state.go(redirectUrl);
+                          if(redirectUrl != null){
+                              $state.go(redirectUrl);
+                          }
                       });
     };
 
@@ -27,4 +29,11 @@ taskimApp.service('loggedUserService',['Restangular','$state', function(Restangu
     this.create = function(user){
         Restangular.all('User').post(user);
     };
+
+    this.update = function(user){
+        Restangular.one('User').customPUT({_id: user._id,name: user.name,password:user.password,boards:user.boards}).then(function(){
+            sessionStorage.user = JSON.stringify(user);
+            $rootScope.$broadcast('userBoardAdded');
+        });
+    }
 }]);

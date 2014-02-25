@@ -49,4 +49,21 @@ public class Board  {
         return deckListCopy;
     }
     //</editor-fold>
+
+    public void initialize() {
+        this.setId(new org.bson.types.ObjectId().toStringMongod());
+        Deck todo = new Deck();
+        todo.setId(new org.bson.types.ObjectId().toStringMongod());
+        todo.setName("todo");
+        Deck doing = new Deck();
+        doing.setId(new org.bson.types.ObjectId().toStringMongod());
+        doing.setName("doing");
+        Deck done = new Deck();
+        done.setId(new org.bson.types.ObjectId().toStringMongod());
+        done.setName("done");
+
+        this.AddDeck(todo);
+        this.AddDeck(doing);
+        this.AddDeck(done);
+    }
 }

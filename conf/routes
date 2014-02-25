@@ -8,12 +8,13 @@ GET    /Boards/:id                  @controllers.BoardsController.get(id: String
 
 PUT   /Boards/:id                   @controllers.BoardsController.update(id: String)
 
+POST  /Boards                       @controllers.BoardsController.create()
 #User
 GET   /UserLogin                    @controllers.UserController.login(name: String ?= "",password: String ?= "")
 GET   /User/:id/Boards              @controllers.UserController.getUserBoards(id: String)
 
-POST  /User                         @controllers.UserController.createUser()
-
+POST  /User                         @controllers.UserController.create()
+PUT   /User                         @controllers.UserController.update()
 # Home page
 GET     /                           @controllers.Application.main(any = "none")
 

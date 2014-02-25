@@ -6,4 +6,8 @@ taskimApp.service('boardManager',function(Restangular, $q){
     this.update = function(board){
         return board.put();
     }
+
+    this.create = function(board){
+        return Restangular.all('Boards').post(board);
+    }
 });
