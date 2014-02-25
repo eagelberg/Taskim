@@ -16,12 +16,12 @@ taskimApp.service('loggedUserService',['Restangular','$state', function(Restangu
     this.isUserLogged = function(){
         if(this.loggedUser == null)
         {
-            if(sessionStorage.user != null ){
-                this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
-                return true;
+            if(sessionStorage.user == null ){
+                return false;
             }
+            this.loggedUser = JSON.parse(sessionStorage.getItem('user'));
         }
-        return false
+        return true
     }
 
     this.create = function(user){

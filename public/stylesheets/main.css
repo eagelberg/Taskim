@@ -77,3 +77,14 @@
 .signUpAnchor{
     padding-left: 40px;
 }
+
+.my-board{
+    background: rgba(214, 211, 211, 0.70);
+    height: 100px;
+}
+
+.my-board:hover
+{
+    cursor: pointer;
+    background-color: rgba(214, 211, 211,1);;
+}

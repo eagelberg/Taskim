@@ -1,3 +1,7 @@
-taskimApp.controller('userCtrl',['$scope','loggedUserService','boardManager',function($scope,loggedUserService){
-    $scope.boards = loggedUserService.getUserBoards().$object;
+taskimApp.controller('userCtrl',['$scope','loggedUserService','$state',function($scope,loggedUserService,$state){
+    $scope.boards = loggedUserService.getUserBoards().$object
+
+    $scope.choseBoard = function(board){
+        $state.go('board',{id : board._id})
+    };
 }]);

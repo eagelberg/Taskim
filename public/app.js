@@ -14,7 +14,7 @@ var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'
                 controller: 'userCtrl'
         })
             .state("board",{
-                    url: '/board',
+                    url: '/board/:id',
                     templateUrl: 'assets/partials/boardPage.html',
                     controller: 'boardCtrl'
             }
