@@ -70,6 +70,10 @@
     top: 30px;
 }
 
+.canvas {
+    overflow: hidden;
+}
+
 .card-list {
     overflow: visible;
     overflow-y: auto;

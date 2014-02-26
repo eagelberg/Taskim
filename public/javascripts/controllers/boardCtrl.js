@@ -1,4 +1,4 @@
-taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($scope,boardManager,$window){
+taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$stateParams', function($scope,boardManager,$window, $stateParams){
 
     $scope.board = {};
     $scope.canvasWidth = 100;
@@ -11,8 +11,8 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
         connectWith: '.sort'
     }
 
-    $scope.getBoard = function () {
-        boardManager.get('52ff5e6044ae2e25ae9712ae').then(function(board) {
+    $scope.getBoard = function (boardId) {
+        boardManager.get(boardId).then(function(board) {
             $scope.setBoard(board);
         });
     };
@@ -21,7 +21,7 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
         $scope.board = board;
 
         var deckWidth = 250;
-        $scope.canvasWidth = board.decks.length * (deckWidth + 100);
+        $scope.canvasWidth = (board.decks.length + 1) * (deckWidth + 100);
     }
 
     $scope.updateBoard = function() {
@@ -44,6 +44,6 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window',function($s
         $scope.newCardTitle = "";
     };
 
-    $scope.getBoard();
+    $scope.getBoard($stateParams.id);
 }]);
 
