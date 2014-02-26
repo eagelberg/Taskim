@@ -86,6 +86,8 @@
 .my-board{
     background: rgba(214, 211, 211, 0.70);
     height: 100px;
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 3px 3px 1px;
 }
 
 .my-board:hover
@@ -93,3 +95,13 @@
     cursor: pointer;
     background-color: rgba(214, 211, 211,1);;
 }
+
+.add-board{
+    margin-top: 12px;
+}
+
+.board-row{
+    margin-top: 20px;
+}
+
+

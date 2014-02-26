@@ -62,6 +62,15 @@ public class BoardsController extends Controller {
         return ok(jsonMapper.toJson(board));
     }
 
+    public Result create(){
+        JsonNode json = request().body().asJson();
+        Board board = Json.fromJson(json, Board.class);
+        board.initialize();
+
+        repository.save(board);
+        return ok(jsonMapper.toJson(board));
+    }
+
     public Result all() {
         List<Board> boards = repository.all();
         return ok(jsonMapper.toJson(boards));

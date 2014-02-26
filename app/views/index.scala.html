@@ -10,12 +10,15 @@
         <link rel="stylesheet" href="assets/stylesheets/main.css"/>
     </head>
     <body>
-        <div class="navbar navbar-default" role="navigation" bs-navbar>
+        <div class="navbar navbar-default" role="navigation" bs-navbar ng-controller="navigationCtrl">
             <div class="navbar-header">
                 <a class="navbar-brand" ui-sref="userPage">Taskim</a>
             </div>
             <ul class="nav navbar-nav">
                 <li data-match-route="/board"><a ui-sref="board">test</a></li>
+            </ul>
+            <ul>
+                <button class="btn-default add-board" ng-click="openCreateBoardModal()"><span class="glyphicon glyphicon-plus"></span></button>
             </ul>
         </div>
 
@@ -31,6 +34,7 @@
         <script src="assets/library/restangular.js"></script>
         <script src="assets/library/bootstrap.js"></script>
         <script src="assets/library/angular-dragdrop.js"></script>
+        <script src="assets/library/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script src="assets/app.js"></script>
         <script src="assets/javascripts/services/loggedUserService.js"></script>
         <script src="assets/javascripts/services/loginValidator.js"></script>
@@ -39,6 +43,7 @@
         <script src="assets/javascripts/controllers/loginCtrl.js"></script>
         <script src="assets/javascripts/controllers/boardCtrl.js"></script>
         <script src="assets/javascripts/controllers/userCtrl.js"></script>
+        <script src="assets/javascripts/controllers/navigationCtrl.js"></script>
     </body>
 </html>
 
