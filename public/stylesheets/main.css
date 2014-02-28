@@ -6,7 +6,8 @@
     margin-left: 8px;
     border-radius: 3px;
     padding: 4px 3px 3px;
-    overflow: visible;
+    overflow-y: visible;
+    position: relative;
 }
 
 .deck-menu {
@@ -59,6 +60,12 @@
 
 .newList {
     float: left;
+    left: 200px;
+
+}
+
+.entity-menu {
+    max-width: 100px;
 }
 
 .dropDownContainer {
@@ -67,7 +74,7 @@
 }
 
 .right-menu {
-    top: 30px;
+    max-width: 100px;
 }
 
 .canvas {
@@ -99,6 +106,8 @@
     cursor: pointer;
     background-color: rgba(214, 211, 211,1);;
 }
+
+
 
 .add-board{
     margin-top: 12px;
