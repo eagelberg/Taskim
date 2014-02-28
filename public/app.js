@@ -33,36 +33,3 @@ var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router'
             id: '_id'
         });
     });
-
-
-taskimApp.directive('resize', function ($window) {
-    return function (scope, element) {
-        var w = angular.element($window);
-        scope.getWindowDimensions = function () {
-            return { 'h': w.innerHeight };
-        };
-
-        scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
-            scope.windowHeight = newValue.h + 'px';
-            scope.maxHeight = (newValue.h - 60);
-
-        }, true);
-
-        w.bind('resize', function () {
-            scope.$apply();
-        });
-    }
-});
-
-taskimApp.directive('uplevel', function ($window) {
-    return function (scope, element) {
-        $(element).on('shown.bs.dropdown', function(event) {
-            var glyphicon = $(this).find('.glyphicon ');
-            var dropDown = $(this).find('.dropdown-menu');
-            var pos = dropDown.offset();
-            dropDown.css({ position: "fixed",
-                marginLeft: 0, marginTop: 0,
-                top: pos.top, left: pos.left });
-        });
-    }
-});

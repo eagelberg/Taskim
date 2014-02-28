@@ -12,7 +12,7 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
     }
 
     $scope.getBoard = function (boardId) {
-        boardManager.get(boardId).then(function(board) {
+        boardManager.  get(boardId).then(function(board) {
             $scope.setBoard(board);
         });
     };
