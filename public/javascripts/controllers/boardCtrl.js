@@ -8,7 +8,9 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
         update:function (event, ui) {
           $scope.updateBoard();
         },
-        connectWith: '.sort'
+        connectWith: '.sort',
+        helper: 'clone',
+        appendTo: 'body'
     }
 
     $scope.getBoard = function (boardId) {
