@@ -7,14 +7,15 @@ taskimApp.directive('resize', function ($window) {
 
         scope.setHeight = function (newValue, oldValue) {
 
-            scope.maxHeight = (newValue - 60);
+            scope.maxHeight = (newValue - 70);
 
             var e = element.get(0);
 
             if(e.offsetHeight < e.scrollHeight) {
                 if(e.offsetHeight < newValue) {
-                    scope.elementHeight = newValue;
+                    scope.elementHeight = '100%';
                 }
+
             }
         }
 
