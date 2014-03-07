@@ -19,3 +19,16 @@ resolvers += (
 resolvers += (
     "sonatype-nexus-snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
   )
+
+  seq(jasmineSettings : _*)
+
+  appJsDir <+= baseDirectory / "public"
+
+  appJsLibDir <+= baseDirectory / "public/library"
+
+  jasmineTestDir <+= baseDirectory / "test/JavascriptTests"
+
+  jasmineConfFile <+= baseDirectory / "test/JavascriptTests/test.dependencies.js"
+
+  (test in Test) <<= (test in Test) dependsOn (jasmine)
+
