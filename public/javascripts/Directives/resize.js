@@ -2,17 +2,27 @@ taskimApp.directive('resize', function ($window) {
     return function (scope, element) {
         var w = angular.element($window);
         scope.getWindowDimensions = function () {
-            return { 'h': w.innerHeight };
+            return  w.innerHeight() ;
         };
 
-        scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
-            scope.windowHeight = newValue.h + 'px';
-            scope.maxHeight = (newValue.h - 60);
+        scope.setHeight = function (newValue, oldValue) {
 
-        }, true);
+            scope.maxHeight = (newValue - 60);
+
+            var e = element.get(0);
+
+            if(e.offsetHeight < e.scrollHeight) {
+                if(e.offsetHeight < newValue) {
+                    scope.elementHeight = newValue;
+                }
+            }
+        }
+
+        scope.$watch(scope.getWindowDimensions, scope.setHeight, true);
 
         w.bind('resize', function () {
             scope.$apply();
         });
+
     }
 });

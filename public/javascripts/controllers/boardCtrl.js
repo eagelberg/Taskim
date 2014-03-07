@@ -2,7 +2,6 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
 
     $scope.board = {};
     $scope.canvasWidth = 100;
-    $scope.maxHeight = ($window.innerHeight - 100);
 
     $scope.sortableOptions = {
         update:function (event, ui) {
@@ -11,6 +10,7 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
         connectWith: '.sort',
         helper: 'clone',
         appendTo: 'body'
+//        placeholder: 'list-group-item'
     }
 
     $scope.getBoard = function (boardId) {
