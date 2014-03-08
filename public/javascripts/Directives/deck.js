@@ -8,7 +8,16 @@ taskimApp.directive('deck', function ($window) {
                 return  w.innerHeight() ;
             };
 
-            scope.setHeight = function (newValue, oldValue) {
+            scope.sortableOptions = {
+                update:function (event, ui) {
+                    $scope.updateBoard();
+                },
+                connectWith: '.sort',
+                helper: 'clone',
+                appendTo: 'body'
+            }
+
+            scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
 
                 scope.maxHeight = (newValue - 70);
                 var e = element.get(0);
@@ -16,9 +25,7 @@ taskimApp.directive('deck', function ($window) {
                 if((e.offsetHeight < e.scrollHeight) && (e.offsetHeight < newValue)) {
                     scope.elementHeight = '100%';
                 }
-            }
-
-            scope.$watch(scope.getWindowDimensions, scope.setHeight, true);
+            }, true);
 
             w.bind('resize', function () {
                 scope.$apply();

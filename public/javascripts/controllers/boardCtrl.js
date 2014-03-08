@@ -3,20 +3,6 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
     $scope.board = {};
     $scope.canvasWidth = 100;
 
-    $scope.deckFilter = {
-        isArchived : false
-    }
-
-    $scope.sortableOptions = {
-        update:function (event, ui) {
-          $scope.updateBoard();
-        },
-        connectWith: '.sort',
-        helper: 'clone',
-        appendTo: 'body'
-//        placeholder: 'list-group-item'
-    }
-
     $scope.archiveDeck= function(deck) {
         deck.isArchived = true;
         $scope.updateBoard();
