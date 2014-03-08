@@ -18,7 +18,10 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
         $scope.board = board;
 
         var deckWidth = 250;
-        $scope.canvasWidth = (board.decks.length + 1) * (deckWidth + 100);
+        var displayedDecks = _.filter(board.decks, function(deck){
+            return !deck.isArchived;
+        });
+        $scope.canvasWidth = (displayedDecks.length + 1) * (deckWidth + 100);
     }
 
     $scope.updateBoard = function() {

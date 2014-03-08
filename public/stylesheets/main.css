@@ -1,3 +1,13 @@
+.board-info {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+.board-options {
+    float: right;
+}
+
 .deck {
     width: 300px;
     float: left;
@@ -58,10 +68,10 @@
     border-radius: 15px;
 }
 
-.newList {
+.new-deck {
     float: left;
     left: 200px;
-
+    padding-left: 6px;
 }
 
 .sort {
