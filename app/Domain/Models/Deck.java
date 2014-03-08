@@ -12,6 +12,8 @@ public class Deck {
     @JsonProperty("_id")
     private String id;
     private String name;
+    private boolean isArchived;
+    private String boardId;
     private List<Card> cards = new ArrayList<Card>();
 
     public void AddCard(Card card) {
@@ -23,6 +25,12 @@ public class Deck {
     }
 
     //<editor-fold desc="Getters and Setters">
+    public String getBoardId() {return boardId;}
+    public void setBoardId(String boardId) {this.boardId = boardId;}
+
+    public boolean getIsArchived() {return isArchived;}
+    public void setIsArchived(boolean isArchived) {this.isArchived = isArchived;}
+
     public String getId() {
         return id;
     }

@@ -1,5 +1,5 @@
 <div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
-    <div ng-repeat="deck in board.decks"  >
+    <div ng-repeat="deck in board.decks | filter:{isArchived:false}"  >
          <deck></deck>
     </div>
     <div class="newList">

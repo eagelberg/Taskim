@@ -55,12 +55,23 @@ public class BoardsController extends Controller {
                     card.setId(new ObjectId().toStringMongod());
                 }
             }
+
+
         }
 
         repository.save(board);
 
         return ok(jsonMapper.toJson(board));
     }
+
+//    public Result ArchiveDeck(String deckId) {
+//        JsonNode json = request().body().asJson();
+//        Board board = Json.fromJson(json, Board.class);
+//
+//        for(Deck deck : board.getDecks()) {
+//
+//        }
+//    }
 
     public Result create(){
         JsonNode json = request().body().asJson();
