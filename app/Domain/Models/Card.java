@@ -12,6 +12,7 @@ public class Card {
     @JsonProperty("_id")
     private String id;
     private String title;
+    private String description;
 
     //<editor-fold desc="Getters and Setters">
     public String getId() { return id; }
@@ -23,5 +24,8 @@ public class Card {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) {this.description = description;}
     //</editor-fold>
 }
