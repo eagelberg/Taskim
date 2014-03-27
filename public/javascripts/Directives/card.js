@@ -13,7 +13,8 @@ taskimApp.directive('card', function ($modal) {
                     },
                     controller: function($scope, $modalInstance, card) {
                         $scope.card = card;
-                    }
+                    },
+                    windowClass: "card-modal-window"
                 });
             }
         }
