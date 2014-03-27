@@ -1,3 +1,3 @@
-var cardModalCtrl = function ($scope, $modalInstance) {
-
-}
+//var cardModalCtrl = function ($scope, $modalInstance) {
+//
+//}
