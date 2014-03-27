@@ -10,7 +10,7 @@ taskimApp.directive('deck', function ($window) {
 
             scope.sortableOptions = {
                 update:function (event, ui) {
-                    $scope.updateBoard();
+                    scope.updateBoard();
                 },
                 connectWith: '.sort',
                 helper: 'clone',

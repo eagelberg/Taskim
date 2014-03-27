@@ -29,7 +29,7 @@ describe('boardCtrl', function() {
         expect(boardManager.get).toHaveBeenCalledWith($stateParams.id);
     });
 
-    it('should set the scope max height to (window height - 100)', function(){
-        expect($scope.maxHeight).toBe($window.innerHeight - 100);
-    })
+//    it('should set the scope max height to (window height - 100)', function(){
+//        expect($scope.maxHeight).toBe($window.innerHeight - 100);
+//    })
 });

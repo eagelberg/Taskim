@@ -1,7 +1,7 @@
 <div class="board-info">
     {{board.name}}
     <div class="board-options">
-        <a href="#dedls h">show archived decks</a>
+        <a href="#" ng-click="collapse()">show archived decks</a>
     </div>
 </div>
 <div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
@@ -11,5 +11,8 @@
     <div class="new-deck">
         <input type="text" ng-model="newDeckName"/>
         <input type="button" value="Add List" ng-click="createNewDeck()">
+    </div>
+    <div collapse="isCollapsed" class="collapse">
+        <div>hidden content</div>
     </div>
 </div>

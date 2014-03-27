@@ -3,6 +3,12 @@ taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$statePara
     $scope.board = {};
     $scope.canvasWidth = 100;
 
+    $scope.isCollapsed = false;
+
+    $scope.collapse = function() {
+        $scope.isCollapsed = !$scope.isCollapsed;
+    }
+
     $scope.archiveDeck= function(deck) {
         deck.isArchived = true;
         $scope.updateBoard();
