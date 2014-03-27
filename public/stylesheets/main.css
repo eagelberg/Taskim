@@ -130,3 +130,7 @@
 .board-row{
     margin-top: 20px;
 }
+
+.card-description {
+    width: 400px;
+}
