@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.mongojack.ObjectId;
 
-/**
- * Created by itay on 2/15/14.
- */
 public class Card {
 
     @JsonProperty("_id")

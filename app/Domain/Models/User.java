@@ -12,14 +12,15 @@ public class User {
     private String name;
     private String password;
 
-    private List<String> boards = new ArrayList<String>();
+    private List<String> boards = new ArrayList<>();
 
     public List<String> getBoards() {
-        List<String> boardListCopy = new ArrayList<String>();
+        List<String> boardListCopy = new ArrayList<>();
         boardListCopy.addAll(boards);
         return boardListCopy;
     }
 
+    //<editor-fold desc="Getters and Setters">
     public void setBoards(List<String> boards) {
         this.boards = boards;
     }
@@ -27,7 +28,6 @@ public class User {
     public void addBoard(Board board){
         boards.add(board.getId());
     }
-
     public void removeBoard(Board board){
         boards.remove(board);
     }
@@ -35,7 +35,6 @@ public class User {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -43,7 +42,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -59,4 +57,5 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
+    //</editor-fold>
 }
