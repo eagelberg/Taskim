@@ -26,7 +26,7 @@ define([], function (){
            };
        };
 
-       $scope.apply();
+       $scope.$apply();
    }]
 });
 //
