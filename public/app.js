@@ -8,11 +8,12 @@ define([
     'bootstrap',
     'library/sortable',
     'jquery-ui',
-    'library/jquery-1.11.0'
+    'library/jquery-1.11.0',
+    'controllers'
 ], function (angular) {
     'use strict';
 
-    return angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular','ui.bootstrap.modal','ui.bootstrap.tpls', 'ui.sortable'])
+    return angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular','ui.bootstrap.modal','ui.bootstrap.tpls', 'ui.sortable', 'controllers'])
         .config(['$stateProvider', '$urlRouterProvider',
             function($stateProvider, $urlRouterProvider) {
                 $urlRouterProvider.otherwise("/login");
