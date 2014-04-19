@@ -1,55 +1,117 @@
-taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$stateParams', function($scope,boardManager,$window, $stateParams){
+define(['javascripts/services/boardManager','library/lodash', 'app'],
+    function(app) {
+    return app.controller('boardCtrl',
+        ['$scope','boardManager', '$window','$stateParams',
+        function($scope,boardManager,$window, $stateParams) {
+            $scope.board = {};
+            $scope.canvasWidth = 100;
+            $scope.isCollapsed = false;
 
-    $scope.board = {};
-    $scope.canvasWidth = 100;
+            $scope.collapse = function() {
+                $scope.isCollapsed = !$scope.isCollapsed;
+            }
 
-    $scope.isCollapsed = false;
+            $scope.archiveDeck= function(deck) {
+                deck.isArchived = true;
+                $scope.updateBoard();
+            }
 
-    $scope.collapse = function() {
-        $scope.isCollapsed = !$scope.isCollapsed;
-    }
+            $scope.getBoard = function (boardId) {
+                boardManager.get(boardId).then(function(board) {
+                    $scope.setBoard(board);
+                });
+            };
 
-    $scope.archiveDeck= function(deck) {
-        deck.isArchived = true;
-        $scope.updateBoard();
-    }
+            $scope.setBoard = function(board) {
+                $scope.board = board;
 
-    $scope.getBoard = function (boardId) {
-        boardManager.get(boardId).then(function(board) {
-            $scope.setBoard(board);
-        });
-    };
+                var deckWidth = 250;
+                var displayedDecks = _.filter(board.decks, function(deck){
+                    return !deck.isArchived;
+                });
+                $scope.canvasWidth = (displayedDecks.length + 1) * (deckWidth + 100);
+            }
 
-    $scope.setBoard = function(board) {
-        $scope.board = board;
+            $scope.updateBoard = function() {
+                boardManager.update($scope.board).then(function (board) {
+                    $scope.setBoard(board);
+                });
+            };
 
-        var deckWidth = 250;
-        var displayedDecks = _.filter(board.decks, function(deck){
-            return !deck.isArchived;
-        });
-        $scope.canvasWidth = (displayedDecks.length + 1) * (deckWidth + 100);
-    }
+            $scope.createNewDeck = function(){
+                var newDeck = {name: $scope.newDeckName, _id: ""};
+                $scope.board.decks.push(newDeck);
+                $scope.updateBoard();
+                $scope.newDeckName = "";
+            };
 
-    $scope.updateBoard = function() {
-         boardManager.update($scope.board).then(function (board) {
-            $scope.setBoard(board);
-        });
-    };
+            $scope.createNewCard = function(deck, cardTitle) {
+                var newCard = {title: cardTitle, _id: ""};
+                deck.cards.push(newCard);
+                $scope.updateBoard();
+                $scope.newCardTitle = "";
+            };
 
-    $scope.createNewDeck = function(){
-        var newDeck = {name: $scope.newDeckName, _id: ""};
-        $scope.board.decks.push(newDeck);
-        $scope.updateBoard();
-        $scope.newDeckName = "";
-    };
+            $scope.getBoard($stateParams.id);
+        }])
+    });
 
-    $scope.createNewCard = function(deck, cardTitle) {
-        var newCard = {title: cardTitle, _id: ""};
-        deck.cards.push(newCard);
-        $scope.updateBoard();
-        $scope.newCardTitle = "";
-    };
 
-    $scope.getBoard($stateParams.id);
-}]);
+
+
+
+//taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$stateParams', function($scope,boardManager,$window, $stateParams){
+//
+//    $scope.board = {};
+//    $scope.canvasWidth = 100;
+//
+//    $scope.isCollapsed = false;
+//
+//    $scope.collapse = function() {
+//        $scope.isCollapsed = !$scope.isCollapsed;
+//    }
+//
+//    $scope.archiveDeck= function(deck) {
+//        deck.isArchived = true;
+//        $scope.updateBoard();
+//    }
+//
+//    $scope.getBoard = function (boardId) {
+//        boardManager.get(boardId).then(function(board) {
+//            $scope.setBoard(board);
+//        });
+//    };
+//
+//    $scope.setBoard = function(board) {
+//        $scope.board = board;
+//
+//        var deckWidth = 250;
+//        var displayedDecks = _.filter(board.decks, function(deck){
+//            return !deck.isArchived;
+//        });
+//        $scope.canvasWidth = (displayedDecks.length + 1) * (deckWidth + 100);
+//    }
+//
+//    $scope.updateBoard = function() {
+//         boardManager.update($scope.board).then(function (board) {
+//            $scope.setBoard(board);
+//        });
+//    };
+//
+//    $scope.createNewDeck = function(){
+//        var newDeck = {name: $scope.newDeckName, _id: ""};
+//        $scope.board.decks.push(newDeck);
+//        $scope.updateBoard();
+//        $scope.newDeckName = "";
+//    };
+//
+//    $scope.createNewCard = function(deck, cardTitle) {
+//        var newCard = {title: cardTitle, _id: ""};
+//        deck.cards.push(newCard);
+//        $scope.updateBoard();
+//        $scope.newCardTitle = "";
+//    };
+//
+//    $scope.getBoard($stateParams.id);
+//}]);
 
