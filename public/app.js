@@ -1,5 +1,6 @@
 define([
     'angular',
+    'jquery',
     'restangular',
     'library/angular-strap',
     'angular-ui',

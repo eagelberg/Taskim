@@ -4,7 +4,7 @@ define(['jquery'], function ($) {
             var w = $($window);
 
             scope.getWindowDimensions = function () {
-                return  w.innerHeight() ;
+                return  w.innerHeight();
             };
 
             scope.setHeight = function (newValue, oldValue) {
@@ -17,7 +17,6 @@ define(['jquery'], function ($) {
                     if(e.offsetHeight < newValue) {
                         scope.elementHeight = '100%';
                     }
-
                 }
             };
 
