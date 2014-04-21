@@ -9,7 +9,8 @@ require.config({
         'jquery-ui' : 'library/jquery-ui-1.10.4.custom.min',
         'restangular' : 'library/restangular',
         'controllers' : 'javascripts/controllers/controllers',
-        'services' : 'javascripts/services/services'
+        'services' : 'javascripts/services/services',
+        'directives' : 'javascripts/directives/directives'
     },
     shim: {
         'angular' : {'exports' : 'angular'},

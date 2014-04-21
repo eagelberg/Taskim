@@ -10,7 +10,8 @@ define([
     'jquery-ui',
     'library/jquery-1.11.0',
     'controllers',
-    'services'
+    'services',
+    'directives'
 ], function (angular) {
     'use strict';
 
@@ -21,30 +22,31 @@ define([
                                         'ui.bootstrap.tpls',
                                         'ui.sortable',
                                         'controllers',
-                                        'services'])
+                                        'services',
+                                        'directives'])
         .config(['$stateProvider', '$urlRouterProvider',
             function($stateProvider, $urlRouterProvider) {
                 $urlRouterProvider.otherwise("/login");
 
                 $stateProvider.state("login", {
                     url: '/login',
-                    templateUrl: 'assets/partials/loginPage.html',
+                    templateUrl: '/assets/partials/loginPage.html',
                     controller: 'loginCtrl'
                 })
                     .state("userPage",{
                         url: '/userPage',
-                        templateUrl: 'assets/partials/userPage.html',
+                        templateUrl: '/assets/partials/userPage.html',
                         controller: 'userCtrl'
                     })
-                    .state("board",{
-                        url: '/board/:id',
-                        templateUrl: 'assets/partials/boardPage.html',
+                    .state("board", {
+                        url: '/board/{id}',
+                        templateUrl: '/assets/partials/boardPage.html',
                         controller: 'boardCtrl'
                     }
                 )
                     .state("createUser",{
                         url: '/createUser',
-                        templateUrl: 'assets/partials/createUser.html',
+                        templateUrl: '/assets/partials/createUser.html',
                         controller: 'createUserCtrl'
                     })
             }])

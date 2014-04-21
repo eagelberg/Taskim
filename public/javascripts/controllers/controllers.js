@@ -11,5 +11,20 @@ define(['angular'], function (angular) {
             require(['javascripts/controllers/navigationCtrl'], function(navigationCtrl) {
                 $injector.invoke(navigationCtrl, this, {'$scope': $scope});
             });
+        }])
+        .controller('boardCtrl', ['$scope', '$injector', function($scope, $injector) {
+            require(['javascripts/controllers/boardCtrl'], function(boardCtrl) {
+                $injector.invoke(boardCtrl, this, {'$scope': $scope});
+            });
+        }])
+        .controller('userCtrl', ['$scope', '$injector', function($scope, $injector) {
+            require(['javascripts/controllers/userCtrl'], function(userCtrl) {
+                $injector.invoke(userCtrl, this, {'$scope': $scope});
+            });
+        }])
+        .controller('createUserCtrl', ['$scope', '$injector', function($scope, $injector) {
+            require(['javascripts/controllers/createUserCtrl'], function(createUserCtrl) {
+                $injector.invoke(createUserCtrl, this, {'$scope': $scope});
+            });
         }]);
 });
