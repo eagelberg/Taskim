@@ -12,6 +12,7 @@ POST  /Boards                       @controllers.BoardsController.create()
 #User
 GET   /UserLogin                    @controllers.UserController.login(name: String ?= "",password: String ?= "")
 GET   /User/:id/Boards              @controllers.UserController.getUserBoards(id: String)
+GET   /User                         @controllers.UserController.getUsersByFilter(name: String ?= "")
 
 POST  /User                         @controllers.UserController.create()
 PUT   /User                         @controllers.UserController.update()

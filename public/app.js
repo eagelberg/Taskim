@@ -1,4 +1,4 @@
-var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular','ui.bootstrap.modal','ui.bootstrap.tpls', 'ui.sortable'])
+var taskimApp = angular.module("taskimApp", ["mgcrea.ngStrap.navbar",'ui.router', 'restangular','ui.bootstrap.modal','ui.bootstrap.typeahead','ui.bootstrap.tpls', 'ui.sortable','ngDragDrop'])
     .config(['$stateProvider', '$urlRouterProvider',
                 function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/login");

@@ -24,6 +24,10 @@ public class UserController extends Controller {
         this.boardsRepository = boardsRepository;
     }
 
+    public Result getUsersByFilter(String name) {
+        return ok(jsonMapper.toJson(userRepository.getByFilter(name)));
+    }
+
     public Result login(String name,String password){
         User connectedUser = userRepository.getByLoginData(name, password);
         if(connectedUser == null){

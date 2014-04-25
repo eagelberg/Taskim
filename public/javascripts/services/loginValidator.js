@@ -4,6 +4,8 @@ taskimApp.run(['$rootScope',"$location",'loggedUserService', function($rootScope
             if ( next.templateUrl != "assets/partials/loginPage.html"  || next.templateUrl != "assets/partials/createUser.html") {
                 $location.path( "/login" );
             }
+        } else if(next.templateUrl == "assets/partials/loginPage.html"){
+            $location.path("/userPage");
         }
     });
 }]);

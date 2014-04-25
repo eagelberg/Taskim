@@ -1,5 +1,5 @@
-taskimApp.controller('navigationCtrl',['$scope','boardManager','$modal','loggedUserService' ,function($scope,boardManager,$modal,loggedUserService) {
-    var modalInstance
+taskimApp.controller('navigationCtrl',['$scope','boardManager','$modal','loggedUserService','$state',function($scope,boardManager,$modal,loggedUserService,$state) {
+    var modalInstance;
 
     $scope.openCreateBoardModal = function () {
         modalInstance = $modal.open({
@@ -16,6 +16,7 @@ taskimApp.controller('navigationCtrl',['$scope','boardManager','$modal','loggedU
             boardManager.create($scope.board).then(function(board){
                 loggedUserService.loggedUser.boards.push(board._id);
                 loggedUserService.update(loggedUserService.loggedUser);
+                $state.go('board',{id : board._id});
             });
             $modalInstance.close();
         };

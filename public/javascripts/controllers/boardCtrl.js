@@ -1,9 +1,26 @@
-taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$stateParams', function($scope,boardManager,$window, $stateParams){
+taskimApp.controller('boardCtrl',['$scope','boardManager', '$window','$stateParams','userManager', function($scope,boardManager,$window, $stateParams,userManager){
 
     $scope.board = {};
     $scope.canvasWidth = 100;
 
     $scope.isCollapsed = false;
+
+    $scope.isMemberAdderOpen = false;
+
+    $scope.addMemberClicked = function(){
+        $scope.isMemberAdderOpen = !$scope.isMemberAdderOpen;
+    }
+
+    $scope.getMembers = function(nameToSearch){
+        return userManager.getAllByFilter(nameToSearch).then(function(result){
+
+            return result;
+        });
+    }
+
+    $scope.accapteMember = function(){
+
+    }
 
     $scope.collapse = function() {
         $scope.isCollapsed = !$scope.isCollapsed;

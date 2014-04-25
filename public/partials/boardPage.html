@@ -1,7 +1,12 @@
-<div class="board-info">
-    {{board.name}}
-    <div class="board-options">
-        <a href="#" ng-click="collapse()">show archived decks</a>
+<div class="board-info container-fluid">
+    <div class="row">
+        <div class="col-lg-2">{{board.name}}</div>
+
+        <div class="col-lg-offset-10">
+            <button type="button" class="btn-default" ng-click="addMemberClicked()">add members</button>
+            <input type="text" ng-model="memberToAdd" placeholder="enter member name" ng-show="isMemberAdderOpen" typeahead="member as member.name for member in getMembers($viewValue)}">
+
+        </div>
     </div>
 </div>
 <div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
