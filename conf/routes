@@ -15,7 +15,7 @@ GET   /User/:id/Boards              @controllers.UserController.getUserBoards(id
 GET   /User                         @controllers.UserController.getUsersByFilter(name: String ?= "")
 
 POST  /User                         @controllers.UserController.create()
-PUT   /User                         @controllers.UserController.update()
+PUT   /User/:id                     @controllers.UserController.update(id: String)
 # Home page
 GET     /                           @controllers.Application.main(any = "none")
 

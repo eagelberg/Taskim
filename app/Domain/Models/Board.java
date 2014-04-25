@@ -10,7 +10,7 @@ public class Board  {
 
     private String id;
     private String name;
-    private List<Deck> decks = new ArrayList<>();
+    private List<Deck> decks = new ArrayList<Deck>();
 
     public void initialize() {
         this.setId(new org.bson.types.ObjectId().toStringMongod());

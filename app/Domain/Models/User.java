@@ -12,10 +12,10 @@ public class User {
     private String name;
     private String password;
 
-    private List<String> boards = new ArrayList<>();
+    private List<String> boards = new ArrayList<String>();
 
     public List<String> getBoards() {
-        List<String> boardListCopy = new ArrayList<>();
+        List<String> boardListCopy = new ArrayList<String>();
         boardListCopy.addAll(boards);
         return boardListCopy;
     }

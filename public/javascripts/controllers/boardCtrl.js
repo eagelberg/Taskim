@@ -1,6 +1,6 @@
 define([], function() {
-    return ['$scope','boardManager', '$window','$stateParams',
-        function($scope,boardManager,$window, $stateParams) {
+    return ['$scope','boardManager', '$window','$stateParams','userManager',
+        function($scope,boardManager,$window, $stateParams,userManager) {
             $scope.board = {};
             $scope.canvasWidth = 100;
             $scope.isCollapsed = false;
@@ -17,13 +17,12 @@ define([], function() {
         
             $scope.getMembers = function(nameToSearch){
                 return userManager.getAllByFilter(nameToSearch).then(function(result){
-        
                     return result;
                 });
             }
         
             $scope.accapteMember = function(){
-        
+                userManager.addBoard($scope.memberToAdd,$scope.board)
             }
             
             $scope.archiveDeck= function(deck) {

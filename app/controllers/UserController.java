@@ -41,7 +41,7 @@ public class UserController extends Controller {
         return ok(jsonMapper.toJson(boardsRepository.getByIds(user.getBoards())));
     }
 
-    public Result update(){
+    public Result update(String id){
         JsonNode json = request().body().asJson();
         User user = Json.fromJson(json, User.class);
 
