@@ -14,7 +14,7 @@ public class Deck {
     private String name;
     private boolean isArchived;
     private String boardId;
-    private List<Card> cards = new ArrayList<Card>();
+    private List<Card> cards = new ArrayList<>();
 
     public void AddCard(Card card) {
         cards.add(card);

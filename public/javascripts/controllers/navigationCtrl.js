@@ -1,16 +1,17 @@
-taskimApp.controller('navigationCtrl',['$scope','boardManager','$modal','loggedUserService','$state',function($scope,boardManager,$modal,loggedUserService,$state) {
-    var modalInstance;
+define([], function (){
+   return ['$scope','boardManager','$modal','loggedUserService','$state',function($scope,boardManager,$modal,loggedUserService,$state) {
+       var modalInstance;
 
-    $scope.openCreateBoardModal = function () {
-        modalInstance = $modal.open({
-                templateUrl: 'assets/templates/addBoard.html',
-                controller: addBoardCtrl
-            }
-        );
-    }
+       $scope.openCreateBoardModal = function () {
+           modalInstance = $modal.open({
+                   templateUrl: 'assets/templates/addBoard.html',
+                   controller: addBoardCtrl
+               }
+           );
+       };
 
-    var addBoardCtrl = function ($scope, $modalInstance) {
-        $scope.board = {};
+       var addBoardCtrl = function ($scope, $modalInstance) {
+           $scope.board = {};
 
         $scope.create = function () {
             boardManager.create($scope.board).then(function(board){
@@ -21,8 +22,11 @@ taskimApp.controller('navigationCtrl',['$scope','boardManager','$modal','loggedU
             $modalInstance.close();
         };
 
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-    };
-}]);
+           $scope.cancel = function () {
+               $modalInstance.dismiss('cancel');
+           };
+       };
+
+       $scope.$apply();
+   }]
+});

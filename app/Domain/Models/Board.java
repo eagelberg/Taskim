@@ -8,12 +8,26 @@ import java.util.List;
 
 public class Board  {
 
-    // the id field @JsonProperty annotation is defined on it's getter and setter
     private String id;
-
     private String name;
+    private List<Deck> decks = new ArrayList<>();
 
-    private List<Deck> decks = new ArrayList<Deck>();
+    public void initialize() {
+        this.setId(new org.bson.types.ObjectId().toStringMongod());
+        Deck todo = new Deck();
+        todo.setId(new org.bson.types.ObjectId().toStringMongod());
+        todo.setName("todo");
+        Deck doing = new Deck();
+        doing.setId(new org.bson.types.ObjectId().toStringMongod());
+        doing.setName("doing");
+        Deck done = new Deck();
+        done.setId(new org.bson.types.ObjectId().toStringMongod());
+        done.setName("done");
+
+        this.AddDeck(todo);
+        this.AddDeck(doing);
+        this.AddDeck(done);
+    }
 
     public void AddDeck(Deck deck) {
         decks.add(deck);
@@ -49,21 +63,4 @@ public class Board  {
         return deckListCopy;
     }
     //</editor-fold>
-
-    public void initialize() {
-        this.setId(new org.bson.types.ObjectId().toStringMongod());
-        Deck todo = new Deck();
-        todo.setId(new org.bson.types.ObjectId().toStringMongod());
-        todo.setName("todo");
-        Deck doing = new Deck();
-        doing.setId(new org.bson.types.ObjectId().toStringMongod());
-        doing.setName("doing");
-        Deck done = new Deck();
-        done.setId(new org.bson.types.ObjectId().toStringMongod());
-        done.setName("done");
-
-        this.AddDeck(todo);
-        this.AddDeck(doing);
-        this.AddDeck(done);
-    }
 }
