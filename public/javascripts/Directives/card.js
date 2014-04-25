@@ -134,7 +134,7 @@ define(['modal-popover'], function () {
                                 title: 'calm',
                                 color: 'green'
                             };
-                            
+
                             $scope.card.labels.push(demoLabel1);
                             $scope.card.labels.push(demoLabel2);
                         },
