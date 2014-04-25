@@ -1,15 +1,98 @@
 <div class="card-modal-container container">
     <div class="row">
         <div class="col-md-9">
+
+            <!-- header section -->
             <div class="card-header">
                 <h2>{{card.title}}</h2>
             </div>
+
+            <!-- description section -->
             <div class="card-description">
                 <h4>Description</h4>
+
                 <p>{{card.description}}</p>
             </div>
+
+            <!-- labels section -->
+            <div ng-if="card.labels.length > 0">
+                <pre> Labels </pre>
+                <div class="label-panel">
+                    <div ng-repeat="label in card.labels track by label.color">
+                        <div class="label-container">
+                            <div class="{{label.color}}-label-style">
+                                <p class="label-title"> {{ label.title }} </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a ng-href="#" ng-click="">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- checklists section -->
+            <!-- TODO : should be a seperate directive for a checklist -->
+            <!-- TODO : add checklist to MongoDB (currently hard coded) -->
+            <div ng-repeat="checklist in card.checklists">
+                <pre> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
+
+                <progressbar ng-show="checklist.completed > 0"
+                             class="progress-striped"
+                             value="checklist.completed"
+                             type="{{checklist.progressBarType}}">
+                    {{checklist.completed | number:1}}%
+                </progressbar>
+
+                <div ng-repeat="item in checklist.items">
+                    <div class="checklist-item-container">
+
+                        <input type="checkbox"
+                               value="{{item.value}}"
+                               ng-change="updateCompleted(checklist)"
+                               ng-model="item.value"/>
+
+                        {{ item.name }}
+                    </div>
+                </div>
+
+                <!-- TODO : should be a directive -->
+                <div class="list-group-item" ng-init="newItemMode = false">
+
+                    <div ng-show="!newItemMode">
+                        <a ng-href="#" ng-click="newItemMode = true">Add Item</a>
+                    </div>
+
+                    <div ng-show="newItemMode">
+                        <form name="checklistForm">
+                            <div ng-class="{'has-error' : checklistForm.ItemNameInput.$invalid}">
+                                <textarea class="form-control"
+                                          rows="2"
+                                          name="ItemNameInput"
+                                          required
+                                          ng-model="newItemName">
+                                </textarea>
+                            </div>
+                        </form>
+                        <input type="button"
+                               class="btn btn-default"
+                               value="save"
+                               ng-click="addChecklistItem(card,checklist,newItemName);newItemMode = false; newItemName = '';"
+                               ng-disabled="checklistForm.ItemNameInput.$invalid">
+                        <a ng-href="#" ng-click="newItemName = ''; newItemMode = false;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- comments section -->
             <div class="card-comments">
                 <h4>Comments</h4>
+
                 <div ng-repeat="comment in card.comments">
                     {{comment.content}}
                 </div>
@@ -17,7 +100,52 @@
         </div>
         <div class="col-md-3">
             <div class="card-actions-container">
+
+                <!-- Add section -->
+                <h4>Add</h4>
+                <!-- TODO : should open a popup open for checklist title (this is just temporary for test) -->
+                <!-- handle checklist editor -->
+                <div ng-init="newChecklistMode = false">
+                    <button type="button" class="btn btn-default card-action-button"
+                            ng-click="newChecklistMode = !newChecklistMode">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                        Checklist
+                    </button>
+                    <div ng-show="newChecklistMode">
+                        <input type="text" class="form-control" ng-model="newChecklistTitle"/>
+                        <input type="button"
+                               class="btn btn-default"
+                               value="add"
+                               ng-click="addChecklist(card,newChecklistTitle);newChecklistMode = false; newChecklistTitle = '';">
+                        <a ng-href="#" ng-click="newChecklistTitle = ''; newChecklistMode = false;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- handle label editor -->
+                <div ng-init="newLabelMode = false">
+                    <button type="button" class="btn btn-default card-action-button"
+                            ng-click="newLabelMode = !newLabelMode">
+                        <span class="glyphicon glyphicon-tag"></span>
+                        Label
+                    </button>
+                    <div ng-show="newLabelMode">
+                        <!-- TODO : label editor should be a directive -->
+
+                        <div ng-repeat="label in card.labels track by label.color">
+
+                        </div>
+
+                        <a ng-href="#" ng-click="newLabelMode = false;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Actions section -->
                 <h4>Actions</h4>
+                <!-- TODO : actions are hard coded, should be in a seperate controller (or a global service) -->
                 <button type="button" class="btn btn-default card-action-button">Action 1</button>
                 <button type="button" class="btn btn-default card-action-button">Action 2</button>
                 <button type="button" class="btn btn-default card-action-button">Action 3</button>

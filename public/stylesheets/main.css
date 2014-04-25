@@ -44,11 +44,11 @@
 
 .card:hover {
     background: #f5f5f5;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .icon {
-    color:#7A7A7A;
+    color: #7A7A7A;
 }
 
 .icon:hover {
@@ -58,7 +58,8 @@
 .deckName {
     padding: 3px 26px 2px 6px;
 }
-.loginPageButtons{
+
+.loginPageButtons {
     margin-top: 20px;
 }
 
@@ -104,30 +105,27 @@
     width: 90%;
 }
 
-.signUpAnchor{
+.signUpAnchor {
     padding-left: 40px;
 }
 
-.my-board{
+.my-board {
     background: rgba(214, 211, 211, 0.70);
     height: 100px;
     border-radius: 10px;
     -webkit-box-shadow: 3px 3px 3px 1px;
 }
 
-.my-board:hover
-{
+.my-board:hover {
     cursor: pointer;
-    background-color: rgba(214, 211, 211,1);;
+    background-color: rgba(214, 211, 211, 1);;
 }
 
-
-
-.add-board{
+.add-board {
     margin-top: 12px;
 }
 
-.board-row{
+.board-row {
     margin-top: 20px;
 }
 
@@ -149,6 +147,64 @@
     width: 600px;
 }
 
+/* --- nav related --- */
+.navbar .navbar-form {
+    padding: 0 15px;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* --- search related --- */
+.search-wrapper {
+    width: 30%;
+}
+
+/* --- label related --- */
+
+.label-panel {
+ position: relative;
+}
+
+.label-container {
+    width: 10%;
+    height: 5%;
+    /*box-shadow: 5px 5px 2px #888888;*/
+}
+
+.label-title {
+    /*box-shadow: 3px 3px 1px #a3a3a3;*/
+}
+
+.green-label-style {
+    background: #328432;
+}
+
+.yellow-label-style {
+    background: #ffff93;
+
+}
+
+.orange-label-style {
+    background: #ffb732;
+
+}
+
+.red-label-style {
+    background: #ff3232;
+
+}
+
+.purple-label-style {
+    background: #a64ca6;
+
+}
+
+.blue-label-style {
+    background: #8181ff;
+
+}
+
 /*.card-description {*/
-    /*width: 400px;*/
+/*width: 400px;*/
 /*}*/

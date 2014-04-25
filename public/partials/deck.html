@@ -1,13 +1,16 @@
 <div class="deck" ng-style="{'max-height': maxHeight + 'px', height: elementHeight}" resize>
     <div class="deck-top-part">
         <span class="dropDownContainer dropdown">
-            <span class="glyphicon glyphicon-download icon"  data-toggle="dropdown"></span>
+            <span class="glyphicon glyphicon-download icon" data-toggle="dropdown"></span>
             <ul class="dropdown-menu dropdown-menu-right entity-menu" role="menu">
-                <li role="presentation" class="dropdown-header disabled"><a role="menuitem" tabindex="-1" href="#">List Actions</a></li>
+                <li role="presentation" class="dropdown-header disabled"><a role="menuitem" tabindex="-1" href="#">List
+                    Actions</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="archiveDeck(deck)">Archive</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"
+                                           ng-click="archiveDeck(deck)">Archive</a></li>
             </ul>
         </span>
+
         <div class="deckName">
             {{deck.name}}
         </div>
@@ -18,10 +21,34 @@
                 <card></card>
             </div>
         </div>
-        <div class="list-group-item">
-            <div>
-                <input type="text" ng-model="newCardTitle">
-                <input type="button" value="save" ng-click="createNewCard(deck, newCardTitle)">
+        <!-- TODO : should be a reusable directive (also will be used in comments, checklists.. -->
+        <div class="list-group-item" ng-init="newCardMode = false">
+
+            <div ng-show="!newCardMode">
+                <a ng-href="#" ng-click="newCardMode = true">Add a card..</a>
+            </div>
+
+            <div ng-show="newCardMode">
+                <form name="cardForm">
+                    <div ng-class="{'has-error' : cardForm.cardNameInput.$invalid}">
+                        <textarea class="form-control"
+                                  rows="2"
+                                  name="cardNameInput"
+                                  required
+                                  ng-model="newCardTitle">
+                        </textarea>
+                    </div>
+                </form>
+
+                <input type="button"
+                       class="btn btn-default"
+                       value="save"
+                       ng-click="createNewCard(deck, newCardTitle); newCardMode = false; newCardTitle = '';"
+                       ng-disabled="cardForm.cardNameInput.$invalid">
+                <a ng-href="#" ng-click="newCardTitle = ''; newCardMode = false">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
             </div>
         </div>
     </div>
