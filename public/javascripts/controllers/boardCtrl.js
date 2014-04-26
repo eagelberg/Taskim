@@ -22,7 +22,10 @@ define([], function() {
             }
         
             $scope.accapteMember = function(){
-                userManager.addBoard($scope.memberToAdd,$scope.board)
+                userManager.addBoard($scope.memberToAdd,$scope.board);
+                boardManager.addUser($scope.board,$scope.memberToAdd);
+                $scope.memberToAdd = "";
+                $scope.addMemberClicked();
             }
             
             $scope.archiveDeck= function(deck) {

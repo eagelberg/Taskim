@@ -11,6 +11,11 @@ define([], function(){
         this.create = function(board){
             return Restangular.all('Boards').post(board);
         }
+
+        this.addUser = function(board,user){
+            board.users.push(user._id);
+            this.update(board);
+        }
     }
 });
 
