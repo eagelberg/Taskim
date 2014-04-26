@@ -14,6 +14,7 @@ define([], function (){
            $scope.board = {};
 
         $scope.create = function () {
+            $scope.board.users = [loggedUserService.loggedUser._id];
             boardManager.create($scope.board).then(function(board){
                 loggedUserService.loggedUser.boards.push(board._id);
                 loggedUserService.update(loggedUserService.loggedUser);

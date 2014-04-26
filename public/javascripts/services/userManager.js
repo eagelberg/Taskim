@@ -6,7 +6,19 @@ define([],function(){
 
         this.addBoard = function(user,board){
             user.boards.push(board._id);
-            user.put();
+            return this.update(user);
         }
+
+        this.update = function(user){
+            return Restangular.one('User',user._id).customPUT({_id: user._id,name: user.name,password:user.password,boards:user.boards});
+        }
+
+        this.get = function(userId){
+            return Restangular.one('User',userId).get();
+        }
+
+        this.create = function(user){
+            Restangular.all('User').post(user);
+        };
     }]
 });

@@ -1,8 +1,8 @@
 define([],function () {
-    return ['$scope','loggedUserService','$location',function($scope,loggedUserService,$location){
+    return ['$scope','userManager','$location',function($scope,userManager,$location){
         $scope.newUser = null;
         $scope.save = function(){
-            loggedUserService.create($scope.newUser);
+            userManager.create($scope.newUser);
             $location.path('/login');
         }
     }];

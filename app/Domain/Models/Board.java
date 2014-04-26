@@ -11,8 +11,11 @@ public class Board  {
     private String id;
     private String name;
     private List<Deck> decks = new ArrayList<Deck>();
+    private List<String> users = new ArrayList<String>();
+    private String adminId;
 
-    public void initialize() {
+    public void initialize(String adminId) {
+        this.adminId = adminId;
         this.setId(new org.bson.types.ObjectId().toStringMongod());
         Deck todo = new Deck();
         todo.setId(new org.bson.types.ObjectId().toStringMongod());
@@ -61,6 +64,24 @@ public class Board  {
         List<Deck> deckListCopy = new ArrayList<Deck>();
         deckListCopy.addAll(decks);
         return deckListCopy;
+    }
+
+    public List<String> getUsers() {
+        List<String> usersCopy = new ArrayList<String>();
+        usersCopy.addAll(users);
+        return usersCopy;
+    }
+
+    public void addUser(String users) {
+        this.users.add(users);
+    }
+
+    public String getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
     }
     //</editor-fold>
 }
