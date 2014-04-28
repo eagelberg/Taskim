@@ -144,6 +144,7 @@
 }
 
 .card-modal-container {
+    background: #f0f0f0;
     width: 600px;
 }
 
@@ -155,15 +156,59 @@
     box-shadow: none;
 }
 
+/* --- global styles ---  */
+body {
+    background-color: #23719f;
+}
+
+/* --- board related --- */
+.board-name-container{
+    font-size: 24px !important;
+    font-style: oblique;
+    color: #dddddd;
+    font : Consolas, "Liberation Mono", Courier, monospace;
+}
+
+/* --- deck related --- */
+
+.add-card-container {
+    background: #f0f0f0;
+}
+
+.add-card-container:hover {
+    background: #dddddd;
+    cursor: pointer;
+}
+
+.new-deck-input-container {
+    display: inline-block;
+    width: 60%;
+}
+
+.card-filter-container{
+    display: inline-block;
+    width: 15%;
+    border-radius: 3em;
+    margin-left: 2.8em;
+}
+
 /* --- search related --- */
 .search-wrapper {
     width: 30%;
 }
 
+
+.global-filter-container {
+    display: inline-block;
+    width: 15%;
+    border-radius: 3em;
+    margin-left: 2em;
+}
+
 /* --- label related --- */
 
 .label-panel {
- position: relative;
+    position: relative;
 }
 
 .label-container {

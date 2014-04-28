@@ -1,4 +1,4 @@
-define(['modal-popover'], function () {
+define([], function () {
     return function ($modal) {
         return {
             restrict: 'E',
@@ -20,7 +20,7 @@ define(['modal-popover'], function () {
                             $scope.card = card;
 
                             /* TODO (micha) : remove following code! (just for checklist and label demo) */
-                            /* TODO (micha) : put all logic handling functions in consecutive services */
+                            /* TODO (micha) : put all logic handling functions in an appropriate services */
                             $scope.card.checklists = [];
                             $scope.card.labels = [];
 
@@ -74,7 +74,7 @@ define(['modal-popover'], function () {
                             }
 
                             var demoChecklist = {
-                                title: 'test checklist',
+                                title: 'demo1',
                                 items: [
                                     {
                                         name: 'val1',
@@ -95,16 +95,16 @@ define(['modal-popover'], function () {
 
                             $scope.updateCompleted(demoChecklist);
 
-                            // add demo checklist
+                            // add demo1 checklist
                             $scope.card.checklists.push(demoChecklist);
 
 
                             var demoChecklist = {
-                                title: 'test checklist',
+                                title: 'demo2',
                                 items: [
                                     {
                                         name: 'val1',
-                                        value: true
+                                        value: false
                                     },
                                     {
                                         name: 'val2',
@@ -112,7 +112,7 @@ define(['modal-popover'], function () {
                                     },
                                     {
                                         name: 'val3',
-                                        value: true
+                                        value: false
                                     }
                                 ],
 
@@ -121,7 +121,7 @@ define(['modal-popover'], function () {
 
                             $scope.updateCompleted(demoChecklist);
 
-                            // add demo checklist
+                            // add demo2 checklist
                             $scope.card.checklists.push(demoChecklist);
 
                             // add demo label (to demo card named micha)

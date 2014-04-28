@@ -35,7 +35,7 @@
             <!-- checklists section -->
             <!-- TODO : should be a seperate directive for a checklist -->
             <!-- TODO : add checklist to MongoDB (currently hard coded) -->
-            <div ng-repeat="checklist in card.checklists">
+            <div ng-repeat="checklist in card.checklists track by checklist.title">
                 <pre> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
 
                 <progressbar ng-show="checklist.completed > 0"

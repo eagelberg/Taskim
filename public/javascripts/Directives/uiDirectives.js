@@ -8,12 +8,6 @@
  * every directive should be explicitly defined in 'directives'???
  */
 
-var hotKeys = {
-    ENTER: 27,
-    ESCAPE: 27
-}
-
-
 /**
  * TODO : is it smart to combine the onEnter and onEscape into
  * one directive? it has it's consequences

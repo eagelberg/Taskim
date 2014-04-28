@@ -1,4 +1,7 @@
-<div class="deck" ng-style="{'max-height': maxHeight + 'px', height: elementHeight}" resize>
+<div class="deck"
+     ng-style="{'max-height': maxHeight + 'px', height: elementHeight}"
+     ng-hide="filteredDeckCards.length === 0 && cardFilter.value.length > 0"
+     resize>
     <div class="deck-top-part">
         <span class="dropDownContainer dropdown">
             <span class="glyphicon glyphicon-download icon" data-toggle="dropdown"></span>
@@ -17,15 +20,16 @@
     </div>
     <div class="list-group card-list dropdown" ng-style="{'max-height': (maxHeight - 60) + 'px'}" resize>
         <div class="sort" ui-sortable="sortableOptions" ng-model="deck.cards">
-            <div ng-repeat="card in deck.cards">
+            <div ng-repeat="card in filteredDeckCards = (deck.cards | filter : {title : cardFilter.value})">
                 <card></card>
             </div>
         </div>
-        <!-- TODO : should be a reusable directive (also will be used in comments, checklists.. -->
+
+         <!-- TODO : should be a reusable directive (also will be used in comments, checklists.. -->
         <div class="list-group-item" ng-init="newCardMode = false">
 
-            <div ng-show="!newCardMode">
-                <a ng-href="#" ng-click="newCardMode = true">Add a card..</a>
+            <div class="card" ng-show="!newCardMode" ng-click="newCardMode = true">
+                Add a card..
             </div>
 
             <div ng-show="newCardMode">
