@@ -1,6 +1,6 @@
 define([], function() {
-    return ['$scope','boardManager', '$window','$stateParams',
-        function($scope,boardManager,$window, $stateParams) {
+    return ['$scope','boardManager', '$window','$stateParams','userManager',
+        function($scope,boardManager,$window, $stateParams,userManager) {
             $scope.board = {};
             $scope.canvasWidth = 100;
             $scope.isCollapsed = false;
@@ -8,7 +8,26 @@ define([], function() {
             $scope.collapse = function() {
                 $scope.isCollapsed = !$scope.isCollapsed;
             };
-
+        
+            $scope.isMemberAdderOpen = false;
+        
+            $scope.addMemberClicked = function(){
+                $scope.isMemberAdderOpen = !$scope.isMemberAdderOpen;
+            }
+        
+            $scope.getMembers = function(nameToSearch){
+                return userManager.getAllByFilter(nameToSearch).then(function(result){
+                    return result;
+                });
+            }
+        
+            $scope.accapteMember = function(){
+                userManager.addBoard($scope.memberToAdd,$scope.board);
+                boardManager.addUser($scope.board,$scope.memberToAdd);
+                $scope.memberToAdd = "";
+                $scope.addMemberClicked();
+            }
+            
             $scope.archiveDeck= function(deck) {
                 deck.isArchived = true;
                 $scope.updateBoard();

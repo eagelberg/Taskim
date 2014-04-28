@@ -6,6 +6,7 @@ import Domain.Services.IUserRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import org.bson.types.ObjectId;
+import play.api.libs.json.JsPath;
 import play.mvc.Result;
 import play.mvc.Controller;
 import Infrastructure.IJsonMapper;
@@ -24,6 +25,14 @@ public class UserController extends Controller {
         this.boardsRepository = boardsRepository;
     }
 
+    public Result getUsersByFilter(String name) {
+        return ok(jsonMapper.toJson(userRepository.getByFilter(name)));
+    }
+
+    public Result getUser(String id){
+        return ok(jsonMapper.toJson(userRepository.getById(id)));
+    }
+
     public Result login(String name,String password){
         User connectedUser = userRepository.getByLoginData(name, password);
         if(connectedUser == null){
@@ -37,7 +46,7 @@ public class UserController extends Controller {
         return ok(jsonMapper.toJson(boardsRepository.getByIds(user.getBoards())));
     }
 
-    public Result update(){
+    public Result update(String id){
         JsonNode json = request().body().asJson();
         User user = Json.fromJson(json, User.class);
 

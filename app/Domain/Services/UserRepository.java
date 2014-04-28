@@ -7,6 +7,9 @@ import org.mongojack.JacksonDBCollection;
 import play.Application;
 import play.modules.mongojack.MongoDBPlugin;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
 public class UserRepository implements IUserRepository {
 
     private JacksonDBCollection<User, String> userCollection;
@@ -24,6 +27,11 @@ public class UserRepository implements IUserRepository {
     @Override
     public User getById(String id) {
         return userCollection.findOneById(id);
+    }
+
+    @Override
+    public List<User> getByFilter(String filter) {
+        return userCollection.find(DBQuery.regex("name", Pattern.compile(".*" + filter + ".*"))).toArray();
     }
 
     @Override

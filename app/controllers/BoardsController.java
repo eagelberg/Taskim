@@ -67,7 +67,8 @@ public class BoardsController extends Controller {
     public Result create(){
         JsonNode json = request().body().asJson();
         Board board = Json.fromJson(json, Board.class);
-        board.initialize();
+        //todo when we use cas then we should take user from server
+        board.initialize(board.getUsers().get(0));
 
         repository.save(board);
         return ok(jsonMapper.toJson(board));

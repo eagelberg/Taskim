@@ -1,5 +1,5 @@
 define([], function (){
-   return ['$scope','boardManager','$modal','loggedUserService' ,function($scope,boardManager,$modal,loggedUserService) {
+   return ['$scope','boardManager','$modal','loggedUserService','$state',function($scope,boardManager,$modal,loggedUserService,$state) {
        var modalInstance;
 
        $scope.openCreateBoardModal = function () {
@@ -13,13 +13,15 @@ define([], function (){
        var addBoardCtrl = function ($scope, $modalInstance) {
            $scope.board = {};
 
-           $scope.create = function () {
-               boardManager.create($scope.board).then(function(board){
-                   loggedUserService.loggedUser.boards.push(board._id);
-                   loggedUserService.update(loggedUserService.loggedUser);
-               });
-               $modalInstance.close();
-           };
+        $scope.create = function () {
+            $scope.board.users = [loggedUserService.loggedUser._id];
+            boardManager.create($scope.board).then(function(board){
+                loggedUserService.loggedUser.boards.push(board._id);
+                loggedUserService.update(loggedUserService.loggedUser);
+                $state.go('board',{id : board._id});
+            });
+            $modalInstance.close();
+        };
 
            $scope.cancel = function () {
                $modalInstance.dismiss('cancel');

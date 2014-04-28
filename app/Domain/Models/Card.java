@@ -13,7 +13,7 @@ public class Card {
     private String id;
     private String title;
     private String description;
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<Comment>();
 
    public Card(){
        Comment comment = new Comment();
@@ -36,7 +36,7 @@ public class Card {
     public void setDescription(String description) {this.description = description;}
 
     public List<Comment> getComments() {
-        List<Comment> commentsCopy = new ArrayList<>();
+        List<Comment> commentsCopy = new ArrayList<Comment>();
         commentsCopy.addAll(comments);
         return comments;
     }

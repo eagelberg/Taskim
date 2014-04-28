@@ -1,5 +1,5 @@
 define([], function(){
-    return ['$rootScope','Restangular','$state', function($rootScope,Restangular,$state){
+    return ['$rootScope','Restangular','$state','userManager','$q', function($rootScope,Restangular,$state,userManager,$q){
         this.loggedUser = null;
 
         this.login = function(name,password,redirectUrl){
@@ -27,12 +27,8 @@ define([], function(){
             return true
         }
 
-        this.create = function(user){
-            Restangular.all('User').post(user);
-        };
-
         this.update = function(user){
-            Restangular.one('User').customPUT({_id: user._id,name: user.name,password:user.password,boards:user.boards}).then(function(){
+            userManager.update(user).then(function(){
                 sessionStorage.user = JSON.stringify(user);
                 $rootScope.$broadcast('userBoardAdded');
             });
