@@ -38,22 +38,40 @@
             <div ng-repeat="checklist in card.checklists track by checklist.title">
                 <pre> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
 
-                <progressbar ng-show="checklist.completed > 0"
+                <progressbar ng-class="{'collapse': checklist.completed === 0,'collapse in' : checklist.completed > 0}"
                              class="progress-striped"
                              value="checklist.completed"
                              type="{{checklist.progressBarType}}">
                     {{checklist.completed | number:1}}%
                 </progressbar>
 
-                <div ng-repeat="item in checklist.items">
-                    <div class="checklist-item-container">
+
+                <div ng-repeat="item in checklist.items"
+                     ng-init="itemNamefocused = false">
+                    <div class="checklist-item-container"
+                         ng-init="itemNameEditMode = false">
 
                         <input type="checkbox"
                                value="{{item.value}}"
                                ng-change="updateCompleted(checklist)"
-                               ng-model="item.value"/>
+                               ng-model="item.value"
+                               ng-disabled="itemNameEditMode"/>
 
-                        {{ item.name }}
+                        <!-- TODO : add inline edit mode for item name -->
+                        <div class="item-name-container"
+                             ng-show="!itemNameEditMode"
+                             ng-click="itemNameEditMode=true; newItemName = item.name; itemNamefocused = true;">
+                            {{ item.name }}
+                        </div>
+
+                        <input type="text"
+                               class="form-control item-name-edit-container"
+                               ng-show="itemNameEditMode"
+                               ng-model="newItemName"
+                               ng-blur="itemNameEditMode = false; itemNamefocused = false;"
+                               xng-focus="itemNamefocused"
+                               on-enter="handleItemNameSave(item,newItemName); itemNameEditMode = false; itemNamefocused = false;"
+                               on-escape="itemNameEditMode = false; itemNamefocused = false;"/>
                     </div>
                 </div>
 

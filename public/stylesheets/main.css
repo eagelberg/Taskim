@@ -205,6 +205,19 @@ body {
     margin-left: 2em;
 }
 
+/* --- checklist related --- */
+.item-name-container{
+    display: inline-block;
+    font-size: 18px;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+.item-name-edit-container{
+    display: inline-block;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    width: 50%;
+}
+
 /* --- label related --- */
 
 .label-panel {
@@ -220,6 +233,7 @@ body {
 .label-title {
     /*box-shadow: 3px 3px 1px #a3a3a3;*/
 }
+
 
 .green-label-style {
     background: #328432;
