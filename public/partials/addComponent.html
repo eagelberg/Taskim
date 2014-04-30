@@ -1,0 +1,31 @@
+<div ng-show="!editMode">
+    <a class="{{triggerStyleContainer}}" ng-href="#" ng-click="switchToEditMode()">
+        {{ triggerTitle }}
+    </a>
+</div>
+
+<div ng-show="editMode">
+    <form name="editForm">
+        <div ng-class="{'has-error' : editForm.editInput.$invalid}">
+
+            <input type="text" ng-show="inputStyle === 'text'" class="form-control"
+                   name="editInput" focus-me="inputFocused" on-enter="handleSave()"
+                   required ng-model="editedInput" ng-blur="handleBlur()" on-escape="handleEscape()"/>
+
+            <textarea ng-show="inputStyle === 'textarea'" class="form-control"
+                      rows="2" name="editInput" focus-me="inputFocused" required
+                      ng-model="editedInput" ng-blur="handleBlur()" on-escape="handleEscape()">
+            </textarea>
+
+        </div>
+    </form>
+
+    <div class="add-component-action-bar-container">
+        <input type="button" class="btn btn-default" value="{{onSaveTitle}}"
+               ng-click="handleSave()" ng-disabled="editForm.editInput.$invalid">
+        <a ng-href="#" ng-click="handleClose()">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </div>
+
+</div>

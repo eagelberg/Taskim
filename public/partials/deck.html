@@ -25,35 +25,10 @@
             </div>
         </div>
 
-         <!-- TODO : should be a reusable directive (also will be used in comments, checklists.. -->
-        <div class="list-group-item" ng-init="newCardMode = false">
+        <add-component edited-input="newCardName" input-style="textarea" trigger-style-container="add-card-container"
+                       trigger-title="Add a card.." on-save-title="save" close-on-save="true"
+                       callback-function="createNewCard(deck,newCardName)">
+        </add-component>
 
-            <div class="card" ng-show="!newCardMode" ng-click="newCardMode = true">
-                Add a card..
-            </div>
-
-            <div ng-show="newCardMode">
-                <form name="cardForm">
-                    <div ng-class="{'has-error' : cardForm.cardNameInput.$invalid}">
-                        <textarea class="form-control"
-                                  rows="2"
-                                  name="cardNameInput"
-                                  required
-                                  ng-model="newCardTitle">
-                        </textarea>
-                    </div>
-                </form>
-
-                <input type="button"
-                       class="btn btn-default"
-                       value="save"
-                       ng-click="createNewCard(deck, newCardTitle); newCardMode = false; newCardTitle = '';"
-                       ng-disabled="cardForm.cardNameInput.$invalid">
-                <a ng-href="#" ng-click="newCardTitle = ''; newCardMode = false">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-
-            </div>
-        </div>
     </div>
 </div>

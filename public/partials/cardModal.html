@@ -17,19 +17,17 @@
             <!-- labels section -->
             <div ng-if="card.labels.length > 0">
                 <pre> Labels </pre>
-                <div class="label-panel">
-                    <div ng-repeat="label in card.labels track by label.color">
-                        <div class="label-container">
-                            <div class="{{label.color}}-label-style">
-                                <p class="label-title"> {{ label.title }} </p>
-                            </div>
+                <div ng-repeat="label in card.labels track by label.color">
+                    <div class="card-label">
+                        <div class="card-label-{{label.color}}">
+                            <p class="label-title"> {{ label.title }} </p>
                         </div>
                     </div>
-
-                    <a ng-href="#" ng-click="">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
                 </div>
+
+                <a class="label-container" ng-href="#" ng-click="">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
             </div>
 
             <!-- checklists section -->
@@ -48,18 +46,18 @@
 
                 <div ng-repeat="item in checklist.items"
                      ng-init="itemNamefocused = false">
-                    <div class="checklist-item-container"
-                         ng-init="itemNameEditMode = false">
+                    <div ng-init="itemNameEditMode = false">
 
                         <input type="checkbox"
+                               class="checklist-item-container"
                                value="{{item.value}}"
                                ng-change="updateCompleted(checklist)"
                                ng-model="item.value"
                                ng-disabled="itemNameEditMode"/>
 
-                        <!-- TODO : add inline edit mode for item name -->
                         <div class="item-name-container"
                              ng-show="!itemNameEditMode"
+                             ng-class="{'checklist-item-state-complete' : item.value}"
                              ng-click="itemNameEditMode=true; newItemName = item.name; itemNamefocused = true;">
                             {{ item.name }}
                         </div>
@@ -75,37 +73,15 @@
                     </div>
                 </div>
 
-                <!-- TODO : should be a directive -->
-                <div class="list-group-item" ng-init="newItemMode = false">
+                <div class="list-group-item">
 
-                    <div ng-show="!newItemMode">
-                        <a ng-href="#" ng-click="newItemMode = true">Add Item</a>
-                    </div>
+                    <add-component edited-input="newItemName" input-style="textarea" trigger-title="Add item"
+                                   on-save-title="save" close-on-save="false"
+                                   callback-function="addChecklistItem(card,checklist,newItemName)">
+                    </add-component>
 
-                    <div ng-show="newItemMode">
-                        <form name="checklistForm">
-                            <div ng-class="{'has-error' : checklistForm.ItemNameInput.$invalid}">
-                                <textarea class="form-control"
-                                          rows="2"
-                                          name="ItemNameInput"
-                                          required
-                                          ng-model="newItemName">
-                                </textarea>
-                            </div>
-                        </form>
-                        <input type="button"
-                               class="btn btn-default"
-                               value="save"
-                               ng-click="addChecklistItem(card,checklist,newItemName);newItemMode = false; newItemName = '';"
-                               ng-disabled="checklistForm.ItemNameInput.$invalid">
-                        <a ng-href="#" ng-click="newItemName = ''; newItemMode = false;">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-
-                    </div>
                 </div>
             </div>
-
 
             <!-- comments section -->
             <div class="card-comments">

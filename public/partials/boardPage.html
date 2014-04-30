@@ -29,38 +29,13 @@
     </div>
     <div class="new-deck">
 
+        <div class="list-group-item">
 
-        <!--<div class="new-deck-input-container">-->
-        <!--<input type="text" class="form-control" ng-model="newDeckName"/>-->
-        <!--</div>-->
-        <!--<input type="button" class="btn btn-default" value="Add List" ng-click="createNewDeck()">-->
+            <add-component edited-input="newDeckName" input-style="text" trigger-title="Add a list.."
+                           on-save-title="save" close-on-save="true" callback-function="createNewDeck(newDeckName)">
+            </add-component>
 
-        <!-- TODO : should be a reusable directive (also will be used in comments, checklists.. -->
-        <div class="list-group-item" ng-init="newDeckMode = false">
-
-            <div ng-show="!newDeckMode">
-                <a ng-href="#" ng-click="newDeckMode=!newDeckMode"> Add a list.. </a>
-            </div>
-
-            <div ng-show="newDeckMode">
-                <form name="deckForm">
-                    <div ng-class="{'has-error' : deckForm.deckNameInput.$invalid}">
-                        <input class="form-control" name="deckNameInput" required ng-model="newDeckName"/>
-                    </div>
-                </form>
-
-                <input type="button"
-                       class="btn btn-default"
-                       value="save"
-                       ng-click="createNewDeck(); newDeckMode = false; newDeckName = '';"
-                       ng-disabled="deckForm.deckNameInput.$invalid">
-                <a ng-href="#" ng-click="newDeckMode = false ;newDeckName = '';">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-
-            </div>
         </div>
-
 
     </div>
     <div collapse="isCollapsed" class="collapse">

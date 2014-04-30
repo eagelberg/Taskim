@@ -33,8 +33,8 @@ define([], function () {
                             }
 
                             $scope.addChecklistItem = function (card, checklist, newItemName) {
-                                card.checklists.forEach(function (checklist) {
-                                    if (checklist.title === checklist.title) {
+                                card.checklists.forEach(function (scannedChecklist) {
+                                    if (scannedChecklist.title === checklist.title) {
                                         checklist.items.push({
                                             name: newItemName,
                                             value: false
@@ -73,9 +73,9 @@ define([], function () {
                                 }
                             }
 
-                            $scope.handleItemNameSave = function(item,newItemName){
+                            $scope.handleItemNameSave = function (item, newItemName) {
                                 // TODO : update item name in DB
-                                if(newItemName.length > 0){
+                                if (newItemName.length > 0) {
                                     item.name = newItemName;
                                 }
 

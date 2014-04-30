@@ -26,11 +26,12 @@
 }
 
 .card {
-    margin-bottom: 3px;
     border-radius: 3px;
     word-wrap: break-word;
     overflow-x: visible;
     width: 100%;
+    margin: 3px;
+    box-shadow: 1px 1px 1px #b7b7b7;
 }
 
 .card-placeholder {
@@ -162,22 +163,17 @@ body {
 }
 
 /* --- board related --- */
-.board-name-container{
+.board-name-container {
     font-size: 24px !important;
     font-style: oblique;
     color: #dddddd;
-    font : Consolas, "Liberation Mono", Courier, monospace;
+    font: Consolas, "Liberation Mono", Courier, monospace;
 }
 
 /* --- deck related --- */
 
 .add-card-container {
-    background: #f0f0f0;
-}
-
-.add-card-container:hover {
-    background: #dddddd;
-    cursor: pointer;
+    margin: 1em;
 }
 
 .new-deck-input-container {
@@ -185,7 +181,7 @@ body {
     width: 60%;
 }
 
-.card-filter-container{
+.card-filter-container {
     display: inline-block;
     width: 15%;
     border-radius: 3em;
@@ -197,7 +193,6 @@ body {
     width: 30%;
 }
 
-
 .global-filter-container {
     display: inline-block;
     width: 15%;
@@ -206,13 +201,63 @@ body {
 }
 
 /* --- checklist related --- */
-.item-name-container{
+
+.checklist-item-container {
+    background: #fff;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #b9b9b9;
+    border-bottom-color: #999;
+    border-top-color: #ccc;
+    font-weight: bold;
+    /*position: absolute;*/
+    left: 8px;
+    line-height: 16px;
+    overflow: hidden;
+    text-align: center;
+    text-indent: 100%;
+    top: 0;
+    height: 16px;
+    width: 16px;
+    white-space: nowrap;
+}
+
+.checklist-item-checkbox.enabled:active {
+    background-color: #bbb;
+    border: 1px solid #777;
+    -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+    color: #393939;
+    text-indent: 0
+}
+
+.checklist-item-checkbox.enabled:hover {
+    background-color: #ddd;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #939393;
+    cursor: pointer;
+    text-indent: 0
+}
+
+.checklist-item-checkbox:hover {
+    border: 1px solid #b9b9b9;
+    border-bottom-color: #ccc;
+    border-top-color: #999
+}
+
+.item-name-container {
     display: inline-block;
     font-size: 18px;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
 
-.item-name-edit-container{
+.item-name-container:hover {
+    cursor: pointer;
+}
+
+.item-name-edit-container {
     display: inline-block;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     width: 50%;
@@ -221,10 +266,11 @@ body {
 /* --- label related --- */
 
 .label-panel {
-    position: relative;
+
 }
 
 .label-container {
+    display: inline-block;
     width: 10%;
     height: 5%;
     /*box-shadow: 5px 5px 2px #888888;*/
@@ -234,36 +280,124 @@ body {
     /*box-shadow: 3px 3px 1px #a3a3a3;*/
 }
 
-
-.green-label-style {
-    background: #328432;
+/* --- from trello core.css --- */
+.card-label {
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 3px;
+    padding: 3px 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6)
 }
 
-.yellow-label-style {
-    background: #ffff93;
-
+.card-label-green {
+    background-color: #34b27d;
+    display: inline-block;
 }
 
-.orange-label-style {
-    background: #ffb732;
-
+.card-label-yellow {
+    background-color: #dbdb57;
+    display: inline-block;
 }
 
-.red-label-style {
-    background: #ff3232;
-
+.card-label-orange {
+    background-color: #e09952;
+    display: inline-block;
 }
 
-.purple-label-style {
-    background: #a64ca6;
-
+.card-label-red {
+    background-color: #cb4d4d;
+    display: inline-block;
 }
 
-.blue-label-style {
-    background: #8181ff;
+.card-label-purple {
+    background-color: #93c;
+    display: inline-block;
+}
 
+.card-label-blue {
+    background-color: #4d77cb;
+    display: inline-block;
 }
 
 /*.card-description {*/
 /*width: 400px;*/
 /*}*/
+
+.checklist-item-checkbox {
+    background: #fff;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #b9b9b9;
+    border-bottom-color: #999;
+    border-top-color: #ccc;
+    font-weight: bold;
+    position: absolute;
+    left: 8px;
+    line-height: 16px;
+    overflow: hidden;
+    text-align: center;
+    text-indent: 100%;
+    top: 0;
+    height: 16px;
+    width: 16px;
+    white-space: nowrap
+}
+
+.checklist-item-checkbox.enabled:hover {
+    background-color: #ddd;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #939393;
+    cursor: pointer;
+    text-indent: 0
+}
+
+.checklist-item-checkbox.enabled:active {
+    background-color: #bbb;
+    border: 1px solid #777;
+    -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.15);
+    color: #393939;
+    text-indent: 0
+}
+
+.checklist-item-state-complete{
+    color: #939393;
+    font-style: italic;
+    text-decoration: line-through
+}
+
+.checklist-item-state-complete img {
+    opacity: .3
+}
+
+.checklist-item-state-complete .checklist-item-checkbox {
+    background-color: #f3f3f3;
+    border: 1px solid #b9b9b9;
+    border-bottom-color: #ccc;
+    border-top-color: #999;
+    -webkit-box-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 0 #fff;
+    text-indent: 0
+}
+
+.checklist-new-item.focus .checklist-new-item-text, .checklist-new-item.focus .checklist-new-item-text:hover {
+    background: #fff;
+    border-color: #2b7cab;
+    -webkit-box-shadow: 0 0 3px #2b7cab;
+    box-shadow: 0 0 3px #2b7cab;
+    color: #393939;
+    cursor: text;
+    height: 68px;
+    resize: vertical
+}
+
+
+
+
