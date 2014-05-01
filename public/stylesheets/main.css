@@ -249,6 +249,7 @@ body {
 
 .item-name-container {
     display: inline-block;
+    margin-top: 1em !important;
     font-size: 18px;
     font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
@@ -259,6 +260,8 @@ body {
 
 .item-name-edit-container {
     display: inline-block;
+    margin-top: 1em !important;
+
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     width: 50%;
 }

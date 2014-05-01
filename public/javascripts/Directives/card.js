@@ -45,6 +45,7 @@ define([], function () {
                                 $scope.updateCompleted(checklist);
                             };
 
+                            // TODO : move this function to the progress bar directive controller
                             $scope.updateCompleted = function (checklist) {
                                 // count completed value
                                 var trueValues = 0;

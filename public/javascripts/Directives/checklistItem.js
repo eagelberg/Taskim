@@ -6,8 +6,9 @@ define([], function () {
             scope: {
                 item: '=',
                 checklist: '=',
-                itemNameSave : '&',
-                itemValueSave : '&'
+                itemNameSave: '&',
+                itemValueSave: '&',
+                updateCompleted: '&'
             },
             controller: function ($scope) {
 
@@ -33,32 +34,8 @@ define([], function () {
                     // invok item value save
                     $scope.itemValueSave({});
 
-                    // update progress bar
-                    // count completed value
-                    var trueValues = 0;
-                    var itemLen = $scope.checklist.items.length;
-
-                    // handle empty checklist case
-                    if (itemLen === 0) {
-                        $scope.checklist.completed = 0;
-                        return;
-
-                    }
-                    $scope.checklist.items.forEach(function (item) {
-                        if (item.value) {
-                            trueValues++;
-                        }
-                    });
-
-                    $scope.checklist.completed = (trueValues / itemLen) * 100.0;
-
-                    if ($scope.checklist.completed >= 0 && $scope.checklist.completed <= 34) {
-                        $scope.checklist.progressBarType = "warning";
-                    } else if ($scope.checklist.completed > 34 && $scope.checklist.completed <= 67) {
-                        $scope.checklist.progressBarType = "info";
-                    } else if ($scope.checklist.completed > 67) {
-                        $scope.checklist.progressBarType = "success";
-                    }
+                    // update progress bar with all completed values
+                    $scope.updateCompleted({checklist: $scope.checklist});
                 }
 
 

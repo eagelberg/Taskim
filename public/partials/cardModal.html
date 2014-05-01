@@ -47,7 +47,7 @@
                 <div ng-repeat="item in checklist.items">
 
                     <checklist-item item="item" checklist="checklist" item-name-save="handleItemNameSave(item)"
-                                    item-value-save="handleItemValueSave(item)">
+                                    update-completed="updateCompleted(checklist)" item-value-save="handleItemValueSave(item)">
                     </checklist-item>
 
                 </div>
