@@ -73,15 +73,15 @@ define([], function () {
                                 }
                             }
 
-                            $scope.handleItemNameSave = function (item, newItemName) {
+                            $scope.handleItemNameSave = function (item) {
                                 // TODO : update item name in DB
-                                if (newItemName.length > 0) {
-                                    item.name = newItemName;
-                                }
 
-                                console.log("updated item name to : " + newItemName);
+                                console.log("updated item name to : " + item.name);
                             }
 
+                            $scope.handleItemValueSave = function(item){
+                                console.log("updated item name " + (item.name) + " to  " + item.value);
+                            }
 
                             var demoChecklist = {
                                 title: 'demo1',

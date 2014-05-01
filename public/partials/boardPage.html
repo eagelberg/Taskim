@@ -1,4 +1,5 @@
-<div class="board-info container-fluid">
+<div class="board-info container-fluid"
+     ng-init="focusCardFilter = true;">
     <div class="row">
         <div class="col-lg-1">
             <div class="board-name-container">
@@ -9,6 +10,7 @@
         <input type="text"
                class="form-control card-filter-container"
                placeholder="filter cards"
+               focusMe="focusCardFilter"
                ng-model="cardFilter.value"/>
 
         <div class="board-options">

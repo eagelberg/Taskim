@@ -1,0 +1,24 @@
+<input type="checkbox"
+       class="checklist-item-container"
+       value="{{item.value}}"
+       ng-change="handleItemValueChange()"
+       ng-model="item.value"
+       ng-disabled="itemNameEditMode"/>
+
+<div class="item-name-container"
+     ng-show="!editMode"
+     ng-class="{'checklist-item-state-complete' : item.value}"
+     ng-click="switchToEditMode()">
+    {{ item.name }}
+</div>
+
+<input type="text"
+       class="form-control item-name-edit-container"
+       name="itemNameInput"
+       ng-show="editMode"
+       ng-model="item.name"
+       ng-blur="handleBlur()"
+       focus-me="itemNameFocused"
+       on-enter="handleSave()"
+       required
+       on-escape="handleEscape()"/>

@@ -44,33 +44,12 @@
                 </progressbar>
 
 
-                <div ng-repeat="item in checklist.items"
-                     ng-init="itemNamefocused = false">
-                    <div ng-init="itemNameEditMode = false">
+                <div ng-repeat="item in checklist.items">
 
-                        <input type="checkbox"
-                               class="checklist-item-container"
-                               value="{{item.value}}"
-                               ng-change="updateCompleted(checklist)"
-                               ng-model="item.value"
-                               ng-disabled="itemNameEditMode"/>
+                    <checklist-item item="item" checklist="checklist" item-name-save="handleItemNameSave(item)"
+                                    item-value-save="handleItemValueSave(item)">
+                    </checklist-item>
 
-                        <div class="item-name-container"
-                             ng-show="!itemNameEditMode"
-                             ng-class="{'checklist-item-state-complete' : item.value}"
-                             ng-click="itemNameEditMode=true; newItemName = item.name; itemNamefocused = true;">
-                            {{ item.name }}
-                        </div>
-
-                        <input type="text"
-                               class="form-control item-name-edit-container"
-                               ng-show="itemNameEditMode"
-                               ng-model="newItemName"
-                               ng-blur="itemNameEditMode = false; itemNamefocused = false;"
-                               xng-focus="itemNamefocused"
-                               on-enter="handleItemNameSave(item,newItemName); itemNameEditMode = false; itemNamefocused = false;"
-                               on-escape="itemNameEditMode = false; itemNamefocused = false;"/>
-                    </div>
                 </div>
 
                 <div class="list-group-item">

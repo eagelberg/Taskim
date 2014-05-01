@@ -7,8 +7,9 @@ define(['angular',
     'javascripts/directives/onEnter',
     'javascripts/directives/onEscape',
     'javascripts/directives/focusMe',
-    'javascripts/directives/addComponent'],
-    function (angular, deck, card, resize, stopEvent, upLevel,onEnter,onEscape,focusMe,addComponent) {
+    'javascripts/directives/addComponent',
+    'javascripts/directives/checklistItem'],
+    function (angular, deck, card, resize, stopEvent, upLevel,onEnter,onEscape,focusMe,addComponent,checklistItem) {
         'use strict'
 
         angular.module('directives', [])
@@ -20,5 +21,6 @@ define(['angular',
             .directive('onEnter', onEnter)
             .directive('onEscape', onEscape)
             .directive('focusMe', focusMe)
-            .directive('addComponent', addComponent);
+            .directive('addComponent', addComponent)
+            .directive('checklistItem', checklistItem);
     });
