@@ -1,4 +1,4 @@
-<div ng-show="!editMode">
+<div ng-show="!editMode && triggerTitle.length > 0">
     <a class="{{triggerStyleContainer}}" ng-href="#" ng-click="switchToEditMode()">
         {{ triggerTitle }}
     </a>
@@ -6,14 +6,14 @@
 
 <div ng-show="editMode">
     <form name="editForm">
-        <div ng-class="{'has-error' : editForm.editInput.$invalid}">
+        <div ng-class="{'has-error' : editForm.editInput.$invalid, 'edit-input-container' : true}">
 
-            <input type="text" ng-show="inputStyle === 'text'" class="form-control"
+            <input type="text" ng-show="inputStyle === 'text'" class="form-control add-component-input-container"
                    name="editInput" focus-me="inputFocused" on-enter="handleSave()"
                    required ng-model="editedInput" ng-blur="handleBlur()" on-escape="handleEscape()"/>
 
-            <textarea ng-show="inputStyle === 'textarea'" class="form-control"
-                      rows="2" name="editInput" focus-me="inputFocused" required
+            <textarea ng-show="inputStyle === 'textarea'" class="form-control add-component-input-container" auto-grow style="overflow:hidden"
+                      rows="{{textAreaRows}}" name="editInput" focus-me="inputFocused" required
                       ng-model="editedInput" ng-blur="handleBlur()" on-escape="handleEscape()">
             </textarea>
 

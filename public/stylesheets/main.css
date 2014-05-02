@@ -162,6 +162,10 @@ body {
     background-color: #23719f;
 }
 
+.weak-opacity {
+    opacity: .5 !important;
+}
+
 /* --- board related --- */
 .board-name-container {
     font-size: 24px !important;
@@ -172,8 +176,11 @@ body {
 
 /* --- deck related --- */
 
-.add-card-container {
-    margin: 1em;
+.deck-title-container {
+    font-size: 18px;
+    font: Consolas, "Liberation Mono", Courier, monospace;
+    font-style: italic;
+    padding: 3px 26px 2px 6px;
 }
 
 .new-deck-input-container {
@@ -181,11 +188,55 @@ body {
     width: 60%;
 }
 
+.add-component-action-bar-container {
+    margin: 0.5em;
+}
+
+/* --- card related --- */
+
+.card-description-container {
+    margin: 1em;
+    color: black;
+
+    /*for handling multiple line input*/
+    display: block;
+    unicode-bidi: embed;
+    font-family: monospace;
+    white-space: pre-line;
+}
+
+.card-description-container:hover {
+    cursor: pointer;
+    color: #464646;
+    text-decoration: none !important;
+}
+
+.add-card-container {
+    margin: 1em;
+    color: black;
+}
+
 .card-filter-container {
     display: inline-block;
     width: 15%;
     border-radius: 3em;
     margin-left: 2.8em;
+}
+
+.card-section-divider {
+    display: block;
+    margin: 1em;
+}
+
+.card-section-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 0.5em;
+    display: inline;
+}
+
+.edit-input-container {
+    margin: 0.5em;
 }
 
 /* --- search related --- */
@@ -201,6 +252,9 @@ body {
 }
 
 /* --- checklist related --- */
+.checklist-title-container {
+    margin: 1em;
+}
 
 .checklist-item-container {
     background: #fff;
@@ -281,6 +335,34 @@ body {
 
 .label-title {
     /*box-shadow: 3px 3px 1px #a3a3a3;*/
+}
+
+/* --- activity related --- */
+.activity-container {
+    border-bottom: 1px solid #dcdcdc;
+    min-height: 30px;
+    padding: 4px 0 4px 10px;
+    position: relative;
+}
+
+.last-activity-container {
+    min-height: 30px;
+    padding: 8px 0 8px 38px;
+    position: relative;
+}
+
+.activity-info-container {
+    display: block;
+}
+
+.single-activity-info-container {
+    display: inline-block;
+}
+
+.activity-initiator-container {
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
 }
 
 /* --- from trello core.css --- */
@@ -370,7 +452,7 @@ body {
     text-indent: 0
 }
 
-.checklist-item-state-complete{
+.checklist-item-state-complete {
     color: #939393;
     font-style: italic;
     text-decoration: line-through
@@ -401,6 +483,116 @@ body {
     resize: vertical
 }
 
+.member-initials {
+    display: inline;
+    font-size: 12px;
+    font-weight: bold;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    overflow: hidden;
+    /*position: absolute;*/
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
 
+.new-comment-section {
+    display: block;
+    margin-bottom: 2em;
+}
 
+.new-comment-input {
+    background-color: #fff;
+    border: 0;
+    border-radius: 8px;
+    display: inline;
+    -webkit-box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.23);
+    box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.23);
+    color: #939393;
+    height: 34px;
+    margin: 4px 4px 6px 0;
+    padding: 8px 10px;
+    -webkit-transition: height ease-in-out 85ms;
+    transition: height ease-in-out 85ms;
+    width: 100%;
+}
 
+.new-comment-input:hover, .new-comment-input:focus {
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.33);
+    box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.33);
+    border: 0;
+    cursor: pointer
+}
+
+.phenom-meta {
+    display: block;
+    font-size: 12px;
+    line-height: 18px;
+    margin: .7em;
+}
+
+.quiet {
+    color: #939393;
+}
+
+.member {
+    background-color: #c7c7c7;
+    border-radius: 3px;
+    color: #444;
+    text-align: center;
+    float: left;
+    height: 30px;
+    margin: 0 4px 4px 0;
+    overflow: hidden;
+    width: 30px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 0;
+    text-decoration: none;
+}
+
+.add-component-input-container {
+    display: inline;
+    width: 90%;
+    min-height: 3em;
+}
+
+.creator {
+    height: 30px;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 30px;
+}
+
+.markeddown {
+    word-wrap: break-word;
+}
+
+.action-comment {
+    background-color: #eaf9fe;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.23);
+    box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.23);
+    clear: both;
+    cursor: pointer;
+    color: #464646 !important;
+    display: block;
+    margin: 4px 4px 5px 1.5em;
+    overflow: hidden;
+    padding: 8px 10px;
+    text-overflow: ellipsis;
+ }
+
+.action-comment:hover {
+    cursor: pointer;
+    color: #464646;
+    text-decoration: none !important;
+}

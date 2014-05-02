@@ -1,0 +1,36 @@
+<!-- activity type section -->
+<div ng-show="isActivity" class="activity-info-container">
+
+    <div class="activity-initiator-container">
+        {{ activity.initiator.name }}
+    </div>
+
+    <ul ng-show="activity.info.length > 1" class="activity-info-container">
+        <li ng-repeat="info in activity.info">
+            {{ info }}
+        </li>
+    </ul>
+
+    <div ng-show="activity.info.length === 1" class="single-activity-info-container">
+        {{ activity.info[0] }}
+    </div>
+
+</div>
+
+<!-- comment type section -->
+<div ng-show="isComment" class="activity-comment-container">
+
+    <div class="activity-initiator-container">
+        {{ activity.initiator.name }}
+    </div>
+
+    <add-component edited-input="comment" input-style="textarea" on-save-title="update" trigger-title="{{comment}}"
+                   close-on-save="true" sticky-title="true" trigger-style-container="action-comment"
+                   callback-function="updateActivityComment(activity,comment)">
+    </add-component>
+
+</div>
+
+<div class="phenom-meta quiet">
+    {{ parsedDate }}
+</div>

@@ -10,13 +10,17 @@ define([], function () {
                 triggerStyleContainer: '@',
                 triggerTitle: '@',
                 onSaveTitle: '@',
-                closeOnSave: '@'
+                closeOnSave: '@',
+                textAreaRows: '@',
+                stickyTitle: '@'
             },
             controller: function ($scope) {
 
                 // initialize scope variables
                 $scope.editMode = false;
                 $scope.inputFocused = false;
+                $scope.textAreaRows = $scope.textAreaRows || 2;
+                $scope.triggerTitle = $scope.triggerTitle || '';
 
                 // handle view logic
                 $scope.handleSave = function () {
@@ -26,7 +30,7 @@ define([], function () {
                         $scope.callbackFunction({});
 
                         if ($scope.closeOnSave === 'true') {
-                            $scope.handleClose();
+                            $scope.handleClose(true);
                         } else if ($scope.closeOnSave === 'false') {
                             $scope.editedInput = '';
                             $scope.switchToEditMode();
@@ -40,9 +44,18 @@ define([], function () {
                     $scope.setFocused(true);
                 }
 
-                $scope.handleClose = function () {
+                $scope.handleClose = function (saveChanges) {
+
+                    if ($scope.stickyTitle && $scope.stickyTitle === 'true') {
+                        if ($scope.editedInput && $scope.editedInput.length > 0 && saveChanges) {
+                            $scope.triggerTitle = $scope.editedInput;
+                            $scope.inputDefaultValue = $scope.editedInput;
+                        }
+                    } else {
+                        $scope.editedInput = '';
+                    }
+
                     $scope.editMode = false;
-                    $scope.editedInput = '';
                     $scope.setFocused(false);
                 }
 
@@ -52,12 +65,13 @@ define([], function () {
 
                 $scope.handleBlur = function () {
                     // TODO : how to close edit mode and still save input? is it actually needed?
-                    //$scope.handleClose();
+                    //$scope.handleClose(false);
                 }
 
                 $scope.handleEscape = function () {
-                    $scope.handleClose();
+                    $scope.handleClose(false);
                 }
+
             }
         }
     }
