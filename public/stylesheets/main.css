@@ -596,3 +596,19 @@ body {
     color: #464646;
     text-decoration: none !important;
 }
+
+.board-user{
+    background-color: #939393;
+    border-radius: 5px 5px 5px 5px;
+    line-height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    padding: 0;
+    text-align: center;
+}
+
+.board-user-container{
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
