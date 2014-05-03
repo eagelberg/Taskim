@@ -38,4 +38,9 @@ public class UserRepository implements IUserRepository {
     public void save(User user) {
         userCollection.save(user);
     }
+
+    @Override
+    public List<User> getAllByIds(List<String> users) {
+        return userCollection.find(DBQuery.in("_id",users)).toArray();
+    }
 }

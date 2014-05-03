@@ -5,6 +5,7 @@ import Domain.Models.Card;
 import Domain.Models.Deck;
 import Domain.Services.BoardsRepository;
 import Domain.Services.IBoardsRepository;
+import Domain.Services.IUserRepository;
 import Infrastructure.IJsonMapper;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -22,11 +23,13 @@ public class BoardsController extends Controller {
 
     private IBoardsRepository repository;
     private IJsonMapper jsonMapper;
+    private IUserRepository userRepository;
 
     @Inject
-    public BoardsController(IBoardsRepository repository, IJsonMapper jsonMapper) {
+    public BoardsController(IBoardsRepository repository, IJsonMapper jsonMapper,IUserRepository userRepository) {
         this.repository = repository;
         this.jsonMapper = jsonMapper;
+        this.userRepository = userRepository;
     }
 
     public Result get(String id) {
@@ -77,5 +80,10 @@ public class BoardsController extends Controller {
     public Result all() {
         List<Board> boards = repository.all();
         return ok(jsonMapper.toJson(boards));
+    }
+
+    public Result getAllUsers(String id){
+        Board board = repository.getById(id);
+        return ok(jsonMapper.toJson(userRepository.getAllByIds(board.getUsers())));
     }
 }

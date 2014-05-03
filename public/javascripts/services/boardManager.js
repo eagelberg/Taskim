@@ -14,7 +14,11 @@ define([], function(){
 
         this.addUser = function(board,user){
             board.users.push(user._id);
-            this.update(board);
+            return this.update(board);
+        }
+
+        this.getBoardUsers = function(boardId){
+            return Restangular.one('Boards',boardId).all('Users').getList();
         }
     }
 });

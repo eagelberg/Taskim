@@ -5,6 +5,7 @@
 # Boards
 GET    /Boards                      @controllers.BoardsController.all()
 GET    /Boards/:id                  @controllers.BoardsController.get(id: String)
+GET    /Boards/:id/Users            @controllers.BoardsController.getAllUsers(id: String)
 
 PUT   /Boards/:id                   @controllers.BoardsController.update(id: String)
 

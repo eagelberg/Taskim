@@ -8,6 +8,6 @@ public interface IUserRepository {
     public User getByLoginData(String name,String password);
     public User getById(String id);
     public List<User> getByFilter(String filter);
-
     public void save(User user);
+    public List<User> getAllByIds(List<String> users);
 }

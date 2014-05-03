@@ -22,9 +22,28 @@ define([], function () {
                 });
             }
 
+            $scope.boardUsers = [];
+            $scope.getBoardMembers = function(boardId){
+                boardManager.getBoardUsers(boardId).then(function (users) {
+                    $scope.boardUsers = users;
+                });
+            }
+
+            $scope.getFirstLetters = function(userName){
+                var words = userName.split(" ");
+                var displayName = "";
+                words.forEach(function(value,key){
+                    displayName += value.charAt(0);
+                });
+                return displayName;
+            }
+
             $scope.accapteMember = function () {
                 userManager.addBoard($scope.memberToAdd, $scope.board);
-                boardManager.addUser($scope.board, $scope.memberToAdd);
+                boardManager.addUser($scope.board, $scope.memberToAdd).then(function(){
+                    $scope.getBoardMembers($scope.board._id);
+                });
+
                 $scope.memberToAdd = "";
                 $scope.addMemberClicked();
             }
@@ -75,7 +94,7 @@ define([], function () {
             };
 
             $scope.getBoard($stateParams.id);
-
+            $scope.getBoardMembers($stateParams.id);
 
             $scope.$apply();
         }]
