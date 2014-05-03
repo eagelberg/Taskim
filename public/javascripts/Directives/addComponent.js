@@ -16,11 +16,14 @@ define([], function () {
             },
             controller: function ($scope) {
 
+                // defulat variables
+                var defaultTriggerContainer = 'default-add-component-trigger';
                 // initialize scope variables
                 $scope.editMode = false;
                 $scope.inputFocused = false;
                 $scope.textAreaRows = $scope.textAreaRows || 2;
                 $scope.triggerTitle = $scope.triggerTitle || '';
+                $scope.triggerStyleContainer = $scope.triggerStyleContainer || defaultTriggerContainer;
 
                 // handle view logic
                 $scope.handleSave = function () {

@@ -2,7 +2,7 @@ define([], function () {
     return function () {
         return {
             restrict: 'AE',
-            templateUrl: '/assets/partials/checklistItem.html',
+            templateUrl: '/assets/partials/card/checklistItem.html',
             scope: {
                 item: '=',
                 checklist: '=',

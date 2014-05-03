@@ -1,0 +1,57 @@
+<div class="col-md-3">
+    <div class="card-actions-container">
+
+        <!-- Add section -->
+        <h4>Add</h4>
+        <!-- TODO : should open a popup open for checklist title (this is just temporary for test) -->
+        <!-- handle checklist editor -->
+        <div ng-init="newChecklistMode = false">
+
+            <button type="button" class="btn btn-default card-action-button"
+                    ng-click="newChecklistMode = !newChecklistMode">
+                <span class="glyphicon glyphicon-th-list"></span>
+                Checklist
+            </button>
+
+            <div ng-show="newChecklistMode">
+                <input type="text" class="form-control" ng-model="newChecklistTitle"/>
+                <input type="button"
+                       class="btn btn-default"
+                       value="add"
+                       ng-click="addChecklist(card,newChecklistTitle);newChecklistMode = false; newChecklistTitle = '';">
+                <a ng-href="#" ng-click="newChecklistTitle = ''; newChecklistMode = false;">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+
+
+        </div>
+
+        <!-- handle label editor -->
+        <div ng-init="newLabelMode = false">
+            <button type="button" class="btn btn-default card-action-button"
+                    ng-click="newLabelMode = !newLabelMode">
+                <span class="glyphicon glyphicon-tag"></span>
+                Label
+            </button>
+            <div ng-show="newLabelMode">
+                <!-- TODO : label editor should be a directive -->
+
+                <div ng-repeat="label in card.labels track by label.color">
+
+                </div>
+
+                <a ng-href="#" ng-click="newLabelMode = false;">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Actions section -->
+        <h4>Actions</h4>
+        <!-- TODO : actions are hard coded, should be in a seperate controller (or a global service) -->
+        <button type="button" class="btn btn-default card-action-button">Action 1</button>
+        <button type="button" class="btn btn-default card-action-button">Action 2</button>
+        <button type="button" class="btn btn-default card-action-button">Action 3</button>
+    </div>
+</div>

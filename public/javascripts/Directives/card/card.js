@@ -2,7 +2,8 @@ define([], function () {
     return function ($modal) {
         return {
             restrict: 'E',
-            templateUrl: '/assets/partials/card.html',
+            templateUrl: '/assets/partials/card/card.html',
+
             controller: function ($scope) {
 
                 // TODO : should be a seperate controller here instead of inline
@@ -10,7 +11,7 @@ define([], function () {
 
                 $scope.openModal = function () {
                     var modalInstance = $modal.open({
-                        templateUrl: '/assets/partials/cardModal.html',
+                        templateUrl: '/assets/partials/card/cardModal.html',
                         resolve: {
                             card: function () {
                                 return $scope.card;
@@ -111,47 +112,40 @@ define([], function () {
 
                             }
 
-                            var demoChecklist = {
-                                title: 'demo1',
+                            var taskimChecklist = {
+                                title: 'build taskim',
                                 items: [
                                     {
-                                        name: 'val1',
+                                        name: 'quit job',
                                         value: true
                                     },
                                     {
-                                        name: 'val2',
+                                        name: 'open office in Tel Aviv',
+                                        value: true
+                                    },
+                                    {
+                                        name: 'profit',
                                         value: false
-                                    },
-                                    {
-                                        name: 'val3',
-                                        value: true
                                     }
                                 ],
 
                                 completed: 0
                             };
 
-                            $scope.updateCompleted(demoChecklist);
+                            $scope.updateCompleted(taskimChecklist);
 
-                            // add demo1 checklist
-                            $scope.card.checklists.push(demoChecklist);
+                            // add taskimChecklist
+                            $scope.card.checklists.push(taskimChecklist);
 
 
-                            var demoChecklist = {
-                                title: 'demo2',
+                            var richChecklist = {
+                                title: 'become rich',
                                 items: [
                                     {
-                                        name: 'val1',
-                                        value: false
-                                    },
-                                    {
-                                        name: 'val2',
-                                        value: false
-                                    },
-                                    {
-                                        name: 'val3',
+                                        name: 'rob a bank',
                                         value: false
                                     }
+
                                 ],
 
                                 completed: 0
@@ -193,10 +187,10 @@ define([], function () {
                                 console.log("updating card description with " + card.description);
                             }
 
-                            $scope.updateCompleted(demoChecklist);
+                            $scope.updateCompleted(richChecklist);
 
-                            // add demo2 checklist
-                            $scope.card.checklists.push(demoChecklist);
+                            // add richChecklist
+                            $scope.card.checklists.push(richChecklist);
 
                             // add demo label (to demo card named micha)
                             var demoLabel1 = {
@@ -205,7 +199,7 @@ define([], function () {
                             };
 
                             var demoLabel2 = {
-                                title: 'calm',
+                                title: '',
                                 color: 'green'
                             };
 
@@ -215,7 +209,7 @@ define([], function () {
                             // add demo activities
                             $scope.addActivity(card, ['moved stuff to other stuff'], itay, 'activity');
                             $scope.addActivity(card, ['I am itay!'], itay, 'comment');
-                            $scope.addActivity(card, ['completed multiple 1', 'completed multiple 2'], micha, 'activity');
+                            $scope.addActivity(card, ['completed classified mission', 'bragged about it'], micha, 'activity');
 
                             console.log("board=");
                             console.log(board);

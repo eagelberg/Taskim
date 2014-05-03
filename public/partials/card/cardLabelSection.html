@@ -1,0 +1,21 @@
+<div ng-if="card.labels.length > 0">
+    <pre class="section-title"> Labels </pre>
+    <div class="label-panel-container">
+        <div ng-repeat="label in card.labels track by label.color">
+            <span><div class="card-label card-label-{{label.color}}" title="getLabelTitle(label)">
+                <div ng-if="label.title.length > 0" class="card-label-title">
+                    {{ label.title }}
+                </div>
+                <div ng-if="label.title.length === 0">
+                    &nbsp;
+                </div>
+            </div></span>
+        </div>
+
+        <!-- TODO : make popover for label edit here -->
+        <a class="item-add-button" ng-href="#" ng-click="handleLabelEditView()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+
+    </div>
+</div>

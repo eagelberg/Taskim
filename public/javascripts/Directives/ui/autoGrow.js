@@ -1,7 +1,7 @@
 define(['jquery'], function ($) {
     return function ($timeout) {
         return function (scope, elem, attrs) {
-            elem.bind('keyup', function($event) {
+            elem.bind('keyup', function ($event) {
                 var element = $event.target;
 
                 $(element).height(0);
@@ -11,11 +11,11 @@ define(['jquery'], function ($) {
                 if (height < 20) {
                     height = 28;
                 }
-                $(element).height(height-8);
+                $(element).height(height - 8);
             });
 
             // Expand the textarea as soon as it is added to the DOM
-            setTimeout( function() {
+            setTimeout(function () {
                 var element = elem;
 
                 $(element).height(0);
@@ -25,7 +25,7 @@ define(['jquery'], function ($) {
                 if (height < 20) {
                     height = 28;
                 }
-                $(element).height(height-8);
+                $(element).height(height - 8);
             }, 0)
         }
     }

@@ -23,14 +23,29 @@ define([], function () {
             }
 
             $scope.boardUsers = [];
-            $scope.getBoardMembers = function(boardId){
+            $scope.getBoardMembers = function (boardId) {
                 boardManager.getBoardUsers(boardId).then(function (users) {
                     $scope.boardUsers = users;
                 });
             }
 
-            $scope.getFirstLetters = function(userName){
-                var words = userName.split(" ");
+            $scope.getFirstLetters = function (user) {
+
+                // this is to be consistent with activities
+                // TODO : get real initials from user (should just be user.initials)
+
+                switch (user.name) {
+                    case 'guy' :
+                        return 'GE'
+                    case 'micha' :
+                        return 'MS'
+                    case 'itay' :
+                        return 'IM'
+                    case 'itay2' :
+                        return 'IM'
+                }
+
+                var words = user.name.split(" ");
                 var displayName = "";
                 words.forEach(function(value,key){
                     displayName += value.charAt(0);
@@ -38,9 +53,9 @@ define([], function () {
                 return displayName;
             }
 
-            $scope.accapteMember = function () {
+            $scope.acceptMember = function () {
                 userManager.addBoard($scope.memberToAdd, $scope.board);
-                boardManager.addUser($scope.board, $scope.memberToAdd).then(function(){
+                boardManager.addUser($scope.board, $scope.memberToAdd).then(function () {
                     $scope.getBoardMembers($scope.board._id);
                 });
 
@@ -93,7 +108,7 @@ define([], function () {
                 }
             };
 
-            $scope.updateDeckName = function(deck){
+            $scope.updateDeckName = function (deck) {
                 console.log('updating deck name to ' + deck.name);
             }
 

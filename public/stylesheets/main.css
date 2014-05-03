@@ -166,12 +166,21 @@ body {
     opacity: .5 !important;
 }
 
+.default-add-component-trigger {
+    display: block;
+    margin-top: 1em;
+}
+
 /* --- board related --- */
 .board-name-container {
     font-size: 24px !important;
     font-style: oblique;
     color: #dddddd;
     font: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+.board-members-section {
+
 }
 
 /* --- deck related --- */
@@ -228,15 +237,13 @@ body {
     margin: 1em;
 }
 
-.card-section-title {
-    font-weight: bold;
-    font-size: 16px;
-    margin-left: 0.5em;
-    display: inline;
-}
-
 .edit-input-container {
     margin: 0.5em;
+}
+
+.section-title {
+    display: block;
+    margin-top: 2em;
 }
 
 /* --- search related --- */
@@ -304,8 +311,8 @@ body {
 .item-name-container {
     display: inline-block;
     margin-top: 1em !important;
-    font-size: 18px;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 15px;
+    font-family: cursive;
 }
 
 .item-name-container:hover {
@@ -315,26 +322,70 @@ body {
 .item-name-edit-container {
     display: inline-block;
     margin-top: 1em !important;
-
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 15px;
+    font-family: cursive;
     width: 50%;
 }
 
 /* --- label related --- */
 
-.label-panel {
-
+.label-panel-container {
+    display: flex;
+    margin: 1em;
 }
 
-.label-container {
-    display: inline-block;
-    width: 10%;
-    height: 5%;
-    /*box-shadow: 5px 5px 2px #888888;*/
+.card-label {
+    border-radius: 3px;
+    display: block;
+    float: left;
+    line-height: 20px;
+    margin: 0 4px 4px 0;
+    min-width: 70px;
+    min-height: 36px;
+    padding: 5px 10px;
+    width: auto;
 }
 
-.label-title {
-    /*box-shadow: 3px 3px 1px #a3a3a3;*/
+.card-label:hover {
+    cursor: pointer;
+    opacity: .75
+}
+
+.card-label-title {
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    margin-right: 3px;
+    padding: 3px 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.card-label-green {
+    background-color: #34b27d;
+}
+
+.card-label-yellow {
+    background-color: #dbdb57;
+}
+
+.card-label-orange {
+    background-color: #e09952;
+}
+
+.card-label-red {
+    background-color: #cb4d4d;
+}
+
+.card-label-purple {
+    background-color: #93c;
+}
+
+.card-label-blue {
+    background-color: #4d77cb;
 }
 
 /* --- activity related --- */
@@ -343,6 +394,14 @@ body {
     min-height: 30px;
     padding: 4px 0 4px 10px;
     position: relative;
+    margin: .5em;
+}
+
+.acitivty-section-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 0.5em;
+    display: inline;
 }
 
 .last-activity-container {
@@ -366,48 +425,6 @@ body {
 }
 
 /* --- from trello core.css --- */
-.card-label {
-    border-radius: 3px;
-    color: #fff;
-    display: inline-block;
-    font-weight: bold;
-    margin-right: 3px;
-    padding: 3px 6px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6)
-}
-
-.card-label-green {
-    background-color: #34b27d;
-    display: inline-block;
-}
-
-.card-label-yellow {
-    background-color: #dbdb57;
-    display: inline-block;
-}
-
-.card-label-orange {
-    background-color: #e09952;
-    display: inline-block;
-}
-
-.card-label-red {
-    background-color: #cb4d4d;
-    display: inline-block;
-}
-
-.card-label-purple {
-    background-color: #93c;
-    display: inline-block;
-}
-
-.card-label-blue {
-    background-color: #4d77cb;
-    display: inline-block;
-}
 
 /*.card-description {*/
 /*width: 400px;*/
@@ -589,7 +606,7 @@ body {
     overflow: hidden;
     padding: 8px 10px;
     text-overflow: ellipsis;
- }
+}
 
 .action-comment:hover {
     cursor: pointer;
@@ -597,7 +614,7 @@ body {
     text-decoration: none !important;
 }
 
-.board-user{
+.board-user {
     background-color: #939393;
     border-radius: 5px 5px 5px 5px;
     line-height: 30px;
@@ -607,8 +624,46 @@ body {
     text-align: center;
 }
 
-.board-user-container{
+.board-user-container {
     padding-right: 8px;
     padding-left: 8px;
 }
 
+.item-add-button {
+    background: #dedede;
+    border-radius: 3px;
+    color: #737373;
+    display: block;
+    height: 36px;
+    float: left;
+    padding: 6px;
+}
+
+.pop-over {
+    background: #fff;
+    border: 1px solid #b9b9b9;
+    border-radius: 3px;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+    position: absolute;
+    right: -9999px;
+    top: -9999px;
+    width: 270px;
+    z-index: 20;
+}
+
+.card-label-selectable {
+    border-radius: 3px;
+    color: #eee;
+    cursor: pointer;
+    margin: 0 24px 3px 0;
+    min-height: 18px;
+    padding: 6px;
+    position: relative;
+    -webkit-transition: margin-right .1s;
+    transition: margin-right .1s;
+    -webkit-transition-delay: .05s;
+    transition-delay: .05s;
+}

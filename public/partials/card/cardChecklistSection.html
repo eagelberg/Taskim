@@ -1,0 +1,29 @@
+<div ng-repeat="checklist in card.checklists track by checklist.title">
+
+    <div class="checklist-title-container">
+        <pre class="section-title"> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
+    </div>
+
+    <progressbar ng-class="{'collapse': checklist.completed === 0,'collapse in' : checklist.completed > 0}"
+                 class="progress-striped"
+                 value="checklist.completed"
+                 type="{{checklist.progressBarType}}">
+        {{checklist.completed | number:1}}%
+    </progressbar>
+
+
+    <div ng-repeat="item in checklist.items">
+
+        <checklist-item item="item" checklist="checklist" item-name-save="handleItemNameSave(item)"
+                        update-completed="updateCompleted(checklist)"
+                        item-value-save="handleItemValueSave(item)">
+        </checklist-item>
+
+    </div>
+
+    <add-component edited-input="newItemName" input-style="textarea" trigger-title="Add item.."
+                   on-save-title="save" close-on-save="false"
+                   callback-function="addChecklistItem(card,checklist,newItemName)">
+    </add-component>
+
+</div>

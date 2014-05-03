@@ -1,0 +1,39 @@
+<div class="card-modal-container container">
+    <div class="row">
+        <div class="col-md-9">
+
+            <!-- header section -->
+            <div class="card-header">
+                <h2>{{card.title}}</h2>
+            </div>
+
+            <!-- description section -->
+            <card-description-section></card-description-section>
+
+            <!-- labels section -->
+            <!-- TODO : add labels to MongoDB (currently hard coded) -->
+            <card-label-section></card-label-section>
+
+            <!-- checklists section -->
+            <!-- TODO : add checklist to MongoDB (currently hard coded) -->
+            <card-checklist-section></card-checklist-section>
+
+            <!-- activity section -->
+            <card-activity-section></card-activity-section>
+
+            <!-- comments section -->
+            <div class="card-comments">
+                <h4>Comments</h4>
+
+                <div ng-repeat="comment in card.comments">
+                    {{comment.content}}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- action section -->
+        <card-action-section></card-action-section>
+
+    </div>
+</div>

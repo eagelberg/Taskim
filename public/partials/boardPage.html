@@ -19,17 +19,20 @@
 
         <div class="col-lg-offset-10 col-lg-2">
             <h3>Members</h3>
-            <div class="row col-lg-12">
+
+            <div class="board-members-section row col-lg-12">
                 <div ng-repeat="user in boardUsers" class="col-lg-3 board-user-container">
-                    <p class="board-user col-lg-12" title="{{user.name}}">{{getFirstLetters(user.name)}}</p>
+                    <div class="member member-initials" title="{{user.name}}">{{getFirstLetters(user)}}</div>
                 </div>
             </div>
 
             <div class="row col-lg-12">
-                <button type="button" class="btn btn-default col-lg-12" ng-click="addMemberClicked()">add members</button>
+                <button type="button" class="btn btn-default col-lg-12" ng-click="addMemberClicked()">add members
+                </button>
                 <input type="text" class="form-control" ng-model="memberToAdd" placeholder="enter member name"
-                       ng-show="isMemberAdderOpen" typeahead="member as member.name for member in getMembers($viewValue)"
-                       typeahead-min-length="2" typeahead-on-select="accapteMember()">
+                       ng-show="isMemberAdderOpen"
+                       typeahead="member as member.name for member in getMembers($viewValue)"
+                       typeahead-min-length="2" typeahead-on-select="acceptMember()">
             </div>
         </div>
     </div>
