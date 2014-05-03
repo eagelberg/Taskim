@@ -38,7 +38,6 @@ define([], function () {
                     $scope.updateCompleted({checklist: $scope.checklist});
                 }
 
-
                 // handle view UI
                 $scope.switchToEditMode = function () {
                     $scope.setEditMode(true);

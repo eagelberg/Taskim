@@ -9,10 +9,19 @@
 
             <!-- description section -->
             <div class="card-description">
-                <h4>Description</h4>
+                <h2>Description</h2>
 
-                <p>{{card.description}}</p>
+                <!--<p>{{card.description}}</p>-->
+
+                <add-component edited-input="card.description" input-style="textarea" text-area-rows="4"
+                               trigger-title="Edit description.." on-save-title="save" close-on-save="true"
+                               sticky-title="true"
+                               trigger-style-container="card-description-container"
+                               callback-function="updateCardDescription(card)">
+                </add-component>
+
             </div>
+
 
             <!-- labels section -->
             <div ng-if="card.labels.length > 0">
@@ -34,7 +43,10 @@
             <!-- TODO : should be a seperate directive for a checklist -->
             <!-- TODO : add checklist to MongoDB (currently hard coded) -->
             <div ng-repeat="checklist in card.checklists track by checklist.title">
-                <pre> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
+
+                <div class="checklist-title-container">
+                    <pre> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
+                </div>
 
                 <progressbar ng-class="{'collapse': checklist.completed === 0,'collapse in' : checklist.completed > 0}"
                              class="progress-striped"
@@ -47,7 +59,8 @@
                 <div ng-repeat="item in checklist.items">
 
                     <checklist-item item="item" checklist="checklist" item-name-save="handleItemNameSave(item)"
-                                    update-completed="updateCompleted(checklist)" item-value-save="handleItemValueSave(item)">
+                                    update-completed="updateCompleted(checklist)"
+                                    item-value-save="handleItemValueSave(item)">
                     </checklist-item>
 
                 </div>
@@ -61,6 +74,44 @@
 
                 </div>
             </div>
+
+            <!-- activity section -->
+            <div class="card-section-divider">
+                <span class="glyphicon glyphicon-align-left"></span>
+
+                <div class="card-section-title">
+                    Activity
+                </div>
+            </div>
+
+            <div class="new-comment-section">
+                <div class="member">
+                    <div class="member-initials weak-opacity">
+                        {{ activeUser.initials }}
+                    </div>
+                </div>
+
+                <add-component edited-input="comment" input-style="textarea" text-area-rows="2" on-save-title="comment"
+                               trigger-title="Write a comment.."
+                               close-on-save="true" trigger-style-container="new-comment-input"
+                               callback-function="addActivityComment(card,comment)">
+                </add-component>
+            </div>
+
+            <!-- list all activities (comment and regular) in reverse creation time order -->
+            <div ng-repeat="activity in card.activities | orderBy:'date':true">
+                <div class="member">
+                    <div class="member-initials">
+                        {{ activity.initiator.initials }}
+                    </div>
+                </div>
+
+                <div class="activity-container">
+                    <card-activity></card-activity>
+                </div>
+
+            </div>
+
 
             <!-- comments section -->
             <div class="card-comments">
@@ -79,11 +130,13 @@
                 <!-- TODO : should open a popup open for checklist title (this is just temporary for test) -->
                 <!-- handle checklist editor -->
                 <div ng-init="newChecklistMode = false">
+
                     <button type="button" class="btn btn-default card-action-button"
                             ng-click="newChecklistMode = !newChecklistMode">
                         <span class="glyphicon glyphicon-th-list"></span>
                         Checklist
                     </button>
+
                     <div ng-show="newChecklistMode">
                         <input type="text" class="form-control" ng-model="newChecklistTitle"/>
                         <input type="button"
@@ -94,6 +147,8 @@
                             <span class="glyphicon glyphicon-remove"></span>
                         </a>
                     </div>
+
+
                 </div>
 
                 <!-- handle label editor -->

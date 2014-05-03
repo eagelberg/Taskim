@@ -14,9 +14,10 @@
             </ul>
         </span>
 
-        <div class="deckName">
+        <div class="deck-title-container">
             {{deck.name}}
         </div>
+
     </div>
     <div class="list-group card-list dropdown" ng-style="{'max-height': (maxHeight - 60) + 'px'}" resize>
         <div class="sort" ui-sortable="sortableOptions" ng-model="deck.cards">

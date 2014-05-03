@@ -93,6 +93,10 @@ define([], function () {
                 }
             };
 
+            $scope.updateDeckName = function(deck){
+                console.log('updating deck name to ' + deck.name);
+            }
+
             $scope.getBoard($stateParams.id);
             $scope.getBoardMembers($stateParams.id);
 
