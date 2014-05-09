@@ -17,8 +17,9 @@ define([], function () {
             }
 
             $scope.getMembers = function (nameToSearch) {
+                var boardUsersIds = _.pluck($scope.boardUsers,'_id')
                 return userManager.getAllByFilter(nameToSearch).then(function (result) {
-                    return result;
+                    return _.reject(result,function(user){ return _.contains(boardUsersIds,user._id)});
                 });
             }
 
@@ -27,30 +28,6 @@ define([], function () {
                 boardManager.getBoardUsers(boardId).then(function (users) {
                     $scope.boardUsers = users;
                 });
-            }
-
-            $scope.getFirstLetters = function (user) {
-
-                // this is to be consistent with activities
-                // TODO : get real initials from user (should just be user.initials)
-
-                switch (user.name) {
-                    case 'guy' :
-                        return 'GE'
-                    case 'micha' :
-                        return 'MS'
-                    case 'itay' :
-                        return 'IM'
-                    case 'itay2' :
-                        return 'IM'
-                }
-
-                var words = user.name.split(" ");
-                var displayName = "";
-                words.forEach(function(value,key){
-                    displayName += value.charAt(0);
-                });
-                return displayName;
             }
 
             $scope.acceptMember = function () {

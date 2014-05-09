@@ -18,6 +18,13 @@ define([],function(){
         }
 
         this.create = function(user){
+            var words = user.name.split(" ");
+            var initials = "";
+            words.forEach(function(value,key){
+                initials += value.charAt(0).toUpperCase();
+            });
+            user.initials = initials;
+
             Restangular.all('User').post(user);
         };
     }]

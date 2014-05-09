@@ -11,7 +11,7 @@ public class User {
 	private String id;
 	private String name;
 	private String password;
-
+    private String Initials;
 	private List<String> boards = new ArrayList<String>();
 
 	public List<String> getBoards() {
@@ -60,5 +60,13 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-	//</editor-fold>
+
+    public String getInitials() {
+        return Initials;
+    }
+
+    public void setInitials(String initials) {
+        Initials = initials;
+    }
+    //</editor-fold>
 }
