@@ -10,7 +10,7 @@ define([],function(){
         }
 
         this.update = function(user){
-            return Restangular.one('User',user._id).customPUT({_id: user._id,name: user.name,password:user.password,boards:user.boards});
+            return Restangular.one('User',user._id).customPUT({_id: user._id,name: user.name,password:user.password,initials:user.initials,boards:user.boards});
         }
 
         this.get = function(userId){
