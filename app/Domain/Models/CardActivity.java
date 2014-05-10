@@ -1,7 +1,6 @@
 package Domain.Models;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
  */
 public class CardActivity {
 	private String id;
-	private Date date;
+	private Long date;
 	private User initiator;
 	private CardActivityType type;
 	private List<String> info;
@@ -44,11 +43,11 @@ public class CardActivity {
 		this.initiator = initiator;
 	}
 
-	public Date getDate() {
+	public Long getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Long date) {
 		this.date = date;
 	}
 

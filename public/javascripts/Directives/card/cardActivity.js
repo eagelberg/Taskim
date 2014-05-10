@@ -18,7 +18,6 @@ define([], function () {
                     $scope.comment = $scope.activity.info[0];
                 }
 
-
                 // fix date to be of the format example - Feb 14 at 1:28 pm
                 $scope.parsedDate = DateService.parseDate($scope.activity.date);
 

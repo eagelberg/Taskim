@@ -19,7 +19,7 @@
         </div>
 
     </div>
-    <div class="list-group card-list dropdown" ng-style="{'max-height': (maxHeight - 60) + 'px'}" resize>
+    <div class="list-group card-list fancy-scrollbar dropdown" ng-style="{'max-height': (maxHeight - 60) + 'px'}" resize>
         <div class="sort" ui-sortable="sortableOptions" ng-model="deck.cards">
             <div ng-repeat="card in filteredDeckCards = (deck.cards | filter : {title : cardFilter.value})">
                 <card></card>

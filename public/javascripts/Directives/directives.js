@@ -15,9 +15,14 @@ define(['angular',
     'javascripts/directives/card/checklistItem',
     'javascripts/directives/card/cardActivitySection',
     'javascripts/directives/card/cardActionSection',
-    'javascripts/directives/card/cardActivity'],
-    function (angular, deck, card, resize, stopEvent, upLevel, onEnter, onEscape, focusMe, addComponent, autoGrow
-        ,cardDescriptionSection,cardLabelSection,cardChecklistSection,checklistItem,cardActivitySection,cardActionSection,cardActivity) {
+    'javascripts/directives/card/cardActivity',
+    'javascripts/directives/searchBar',
+    'javascripts/directives/sidebar',
+    'javascripts/directives/member',
+    'javascripts/directives/ui/popstar'],
+    function (angular, deck, card, resize, stopEvent, upLevel, onEnter, onEscape, focusMe, addComponent, autoGrow, cardDescriptionSection,
+              cardLabelSection, cardChecklistSection, checklistItem, cardActivitySection, cardActionSection, cardActivity, searchBar,sidebar,
+              member,popstar) {
         'use strict'
 
         angular.module('directives', [])
@@ -37,6 +42,10 @@ define(['angular',
             .directive('checklistItem', checklistItem)
             .directive('cardActivitySection', cardActivitySection)
             .directive('cardActionSection', cardActionSection)
-            .directive('cardActivity', cardActivity);
+            .directive('cardActivity', cardActivity)
+            .directive('searchBar', searchBar)
+            .directive('sidebar', sidebar)
+            .directive('member', member)
+            .directive('popstar', popstar)
 
     });

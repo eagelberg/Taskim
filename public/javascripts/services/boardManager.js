@@ -21,6 +21,14 @@ define([], function(){
             return Restangular.one('Boards',boardId).all('Users').getList();
         }
 
+        this.getAllBoards = function(user){
+
+            // TODO : fetch all user boards from database
+            // this is just a demo for search bar
+            var boardId = '536e4da7a59a875ce79bfdf5';
+            return this.get(boardId);
+        }
+
         this.removeUserFromBoard = function(board,user){
             return board.one('Users',user._id).remove();
         }

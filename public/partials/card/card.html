@@ -1,6 +1,7 @@
-<div class="card list-group-item" ng-click="openModal()">
+<div class="card list-group-item" ng-click="openModal()" ng-mouseover="handleMouseOver()" ng-mouseleave="handleMouseLeave()">
+    <div ng-show="showCardActions">
     <span class="dropDownContainer dropdown" uplevel stop-event>
-        <span class="glyphicon glyphicon-download icon" data-toggle="dropdown" ></span>
+        <span class="glyphicon glyphicon-download icon" data-toggle="dropdown"></span>
         <ul class="dropdown-menu dropdown-menu-right entity-menu" role="menu">
             <!-- TODO : actions are hard coded, should be in a seperate controller (or a global service) -->
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
@@ -8,5 +9,6 @@
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action3</a></li>
         </ul>
     </span>
+    </div>
     <p class="card-title">{{card.title}}</p>
 </div>

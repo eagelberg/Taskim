@@ -8,46 +8,6 @@
     float: right;
 }
 
-.deck {
-    width: 300px;
-    float: left;
-    background: none repeat scroll 0% 0% rgb(219, 219, 219);
-    margin: 0px 0px;
-    margin-left: 8px;
-    border-radius: 3px;
-    padding: 4px 3px 3px;
-    overflow-y: visible;
-    position: relative;
-}
-
-.deck-menu {
-    left: 50px;
-    width: 200px;
-}
-
-.card {
-    border-radius: 3px;
-    word-wrap: break-word;
-    overflow-x: visible;
-    width: 100%;
-    margin: 3px;
-    box-shadow: 1px 1px 1px #b7b7b7;
-}
-
-.card-placeholder {
-    margin-bottom: 3px;
-    border-radius: 3px;
-    word-wrap: break-word;
-    overflow-x: visible;
-    width: 100%;
-    opacity: 0.8;
-}
-
-.card:hover {
-    background: #f5f5f5;
-    cursor: pointer;
-}
-
 .icon {
     color: #7A7A7A;
 }
@@ -100,6 +60,7 @@
 .card-list {
     overflow: visible;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .card-title {
@@ -157,9 +118,95 @@
     box-shadow: none;
 }
 
+.navbar-wrapper {
+    background: #27709b;
+    background: -webkit-linear-gradient(top, #27709b 0, #24688f 100%);
+    background: linear-gradient(to bottom, #27709b 0, #24688f 100%);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
+    height: 45px;
+}
+
+/* --- fancy scrollbar --- */
+.fancy-scrollbar {
+    -webkit-overflow-scrolling: touch;
+}
+
+.fancy-scrollbar::-webkit-scrollbar {
+    height: 11px;
+    width: 11px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-button:start:decrement, .fancy-scrollbar::-webkit-scrollbar-button:end:increment {
+    background: transparent;
+    display: none;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track-piece {
+    background: #d0d0d0;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track-piece:vertical:start {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track-piece:vertical:end {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track-piece:horizontal:start {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 5px;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-track-piece:horizontal:end {
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0;
+}
+
+.fancy-scrollbar::-webkit-scrollbar-thumb:vertical, .fancy-scrollbar::-webkit-scrollbar-thumb:horizontal {
+    background: #999;
+    border-radius: 5px;
+    display: block;
+    height: 50px;
+}
+
 /* --- global styles ---  */
 body {
     background-color: #23719f;
+    overflow: hidden;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    line-height: 18px;
+    color: #393939;
+}
+
+h1 {
+    font-size: 22px;
+    line-height: 1.2em;
+    margin: 0 0 10px
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 1.2em;
+    margin: 0 0 9px
+}
+
+h3, h4, h5, h6 {
+    font-size: 16px;
+    line-height: 1.25em;
+    font-weight: bold;
+    margin: 0 0 6px
 }
 
 .header{
@@ -193,6 +240,23 @@ body {
 
 /* --- deck related --- */
 
+.deck {
+    width: 300px;
+    float: left;
+    background: none repeat scroll 0% 0% rgb(219, 219, 219);
+    margin: 0px 0px;
+    margin-left: 8px;
+    border-radius: 3px;
+    padding: 4px 3px 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.deck-menu {
+    left: 50px;
+    width: 200px;
+}
+
 .deck-title-container {
     font-size: 18px;
     font: Consolas, "Liberation Mono", Courier, monospace;
@@ -210,6 +274,30 @@ body {
 }
 
 /* --- card related --- */
+
+.card {
+    border-radius: 3px;
+    word-wrap: break-word;
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+    margin: 3px;
+    box-shadow: 1px 1px 1px #b7b7b7;
+}
+
+.card-placeholder {
+    margin-bottom: 3px;
+    border-radius: 3px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    width: 100%;
+    opacity: 0.8;
+}
+
+.card:hover {
+    background: #f5f5f5;
+    cursor: pointer;
+}
 
 .card-description-container {
     margin: 1em;
@@ -259,7 +347,22 @@ body {
     width: 30%;
 }
 
-.global-filter-container {
+.search-result-title {
+    margin: 6px 8px;
+    min-height: 18px;
+    padding: 0;
+}
+
+.search-section-container {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.search-result-container {
+    display: block;
+}
+
+.search-bar-container {
     display: inline-block;
     width: 15%;
     border-radius: 3em;
@@ -432,11 +535,160 @@ body {
     display: inline-block;
 }
 
+.activities-container {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    padding: 2px 8px 0 0;
+    -webkit-transition: max-height 150ms ease-in;
+    transition: max-height 150ms ease-in;
+}
+
+/* --- popstar related --- */
+.popstar {
+    background: #fff;
+    border: 1px solid #b9b9b9;
+    border-radius: 3px;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+    position: absolute;
+    right: -9999px;
+    top: -9999px;
+    width: 270px;
+    z-index: 20;
+    max-height: 450px;
+}
+
+/* --- sidebar related --- */
+
+.sidebar {
+    background: #f0f0f0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    bottom: 0;
+    padding: 12px 6px 0 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    /*-webkit-transition-property: -webkit-transform, width;*/
+    /*transition-property: transform, width;*/
+    /*-webkit-transition-duration: 300ms;*/
+    /*transition-duration: 300ms;*/
+    /*-webkit-transition-timing-function: ease-in;*/
+    /*transition-timing-function: ease-in;*/
+    /*-ms-transform: translateX(0);*/
+    /*-webkit-transform: translateX(0);*/
+    /*transform: translateX(0);*/
+    width: 246px;
+    z-index: 5;
+}
+
+.sidebar-section {
+    border-bottom: 1px solid #dcdcdc;
+    margin: 2px;
+}
+
+.sidebar-content {
+    overflow: hidden;
+}
+
+.sidebar-hide-btn {
+    height: 52px;
+    left: -32px;
+    overflow: hidden;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    z-index: 6;
+    width: 32px;
+}
+
+.sidebar-show-btn {
+    border-radius: 3px;
+    color: #f6f6f6;
+    display: none;
+    height: 42px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 4;
+    width: 30px;
+}
+
+.sidebar-hide-btn .spanned-icon {
+    background: #f0f0f0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 3px;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 30px;
+    margin: 6px 0 0 12px;
+    padding: 6px 4px 6px 6px;
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 26px;
+}
+
+.spanned-icon {
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    width: 18px;
+    color: #9c9c9c;
+}
+
+.dark-hover:hover {
+    color: #686868;
+    text-decoration: none
+}
+
 /* --- from trello core.css --- */
 
-/*.card-description {*/
-/*width: 400px;*/
-/*}*/
+.button-link {
+    background: #fff;
+    background: -webkit-linear-gradient(top, #fff 0, #f0f0f0 100%);
+    background: linear-gradient(to bottom, #fff 0, #f0f0f0 100%);
+    border-radius: 3px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #d6d6d6;
+    border-bottom-color: #bdbdbd;
+    cursor: pointer;
+    display: block !important;
+    font-weight: bold;
+    color: #464646;
+    margin-top: 6px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px;
+    text-decoration: none !important;
+    text-overflow: ellipsis;
+}
+
+.button-link:hover {
+    background: #318ec4;
+    background: -webkit-linear-gradient(top, #318ec4 0, #2b7cab 100%);
+    background: linear-gradient(to bottom, #318ec4 0, #2b7cab 100%);
+    border-color: #2e85b8;
+    text-decoration: none !important;
+    color: #fff;
+}
 
 .checklist-item-checkbox {
     background: #fff;
@@ -508,6 +760,7 @@ body {
     resize: vertical
 }
 
+/* --- member related --- */
 .member-initials {
     display: inline;
     font-size: 12px;
@@ -522,6 +775,46 @@ body {
     width: 100%;
 }
 
+.member-status-active {
+    background: #64c464;
+    background: -webkit-linear-gradient(top, #64c464 0, #3fa63f 100%);
+    background: linear-gradient(to bottom, #64c464 0, #3fa63f 100%);
+    border-color: #daf1da
+}
+
+.member-status-idle {
+    background: #e4e467;
+    background: -webkit-linear-gradient(top, #e4e467 0, #c3c322 100%);
+    background: linear-gradient(to bottom, #e4e467 0, #c3c322 100%);
+    border-color: #f7f7d4
+}
+
+.member-status-disconnected {
+    background: #bdbdbd;
+    background: -webkit-linear-gradient(top, #bdbdbd 0, #9e9e9e 100%);
+    background: linear-gradient(to bottom, #bdbdbd 0, #9e9e9e 100%);
+    border-color: #ededed
+}
+
+.member-status {
+    background-color: #b3b3b3;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    bottom: 1px;
+    -webkit-box-shadow: 0 1px 0px hsla(0, 0%, 0%, 0.3);
+    box-shadow: 0 1px 0px hsla(0, 0%, 0%, 0.3);
+    height: 8px;
+    position: absolute;
+    right: 1px;
+    width: 8px;
+    z-index: 3;
+}
+
+.member-panel {
+    display: flex;
+}
+
+/* --- comment related --- */
 .new-comment-section {
     display: block;
     margin-bottom: 2em;
@@ -566,6 +859,7 @@ body {
     background-color: #c7c7c7;
     border-radius: 3px;
     color: #444;
+    position: relative;
     text-align: center;
     float: left;
     height: 30px;
@@ -647,21 +941,6 @@ body {
     padding: 6px;
 }
 
-.pop-over {
-    background: #fff;
-    border: 1px solid #b9b9b9;
-    border-radius: 3px;
-    display: none;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 8px;
-    position: absolute;
-    right: -9999px;
-    top: -9999px;
-    width: 270px;
-    z-index: 20;
-}
-
 .card-label-selectable {
     border-radius: 3px;
     color: #eee;
@@ -675,3 +954,4 @@ body {
     -webkit-transition-delay: .05s;
     transition-delay: .05s;
 }
+

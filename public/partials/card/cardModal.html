@@ -19,16 +19,7 @@
             <card-checklist-section></card-checklist-section>
 
             <!-- activity section -->
-            <card-activity-section></card-activity-section>
-
-            <!-- comments section -->
-            <div class="card-comments">
-                <h4>Comments</h4>
-
-                <div ng-repeat="comment in card.comments">
-                    {{comment.content}}
-                </div>
-            </div>
+            <card-activity-section context = 'card' active-user="activeUser" activities="card.activities" card="card"></card-activity-section>
 
         </div>
 

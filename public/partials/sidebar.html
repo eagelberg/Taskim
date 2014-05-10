@@ -1,0 +1,56 @@
+<div id="sidebar" ng-show='ShowSidebar' class="sidebar">
+    <a href="#" class="sidebar-hide-btn dark-hover"
+       title="close the board sidebar" ng-click="closeSidebar()">
+        <span class="spanned-icon glyphicon glyphicon-play"></span>
+    </a>
+
+    <div class="sidebar-content">
+
+        <div class="sidebar-section">
+            <h3>Menu</h3>
+        </div>
+
+        <div class="sidebar-section">
+
+            <h3>Members</h3>
+
+            <div class="member-panel">
+                <div ng-repeat="boardMember in boardMembers">
+                    <span><member id='member{{$index}}' context="member-panel" user="boardMember"
+                                  ng-click="toggleMemberInfo()"></member></span>
+                </div>
+
+                <popstar ng-if='showMemberInfo' show-popstar-value="showMemberInfo"
+                         popstar-id="member" popstar-max-width="100" target-id="member0">
+                    <div>
+                        {{ boardMember.name }}
+                    </div>
+                </popstar>
+            </div>
+
+            <a id="newMemberBtn" href="#" class="button-link" ng-click="toggleNewMemberDialog()">
+                <span class="spanned-icon glyphicon glyphicon-user"></span> Add Members…
+            </a>
+
+            <popstar ng-if='showNewMemberDialog' show-popstar-value="showNewMemberDialog" matchTarget="true"
+                     popstar-id="newMemberDialog" popstar-max-width="200" target-id="newMemberBtn">
+                <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
+                       typeahead="member as member.name for member in getMembers($viewValue)"
+                       typeahead-min-length="2" typeahead-on-select="acceptMember()">
+            </popstar>
+
+        </div>
+
+        <div class="sidebar-section">
+            <card-activity-section context='sidebar' activities="boardActivities">
+            </card-activity-section>
+        </div>
+    </div>
+
+
+</div>
+
+<div ng-show='!ShowSidebar'>
+    <a href="#" class="sidebar-show-btn dark-hover" ng-click="toggleSidebar()">
+        Show sidebar</a>
+</div>

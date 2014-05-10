@@ -1,0 +1,5 @@
+<div class="member {{memberStyle}}">
+    <span class="member-initials" title="{{user.name}}"> {{ user.initials }} </span>
+    <span ng-if="context==='member-panel'" class="member-status member-status-{{user.status}}"
+          title="This member is {{user.status}}"></span>
+</div>

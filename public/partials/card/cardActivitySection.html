@@ -6,40 +6,26 @@
     </div>
 </div>
 
-<div class="new-comment-section">
-    <div class="member">
-        <div class="member-initials weak-opacity">
-            {{ activeUser.initials }}
-        </div>
-    </div>
+<div class="new-comment-section" ng-show="context === 'card'">
+
+    <member context='activity' member-style='weak-opacity' user='activeUser'></member>
 
     <add-component edited-input="comment" input-style="textarea" text-area-rows="2" on-save-title="comment"
                    trigger-title="Write a comment.."
                    close-on-save="true" trigger-style-container="new-comment-input"
-                   callback-function="addActivityComment(card,comment)">
+                   callback-function="addActivityComment(comment)">
     </add-component>
 </div>
 
-<div ng-repeat="activity in card.activities | orderBy:'date':true">
-    <div class="member">
-        <div class="member-initials">
-            {{ activity.initiator.initials }}
+<div class="activities-container fancy-scrollbar" ng-style="{height : fixedHeight}">
+    <div ng-repeat="activity in activities | orderBy:'date':true">
+
+        <member context="activity" user="activity.initiator"></member>
+
+        <div class="activity-container">
+            <card-activity></card-activity>
         </div>
     </div>
-
-    <div class="activity-container">
-        <card-activity></card-activity>
-     </div>
-
 </div>
 
-
-<!-- comments section -->
-<div class="card-comments">
-    <h4>Comments</h4>
-
-    <div ng-repeat="comment in card.comments">
-        {{comment.content}}
-    </div>
-</div>
 </div>

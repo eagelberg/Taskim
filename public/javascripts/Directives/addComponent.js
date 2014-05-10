@@ -18,6 +18,7 @@ define([], function () {
 
                 // defulat variables
                 var defaultTriggerContainer = 'default-add-component-trigger';
+
                 // initialize scope variables
                 $scope.editMode = false;
                 $scope.inputFocused = false;

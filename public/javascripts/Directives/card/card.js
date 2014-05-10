@@ -9,6 +9,16 @@ define([], function () {
                 // TODO : should be a seperate controller here instead of inline
                 // this is a very important and crucial controller
 
+                $scope.showCardActions = false;
+
+                $scope.handleMouseOver = function () {
+                    $scope.showCardActions = true;
+                }
+
+                $scope.handleMouseLeave = function () {
+                    $scope.showCardActions = false;
+                }
+
                 $scope.openModal = function () {
                     var modalInstance = $modal.open({
                         templateUrl: '/assets/partials/card/cardModal.html',
@@ -41,6 +51,11 @@ define([], function () {
                                 initials: 'IM'
                             }
 
+                            var guy = {
+                                name: 'Guy Eagelberg',
+                                initials: 'GE'
+                            }
+
                             // set active user
                             // TODO : this varibale should be visible by all (rootScope?)
                             $scope.activeUser = micha;
@@ -54,18 +69,6 @@ define([], function () {
                                 })
                             }
 
-                            $scope.addChecklistItem = function (card, checklist, newItemName) {
-                                card.checklists.forEach(function (scannedChecklist) {
-                                    if (scannedChecklist.title === checklist.title) {
-                                        checklist.items.push({
-                                            name: newItemName,
-                                            value: false
-                                        })
-                                    }
-                                });
-
-                                //$scope.updateCompleted(checklist);
-                            };
 
                             // TODO : move this function to the progress bar directive controller
                             $scope.updateCompleted = function (checklist) {
@@ -155,7 +158,7 @@ define([], function () {
                                 return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
                             }
 
-                            $scope.addActivity = function (card, activityInfo, initiator, type) {
+                            var addActivity = function (card, activityInfo, initiator, type) {
 
                                 var randDate = randomDate(new Date(2012, 0, 1), new Date());
 
@@ -167,17 +170,8 @@ define([], function () {
                                 });
                             }
 
-                            $scope.addActivityComment = function (card, comment) {
-                                var now = new Date();
-                                card.activities.push({
-                                    date: now.getTime(),
-                                    initiator: $scope.activeUser,
-                                    info: [comment],
-                                    type: 'comment'
-                                });
 
-                                console.log("added comment : " + comment);
-                            }
+
 
                             $scope.updateActivityInfo = function (card) {
 
@@ -207,9 +201,9 @@ define([], function () {
                             $scope.card.labels.push(demoLabel2);
 
                             // add demo activities
-                            $scope.addActivity(card, ['moved stuff to other stuff'], itay, 'activity');
-                            $scope.addActivity(card, ['I am itay!'], itay, 'comment');
-                            $scope.addActivity(card, ['completed classified mission', 'bragged about it'], micha, 'activity');
+                            addActivity(card, ['moved stuff to other stuff'], itay, 'activity');
+                            addActivity(card, ['I am itay!'], itay, 'comment');
+                            addActivity(card, ['completed classified mission', 'bragged about it'], micha, 'activity');
 
                             console.log("board=");
                             console.log(board);
