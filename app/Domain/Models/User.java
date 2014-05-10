@@ -21,16 +21,13 @@ public class User {
 	}
 
 	//<editor-fold desc="Getters and Setters">
-	public void setBoards(List<String> boards) {
-		this.boards = boards;
+
+	public void addBoard(String boardId) {
+		boards.add(boardId);
 	}
 
-	public void addBoard(Board board) {
-		boards.add(board.getId());
-	}
-
-	public void removeBoard(Board board) {
-		boards.remove(board);
+	public void removeBoard(String boardId) {
+		boards.remove(boardId);
 	}
 
 	public String getName() {

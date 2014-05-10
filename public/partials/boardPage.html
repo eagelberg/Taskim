@@ -8,21 +8,26 @@
         </div>
 
         <input type="text"
-               class="form-control card-filter-container"
+               class="form-control card-filter-container col-lg-2"
                placeholder="filter cards"
                focusMe="focusCardFilter"
                ng-model="cardFilter.value"/>
 
-        <div class="board-options">
-            <a href="#" ng-click="collapse()">show archived decks</a>
-        </div>
+        <div class="board-options col-lg-2">
+            <div class="row">
+                <a href="#" ng-click="collapse()">show archived decks</a>
+            </div>
 
-        <div class="col-lg-offset-10 col-lg-2">
             <h3>Members</h3>
 
             <div class="board-members-section row col-lg-12">
-                <div ng-repeat="user in boardUsers" class="col-lg-3 board-user-container">
-                    <div class="member member-initials" title="{{user.name}}">{{user.initials}}</div>
+                <div ng-repeat="user in boardUsers" class="col-lg-3 board-user-container dropDownContainer dropdown">
+                    <div class="member member-initials" data-toggle="dropdown" title="{{user.name}}">
+                        {{user.initials}}
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-left entity-menu">
+                        <li ng-click="removeUser(user)" ng-show="isCurrentUserAdmin() && isCurrentMemberNotAdmin(user)"><a href="#">Remove from board</a></li>
+                    </ul>
                 </div>
             </div>
 

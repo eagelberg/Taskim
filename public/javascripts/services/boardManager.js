@@ -20,6 +20,10 @@ define([], function(){
         this.getBoardUsers = function(boardId){
             return Restangular.one('Boards',boardId).all('Users').getList();
         }
+
+        this.removeUserFromBoard = function(board,user){
+            return board.one('Users',user._id).remove();
+        }
     }
 });
 

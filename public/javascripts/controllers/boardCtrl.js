@@ -1,6 +1,6 @@
 define([], function () {
-    return ['$scope', 'boardManager', '$window', '$stateParams', 'userManager',
-        function ($scope, boardManager, $window, $stateParams, userManager) {
+    return ['$scope', 'boardManager', '$window', '$stateParams', 'userManager','loggedUserService',
+        function ($scope, boardManager, $window, $stateParams, userManager,loggedUserService) {
             $scope.board = {};
             $scope.canvasWidth = 100;
             $scope.isCollapsed = false;
@@ -38,6 +38,21 @@ define([], function () {
 
                 $scope.memberToAdd = "";
                 $scope.addMemberClicked();
+            }
+
+            $scope.removeUser = function(user){
+                boardManager.removeUserFromBoard($scope.board,user).then(function(){
+                    $scope.getBoard($stateParams.id);
+                    $scope.getBoardMembers($stateParams.id);
+                });
+            }
+
+            $scope.isCurrentUserAdmin = function(){
+                return loggedUserService.loggedUser._id == $scope.board.adminId;
+            }
+
+            $scope.isCurrentMemberNotAdmin = function(user){
+                return user._id != $scope.board.adminId;
             }
 
             $scope.archiveDeck = function (deck) {
