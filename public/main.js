@@ -12,10 +12,11 @@ require.config({
         'restangular' : 'library/restangular',
         'controllers' : 'javascripts/controllers/controllers',
         'services' : 'javascripts/services/services',
-        'directives' : 'javascripts/directives/directives'
+        'directives' : 'javascripts/directives/directives',
+        'sortable': 'library/sortable'
     },
     shim: {
-        'angular' : {'exports' : 'angular'},
+        'angular' : {'exports' : 'angular', 'deps': ['jquery', 'jquery-ui', 'bootstrap']},
         'angularRoute': ['angular'],
         'angularMocks': {
             'deps':['angular'],
@@ -30,7 +31,7 @@ require.config({
         'library/angular-dragdrop' : ['angular'],
         'library/ui-bootstrap-tpls-0.10.0.min' : ['angular'],
         'jquery': {exports: 'jQuery'},
-        'library/sortable' : ['angular'],
+        'sortable' : ['angular'],
         'library/angular-strap' : ['angular']
     },
     priority: [

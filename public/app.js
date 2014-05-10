@@ -7,7 +7,7 @@ define([
     'library/ui-bootstrap-tpls-0.10.0.min',
     'library/angular-dragdrop',
     'bootstrap',
-    'library/sortable',
+    'sortable',
     'jquery-ui',
     'library/jquery-1.11.0',
     'controllers',
