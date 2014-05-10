@@ -8,16 +8,16 @@
         </div>
 
         <input type="text"
-               class="form-control card-filter-container"
+               class="form-control card-filter-container col-lg-2"
                placeholder="filter cards"
                focusMe="focusCardFilter"
                ng-model="cardFilter.value"/>
 
-        <div class="board-options">
-            <a href="#" ng-click="collapse()">show archived decks</a>
-        </div>
+        <div class="board-options col-lg-2">
+            <div class="row">
+                <a href="#" ng-click="collapse()">show archived decks</a>
+            </div>
 
-        <div class="col-lg-offset-10 col-lg-2">
             <h3>Members</h3>
 
             <div class="board-members-section row col-lg-12">
