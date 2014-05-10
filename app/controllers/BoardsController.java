@@ -1,8 +1,6 @@
 package controllers;
 
-import Domain.Models.Board;
-import Domain.Models.Card;
-import Domain.Models.Deck;
+import Domain.Models.*;
 import Domain.Services.BoardsRepository;
 import Domain.Services.IBoardsRepository;
 import Domain.Services.IUserRepository;
@@ -24,12 +22,14 @@ public class BoardsController extends Controller {
     private IBoardsRepository repository;
     private IJsonMapper jsonMapper;
     private IUserRepository userRepository;
+    private IActiveUser activeUser;
 
     @Inject
-    public BoardsController(IBoardsRepository repository, IJsonMapper jsonMapper,IUserRepository userRepository) {
+    public BoardsController(IBoardsRepository repository, IJsonMapper jsonMapper,IUserRepository userRepository,IActiveUser activeUser) {
         this.repository = repository;
         this.jsonMapper = jsonMapper;
         this.userRepository = userRepository;
+        this.activeUser = activeUser;
     }
 
     public Result get(String id) {
@@ -85,5 +85,18 @@ public class BoardsController extends Controller {
     public Result getAllUsers(String id){
         Board board = repository.getById(id);
         return ok(jsonMapper.toJson(userRepository.getAllByIds(board.getUsers())));
+    }
+
+    public Result removeUserFromBoard(String boardId,String userId){
+        User user = userRepository.getById(userId);
+        Board board = repository.getById(boardId);
+        if ((board != null) && (user != null) && (activeUser.get().getId().equals(board.getAdminId())) && (!board.getAdminId().equals(userId))){
+            board.removeUser(userId);
+            repository.save(board);
+            user.removeBoard(boardId);
+            userRepository.save(user);
+            return ok();
+        }
+        return badRequest("");
     }
 }

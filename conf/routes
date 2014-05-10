@@ -3,26 +3,29 @@
 # ~~~~
 
 # Boards
-GET    /Boards                      @controllers.BoardsController.all()
-GET    /Boards/:id                  @controllers.BoardsController.get(id: String)
-GET    /Boards/:id/Users            @controllers.BoardsController.getAllUsers(id: String)
+GET    /Boards                       @controllers.BoardsController.all()
+GET    /Boards/:id                   @controllers.BoardsController.get(id: String)
+GET    /Boards/:id/Users             @controllers.BoardsController.getAllUsers(id: String)
 
-PUT   /Boards/:id                   @controllers.BoardsController.update(id: String)
+PUT   /Boards/:id                    @controllers.BoardsController.update(id: String)
 
-POST  /Boards                       @controllers.BoardsController.create()
+POST  /Boards                        @controllers.BoardsController.create()
+
+DELETE /Boards/:boardId/Users/:userId @controllers.BoardsController.removeUserFromBoard(boardId: String,userId: String)
 #User
-GET   /UserLogin                    @controllers.UserController.login(name: String ?= "",password: String ?= "")
-GET   /User/:id/Boards              @controllers.UserController.getUserBoards(id: String)
-GET   /User/:id                     @controllers.UserController.getUser(id: String)
-GET   /User                         @controllers.UserController.getUsersByFilter(name: String ?= "")
+GET   /UserLogin                     @controllers.UserController.login(name: String ?= "",password: String ?= "")
+GET   /User/:id/Boards               @controllers.UserController.getUserBoards(id: String)
+GET   /User/:id                      @controllers.UserController.getUser(id: String)
+GET   /User                          @controllers.UserController.getUsersByFilter(name: String ?= "")
 
 
-POST  /User                         @controllers.UserController.create()
-PUT   /User/:id                     @controllers.UserController.update(id: String)
+
+POST  /User                          @controllers.UserController.create()
+PUT   /User/:id                      @controllers.UserController.update(id: String)
 # Home page
-GET     /                           @controllers.Application.main(any = "none")
+GET     /                            @controllers.Application.main(any = "none")
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file                controllers.Assets.at(path="/public", file)
 
-GET     /*any                       @controllers.Application.main(any)
+GET     /*any                        @controllers.Application.main(any)

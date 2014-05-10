@@ -162,6 +162,14 @@ body {
     background-color: #23719f;
 }
 
+.header{
+    background-color: rgba(29, 71, 109, 0.5);
+}
+
+.taskim-brand{
+    color: rgb(176, 176, 176);
+}
+
 .weak-opacity {
     opacity: .5 !important;
 }

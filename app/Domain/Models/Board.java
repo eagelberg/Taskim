@@ -76,6 +76,10 @@ public class Board  {
         this.users.add(users);
     }
 
+    public void removeUser(String userId){
+        users.remove(userId);
+    }
+
     public String getAdminId() {
         return adminId;
     }

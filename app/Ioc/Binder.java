@@ -1,5 +1,7 @@
 package Ioc;
 
+import Domain.Models.ActiveUser;
+import Domain.Models.IActiveUser;
 import Domain.Services.BoardsRepository;
 import Domain.Services.IBoardsRepository;
 import Domain.Services.IUserRepository;
@@ -23,5 +25,6 @@ public class Binder extends AbstractModule{
         bind(IJsonMapper.class).to(JacksonJsonMapper.class);
         bind(IBoardsRepository.class).to(BoardsRepository.class);
         bind(IUserRepository.class).to(UserRepository.class);
+        bind(IActiveUser.class).to(ActiveUser.class);
     }
 }
