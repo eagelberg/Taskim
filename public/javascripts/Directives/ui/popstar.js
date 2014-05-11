@@ -1,4 +1,4 @@
-define(['jquery', 'modal-popover'], function ($) {
+define(['jquery'], function ($) {
         return function () {
             return {
                 restrict: 'AE',
@@ -9,20 +9,22 @@ define(['jquery', 'modal-popover'], function ($) {
                     targetId: '@',
                     popstarId: '@',
                     matchTarget: '@',
-                    popstarMaxWidth: '@'
+                    popstarMaxWidth: '@',
+                    popstarAlign: '@',
+                    popstarTitle: '@'
                 },
                 link: function (scope, element, attrs) {
-
-
                     //defaults
                     var defaultTarget = 'target';
                     var defaultPopstar = 'popstar';
-                    var defaultMatchTarget = false;
+                    var defaultMatchTarget = 'false';
                     var defaultMaxWidth = 270;
+                    var defaultAlign = 'left';
 
                     // scope variables
                     scope.toggle = false;
                     scope.showTitle = true;
+                    scope.hasTitle = true;
                     scope.fixedDisplay = 'none';
                     scope.fixedTop = 0;
                     scope.fixedLeft = 0;
@@ -44,24 +46,56 @@ define(['jquery', 'modal-popover'], function ($) {
                     }
 
                     if (typeof scope.popstarMaxWidth === 'undefined') {
-                        scope.fixedWidth = defaultMaxWidth;
+                        scope.popstarMaxWidth = defaultMaxWidth;
+                    }
+
+                    if (typeof scope.popstarAlign === 'undefined') {
+                        scope.popstarAlign = defaultAlign;
+                    }
+
+                    if (typeof scope.popstarTitle === 'undefined') {
+                        scope.hasTitle = false;
                     }
 
                     // fix popstar position
                     var popstar = $(scope.popstarIdRep);
-
                     var target = $(scope.targetIdRep);
-                    var targetPosition = target.offset();
+
+                    console.log('--- ' + scope.targetId + ' ---');
+
                     var targetHeight = target[0].offsetHeight;
-                    var targetWidth = target.width();
-                    scope.fixedLeft = targetPosition.left;
-                    scope.fixedTop = targetPosition.top + targetHeight + 20;
+                    console.log('targetHeight = ' + targetHeight);
+
+                    var targetWidth = target[0].offsetWidth;
+                    console.log('targetWidth = ' + targetWidth);
+
+                    var targetLeft = target[0].offsetLeft;
+                    console.log('targetLeft = ' + targetLeft);
+
+                    var targetTop = target[0].offsetTop;
+                    console.log('targetTop = ' + targetTop);
+
+                    // handle width
                     scope.fixedWidth = scope.popstarMaxWidth;
 
                     if (scope.matchTarget === 'true') {
-                        console.log(popstar[0]);
+                        console.log('matchTarget to : ' + targetWidth);
                         scope.fixedWidth = targetWidth;
                     }
+
+                    // handle left
+                    if (scope.popstarAlign === 'center') {
+                        scope.fixedLeft = targetLeft + targetWidth / 2 - scope.fixedWidth / 2;
+
+                    } else if (scope.popstarAlign === 'left') {
+                        scope.fixedLeft = targetLeft;
+                    }
+
+                    // handle top
+                    scope.fixedTop = targetTop + targetHeight + 2;
+
+                    console.log('fixedWidth = ' + scope.fixedWidth + ',fixedLeft = ' + scope.fixedLeft + ',fixedTop = ' + scope.fixedTop);
+
 
                 },
                 controller: function ($scope) {
@@ -86,6 +120,10 @@ define(['jquery', 'modal-popover'], function ($) {
 
                     $scope.handleBlur = function () {
                         //hidePopstar();
+                    }
+
+                    $scope.handleClose = function () {
+                        hidePopstar();
                     }
 
                     var showPopstar = function () {

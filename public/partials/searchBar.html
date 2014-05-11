@@ -4,7 +4,7 @@
        ng-model="searchQuery"/>
 
 <popstar ng-if='showSearchResults' show-popstar-value="showSearchResults"
-                popstar-id="search" target-id="searchBar">
+                popstar-id="search" target-id="searchBar" match-target="true">
 
     <div>
         <h3 ng-show="searchQuery.length > 0 && (filteredBoards.length + filteredCards.length + filteredChecklists.length) === 0">

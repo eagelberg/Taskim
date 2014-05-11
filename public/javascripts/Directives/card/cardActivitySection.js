@@ -11,11 +11,7 @@ define(['jquery'], function ($) {
             },
             link: function (scope) {
                 var sidebar = $('#sidebar');
-                scope.fixedHeight = sidebar.height() * 0.8;
-                console.log('offsetHeight1 = ' + sidebar.offsetHeight);
-                console.log('offsetHeight2 = ' + sidebar[0].offsetHeight);
-                console.log('offsetHeight3 = ' + sidebar.attr('offsetHeight'));
-                console.log(sidebar);
+                scope.fixedHeight = sidebar[0].offsetHeight * 0.8;
             },
             controller: function ($scope) {
 

@@ -209,11 +209,11 @@ h3, h4, h5, h6 {
     margin: 0 0 6px
 }
 
-.header{
+.header {
     background-color: rgba(29, 71, 109, 0.5);
 }
 
-.taskim-brand{
+.taskim-brand {
     color: rgb(176, 176, 176);
 }
 
@@ -558,6 +558,37 @@ h3, h4, h5, h6 {
     width: 270px;
     z-index: 20;
     max-height: 450px;
+}
+
+.popstar-header {
+    height: 26px;
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.popstar-title {
+    color: #939393;
+    font-weight: bold;
+    line-height: 21px;
+    overflow: hidden;
+    padding: 0 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 220px;
+}
+
+.popstar-close-btn {
+    padding: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.popstar-close-btn:hover {
+    color:#000000;
+    text-decoration: none !important;
 }
 
 /* --- sidebar related --- */

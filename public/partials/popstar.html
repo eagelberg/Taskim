@@ -1,4 +1,10 @@
 <div id="{{popstarId}}" class="popstar fancy-scrollbar" ng-blur="handleBlur()"
-     ng-style="{display:fixedDisplay,left:fixedLeft,top:fixedTop,width:fixedMaxWidth}">
+     ng-style="{display:fixedDisplay,top:fixedTop,left:fixedLeft,width:fixedWidth}">
+    <div ng-show="hasTitle" class="popstar-header">
+        <a class="popstar-close-btn" href="#" ng-click="handleClose()">
+            <span class="spanned-icon glyphicon glyphicon-remove"></span>
+        </a>
+        <span class="popstar-title">{{popstarTitle}}</span>
+    </div>
     <div ng-transclude></div>
 </div>

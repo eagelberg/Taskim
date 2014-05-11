@@ -20,7 +20,7 @@
                                   ng-click="toggleMemberInfo()"></member></span>
                 </div>
 
-                <popstar ng-if='showMemberInfo' show-popstar-value="showMemberInfo"
+                <popstar ng-if='showMemberInfo' show-popstar-value="showMemberInfo" popstar-offset="false"
                          popstar-id="member" popstar-max-width="100" target-id="member0">
                     <div>
                         {{ boardMember.name }}
@@ -29,13 +29,13 @@
             </div>
 
             <div id="newMemberBtn">
-                <a  href="#" class="button-link" ng-click="toggleNewMemberDialog()">
+                <a href="#" class="button-link" ng-click="toggleNewMemberDialog()">
                     <span class="spanned-icon glyphicon glyphicon-user"></span> Add Members…
                 </a>
             </div>
 
-            <popstar ng-if='showNewMemberDialog' show-popstar-value="showNewMemberDialog" matchTarget="true"
-                     popstar-id="newMemberDialog" popstar-max-width="200" target-id="newMemberBtn">
+            <popstar ng-if='showNewMemberDialog' show-popstar-value="showNewMemberDialog" match-target="true"
+                     popstar-offset="false" popstar-max-width="200" popstar-id="newMemberDialog" popstar-max-width="200" target-id="newMemberBtn">
                 <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
                        typeahead="member as member.name for member in getMembers($viewValue)"
                        typeahead-min-length="2" typeahead-on-select="acceptMember()">
