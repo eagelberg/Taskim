@@ -9,7 +9,7 @@ define(['jquery', 'modal-popover'], function ($) {
                     targetId: '@',
                     popstarId: '@',
                     matchTarget: '@',
-                    popstarMaxWidth : '@'
+                    popstarMaxWidth: '@'
                 },
                 link: function (scope, element, attrs) {
 
@@ -51,8 +51,8 @@ define(['jquery', 'modal-popover'], function ($) {
                     var popstar = $(scope.popstarIdRep);
 
                     var target = $(scope.targetIdRep);
-                    var targetPosition = target.position();
-                    var targetHeight = target.height();
+                    var targetPosition = target.offset();
+                    var targetHeight = target[0].offsetHeight;
                     var targetWidth = target.width();
                     scope.fixedLeft = targetPosition.left;
                     scope.fixedTop = targetPosition.top + targetHeight + 20;
@@ -84,7 +84,7 @@ define(['jquery', 'modal-popover'], function ($) {
                         }
                     }
 
-                    $scope.handleBlur = function(){
+                    $scope.handleBlur = function () {
                         //hidePopstar();
                     }
 

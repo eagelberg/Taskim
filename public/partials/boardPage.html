@@ -26,7 +26,8 @@
                         {{user.initials}}
                     </div>
                     <ul class="dropdown-menu dropdown-menu-left entity-menu">
-                        <li ng-click="removeUser(user)" ng-show="isCurrentUserAdmin() && isCurrentMemberNotAdmin(user)"><a href="#">Remove from board</a></li>
+                        <li ng-click="removeUser(user)" ng-show="isCurrentUserAdmin() && isCurrentMemberNotAdmin(user)">
+                            <a href="#">Remove from board</a></li>
                     </ul>
                 </div>
             </div>
@@ -58,6 +59,8 @@
 
     </div>
     <!--<div collapse="isCollapsed" class="collapse">-->
-        <!--<div>hidden content</div>-->
+    <!--<div>hidden content</div>-->
     <!--</div>-->
 </div>
+
+<sidebar></sidebar>

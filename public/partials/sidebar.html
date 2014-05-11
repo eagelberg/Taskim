@@ -28,9 +28,11 @@
                 </popstar>
             </div>
 
-            <a id="newMemberBtn" href="#" class="button-link" ng-click="toggleNewMemberDialog()">
-                <span class="spanned-icon glyphicon glyphicon-user"></span> Add Members…
-            </a>
+            <div id="newMemberBtn">
+                <a  href="#" class="button-link" ng-click="toggleNewMemberDialog()">
+                    <span class="spanned-icon glyphicon glyphicon-user"></span> Add Members…
+                </a>
+            </div>
 
             <popstar ng-if='showNewMemberDialog' show-popstar-value="showNewMemberDialog" matchTarget="true"
                      popstar-id="newMemberDialog" popstar-max-width="200" target-id="newMemberBtn">
