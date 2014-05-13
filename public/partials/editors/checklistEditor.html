@@ -1,0 +1,29 @@
+<div class="content clearfix">
+
+    <div class="checklist-dialog-title">
+        Title
+    </div>
+
+    <form name="checklistForm">
+        <div ng-class="{'has-error' : checklistForm.checklistTitleInput.$invalid, 'checklist-dialog-title': true}">
+
+            <input type="text" name="checklistTitleInput" class="form-control" placeholder="checklist name"
+                   ng-model="checklistTitle" required focus-me="focusChecklistTitleInput"/>
+        </div>
+    </form>
+
+    <div class="checklist-dialog-title">
+        Copy Items From..
+    </div>
+    <select class="form-control" ng-model="copyFromChecklist"
+            ng-options="checklist.title + ' (' + checklist.items.length + ' Items)' for checklist in card.checklists">
+        <option value="">(none)</option>
+    </select>
+
+    <div class="checklist-dialog-footer">
+        <button type="btn" class="btn btn-primary" ng-click="handleAddChecklist()"
+                ng-disabled="checklistForm.checklistTitleInput.$invalid">
+            Add
+        </button>
+    </div>
+</div>

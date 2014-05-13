@@ -171,6 +171,14 @@ define([], function () {
                             }
 
 
+                            // label demo
+                            $scope.boardLabels = [];
+                            $scope.boardLabels.push({title: 'nice to have', color: 'green', selected: false});
+                            $scope.boardLabels.push({title: '', color: 'yellow', selected: false});
+                            $scope.boardLabels.push({title: 'important', color: 'orange', selected: false});
+                            $scope.boardLabels.push({title: 'very important', color: 'red', selected: false});
+                            $scope.boardLabels.push({title: 'crucial', color: 'purple', selected: false});
+                            $scope.boardLabels.push({title: '', color: 'blue', selected: false});
 
 
                             $scope.updateActivityInfo = function (card) {
@@ -186,19 +194,14 @@ define([], function () {
                             // add richChecklist
                             $scope.card.checklists.push(richChecklist);
 
-                            // add demo label (to demo card named micha)
-                            var demoLabel1 = {
-                                title: 'urgent',
-                                color: 'red'
-                            };
-
-                            var demoLabel2 = {
-                                title: '',
-                                color: 'green'
-                            };
-
-                            $scope.card.labels.push(demoLabel1);
-                            $scope.card.labels.push(demoLabel2);
+                            // add demo labels
+                            var randLabelindex = Math.floor(Math.random() * $scope.boardLabels.length);
+                            $scope.card.labels.push($scope.boardLabels[randLabelindex]);
+                            if (randLabelindex >= $scope.boardLabels.length - 1) {
+                                $scope.card.labels.push($scope.boardLabels[randLabelindex - 1]);
+                            } else {
+                                $scope.card.labels.push($scope.boardLabels[randLabelindex + 1]);
+                            }
 
                             // add demo activities
                             addActivity(card, ['moved stuff to other stuff'], itay, 'activity');

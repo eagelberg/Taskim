@@ -41,6 +41,8 @@ define([], function () {
                 }
 
 
+                // TODO : should probably be in a service
+
                 var handleSearchResults = function (boards) {
 
                     // initialize variables

@@ -19,10 +19,12 @@ define(['angular',
     'javascripts/directives/searchBar',
     'javascripts/directives/sidebar',
     'javascripts/directives/member',
-    'javascripts/directives/ui/popstar'],
+    'javascripts/directives/ui/popstar',
+    'javascripts/directives/editors/labelEditor',
+    'javascripts/directives/editors/checklistEditor'],
     function (angular, deck, card, resize, stopEvent, upLevel, onEnter, onEscape, focusMe, addComponent, autoGrow, cardDescriptionSection,
               cardLabelSection, cardChecklistSection, checklistItem, cardActivitySection, cardActionSection, cardActivity, searchBar,sidebar,
-              member,popstar) {
+              member,popstar,labelEditor,checklistEditor) {
         'use strict'
 
         angular.module('directives', [])
@@ -47,5 +49,6 @@ define(['angular',
             .directive('sidebar', sidebar)
             .directive('member', member)
             .directive('popstar', popstar)
-
+            .directive('labelEditor', labelEditor)
+            .directive('checklistEditor', checklistEditor)
     });

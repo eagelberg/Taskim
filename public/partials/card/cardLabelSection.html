@@ -2,7 +2,8 @@
     <pre class="section-title"> Labels </pre>
     <div class="label-panel-container">
         <div ng-repeat="label in card.labels track by label.color">
-            <span><div class="card-label card-label-{{label.color}}" title="getLabelTitle(label)">
+            <span><div id="labelTarget{{$index}}" class="card-label card-label-{{label.color}}"
+                       title="{{getLabelTitle(label)}}" ng-click="handleLabelSelection(label)">
                 <div ng-if="label.title.length > 0" class="card-label-title">
                     {{ label.title }}
                 </div>
@@ -10,12 +11,24 @@
                     &nbsp;
                 </div>
             </div></span>
+
+            <popstar ng-if='label.selected' show-popstar-value="label.selected" popstar-id="cardLabelEditorDialog"
+                     target-id="labelTarget{{$index}}" popstar-title="Change Labels">
+
+                <label-editor labels="boardLabels" card-labels="card.labels"></label-editor>
+            </popstar>
+
         </div>
 
-        <!-- TODO : make popover for label edit here -->
-        <a class="item-add-button" ng-href="#" ng-click="handleLabelEditView()">
+         <a id="addLabelBtn" class="item-add-button" ng-href="#" ng-click="toggleLabelEditorView()">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
+
+        <popstar ng-if='showLabelEditor' show-popstar-value="showLabelEditor" popstar-id="cardLabelEditorDialog"
+                 target-id="addLabelBtn" popstar-title="Change Labels">
+
+            <label-editor labels="boardLabels" card-labels="card.labels"></label-editor>
+        </popstar>
 
     </div>
 </div>

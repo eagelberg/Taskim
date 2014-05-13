@@ -5,67 +5,56 @@
         <h4>Add</h4>
         <!-- TODO : should open a popup open for checklist title (this is just temporary for test) -->
         <!-- handle checklist editor -->
-        <div ng-init="newChecklistMode = false">
 
-            <button id='newChecklistBtn' type="button" class="btn btn-default card-action-button"
-                    ng-click="newChecklistMode = !newChecklistMode">
-                <span class="glyphicon glyphicon-th-list"></span>
-                Checklist
-            </button>
-
-            <div ng-show="newChecklistMode">
-                <input type="text" class="form-control" ng-model="newChecklistTitle"/>
-                <input type="button"
-                       class="btn btn-default"
-                       value="add"
-                       ng-click="addChecklist(card,newChecklistTitle);newChecklistMode = false; newChecklistTitle = '';">
-                <a ng-href="#" ng-click="newChecklistTitle = ''; newChecklistMode = false;">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-            </div>
+        <!-- new card member button -->
+        <div id="cardMembersBtn">
+            <a href="#" class="button-link" ng-click="toggleCardMembersDialog()">
+                <span class="spanned-icon glyphicon glyphicon-user"></span> Members
+            </a>
         </div>
 
-        <!-- handle label editor -->
-        <div ng-init="newLabelMode = false">
-            <button id='newLabelBtn' type="button" class="btn btn-default card-action-button"
-                    ng-click="newLabelMode = !newLabelMode">
-                <span class="glyphicon glyphicon-tag"></span>
-                Label
-            </button>
-            <div ng-show="newLabelMode">
-                <!-- TODO : label editor should be a directive -->
+        <popstar ng-if='showCardMembersDialog' show-popstar-value="showCardMembersDialog" popstar-id="cardMembersDialog"
+                 target-id="cardMembersBtn">
+            <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
+                   typeahead="member as member.name for member in getMembers($viewValue)"
+                   typeahead-min-length="2" typeahead-on-select="acceptMember()">
 
+            {{memberToAdd}}
+        </popstar>
 
-            </div>
+        <!-- new checklist button button -->
+        <div id="newChecklistBtn">
+            <a href="#" class="button-link" ng-click="toggleNewChecklistDialog()">
+                <span class="spanned-icon glyphicon glyphicon-th-list"></span> Checklist
+            </a>
         </div>
 
-        <popstar ng-if='newChecklistMode' show-popstar-value="newChecklistMode" popstar-id="newChecklistDialog"
+
+        <popstar ng-if='showNewChecklistDialog' show-popstar-value="showNewChecklistDialog" popstar-id="newChecklistDialog"
                  target-id="newChecklistBtn" popstar-title="Add Checklist">
 
-            <div class="content clearfix" style="">
-                <div>
-                    <input type="text" class="form-control" placeholder="checklist name" ng-model="checklistValue"/>
-                    {{ checklistValue }}
-                </div>
-
-            </div>
+            <checklist-editor></checklist-editor>
 
         </popstar>
 
-        <popstar ng-if='newLabelMode' show-popstar-value="newLabelMode" popstar-id="newLabelDialog"
-                 target-id="newLabelBtn" popstar-title="Add Label">
+        <!-- handle label editor -->
+        <div ng-init="newLabelMode = false">
 
-            <div class="content clearfix" style="">
-                <div>
-                    <input type="text" class="form-control" placeholder="label name" ng-model="labelValue"/>
-                    {{ labelValue }}
-                </div>
-
-                <div ng-repeat="label in card.labels track by label.color">
-
-                </div>
-
+            <div id="newLabelBtn">
+                <a href="#" class="button-link" ng-click="newLabelMode = !newLabelMode">
+                    <span class="spanned-icon glyphicon glyphicon-tag"></span> Labels
+                </a>
             </div>
+            <div ng-show="newLabelMode">
+                <!-- TODO : label editor should be a directive -->
+            </div>
+        </div>
+
+        <popstar ng-if='newLabelMode' show-popstar-value="newLabelMode" popstar-id="newLabelDialog"
+                 target-id="newLabelBtn" popstar-title="Change Labels">
+
+            <label-editor labels="boardLabels" card-labels="card.labels"></label-editor>
+
         </popstar>
 
 

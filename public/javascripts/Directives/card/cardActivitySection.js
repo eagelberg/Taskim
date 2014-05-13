@@ -28,6 +28,8 @@ define(['jquery'], function ($) {
 
                     console.log("added comment : " + comment);
                 }
+
+
             }
         }
     }

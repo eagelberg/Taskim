@@ -4,12 +4,13 @@
         <pre class="section-title"> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
     </div>
 
-    <progressbar ng-class="{'collapse': checklist.completed === 0,'collapse in' : checklist.completed > 0}"
-                 class="progress-striped"
-                 value="checklist.completed"
-                 type="{{checklist.progressBarType}}">
-        {{checklist.completed | number:1}}%
-    </progressbar>
+    <div collapse="checklist.completed === 0">
+        <progressbar class="progress-striped"
+                     value="checklist.completed"
+                     type="{{checklist.progressBarType}}">
+            {{checklist.completed | number:1}}%
+        </progressbar>
+    </div>
 
 
     <div ng-repeat="item in checklist.items">
