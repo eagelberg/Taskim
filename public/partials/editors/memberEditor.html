@@ -1,0 +1,19 @@
+<div class="member-input-container">
+    <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
+           typeahead="member as member.name for member in members" focus-me="memberInputFocused"
+           typeahead-min-length="2" typeahead-on-select="acceptMember()">
+</div>
+
+<!--<div class="all-members-container">-->
+<!--<ul class="member-list">-->
+<!--<li ng-repeat="member in members track by member.name">-->
+<!--<div class="member-list-container">-->
+<!--<member id='member{{$index}}' context="card-members" user="member"-->
+<!--ng-click="toggleMemberInfo()"></member>-->
+<!--<span>-->
+<!--{{member.name}}-->
+<!--</span>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->

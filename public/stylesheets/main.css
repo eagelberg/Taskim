@@ -333,6 +333,26 @@ h3, h4, h5, h6 {
     margin: 1em;
 }
 
+.badge {
+    color: #b3b3b3;
+    float: left;
+    height: 18px;
+    margin: 0 3px 3px 0;
+    padding: 0 4px 0 0;
+    position: relative;
+    text-decoration: none;
+}
+
+.badge-icon {
+    float: left;
+    color: #b3b3b3;
+}
+
+.badge-text {
+    float: left;
+    font-size: 12px;
+}
+
 .edit-input-container {
     margin: 0.5em;
 }
@@ -530,6 +550,22 @@ h3, h4, h5, h6 {
     right: 2px;
 }
 
+.list-card-labels {
+    margin: 0 8px;
+    position: relative;
+    z-index: 30;
+}
+
+.list-card-labels .card-label {
+    border-radius: 0;
+    float: left;
+    height: 4px;
+    margin-bottom: 1px;
+    padding: 0;
+    width: 40px;
+    line-height: 100px;
+}
+
 .card-label-green {
     background-color: #34b27d;
 }
@@ -552,6 +588,20 @@ h3, h4, h5, h6 {
 
 .card-label-blue {
     background-color: #4d77cb;
+}
+
+/* --- due date editor related --- */
+.due-date-header {
+    display: block;
+}
+
+.due-date-section {
+    padding: 2px 0 2px 25px;
+    margin-top: 15px;
+}
+
+.due-date-popover {
+    min-height: 370px;
 }
 
 /* --- activity related --- */
@@ -862,6 +912,25 @@ h3, h4, h5, h6 {
     width: 100%;
 }
 
+.member-input-container {
+    display: block;
+    margin: 3px;
+    width: 80%;
+    text-align: center;
+}
+
+.all-members-container {
+    display: block;
+    padding: 4px;
+    text-align: center;
+}
+
+.member-list {
+    margin-bottom: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .member-status-active {
     background: #64c464;
     background: -webkit-linear-gradient(top, #64c464 0, #3fa63f 100%);
@@ -1024,6 +1093,16 @@ h3, h4, h5, h6 {
     color: #737373;
     display: block;
     height: 36px;
+    float: left;
+    padding: 6px;
+}
+
+.member-add-button {
+    background: #dedede;
+    border-radius: 3px;
+    color: #737373;
+    display: block;
+    height: 30px;
     float: left;
     padding: 6px;
 }

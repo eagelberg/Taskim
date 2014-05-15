@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="due-date-section">
+        <h3>Date</h3>
+
+        <div class="row">
+            <div class="col-md-8">
+                <p class="input-group">
+                    <input type="text" class="form-control" placeholder="due date" datepicker-popup="dd/MM/yyyy"
+                           ng-model="chosenDate" is-open="opened" close-text="Close" focus-me="focusDueDateInput"/>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="due-date-section">
+        <h3>Time</h3>
+        <timepicker ng-model="chosenTime"></timepicker>
+    </div>
+</div>
+
+<div class="row">
+    <div class="due-date-section">
+        <button type="button" class="btn btn-primary" ng-click="handleSave(chosenDate,chosenTime)">
+            Save
+        </button>
+    </div>
+</div>

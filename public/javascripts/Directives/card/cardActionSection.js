@@ -6,16 +6,38 @@ define([], function () {
             controller: function ($scope) {
 
                 // scope variables
-                $scope.showCardMembersDialog = false;
-                $scope.showNewChecklistDialog = false;
+                $scope.showMemberEditor = false;
+                $scope.showChecklistEditor = false;
+                $scope.showLabelEditor = false;
+                $scope.showDueDateEditor = false;
 
-                $scope.toggleCardMembersDialog = function () {
-                    $scope.showCardMembersDialog = !$scope.showCardMembersDialog;
+                // demo
+                $scope.subscribed = false;
+
+                // editor toggle functions
+                $scope.toggleMemberEditor = function(){
+                    $scope.showMemberEditor = !$scope.showMemberEditor;
                 }
 
-                $scope.toggleNewChecklistDialog = function(){
-                    $scope.showNewChecklistDialog = !$scope.showNewChecklistDialog;
+                $scope.toggleChecklistEditor = function(){
+                    $scope.showChecklistEditor = !$scope.showChecklistEditor;
+                }
 
+                $scope.toggleLabelEditorDialog = function(){
+                    $scope.showLabelEditor = !$scope.showLabelEditor;
+                }
+
+                $scope.toggleDueDateEditor = function(){
+                    $scope.showDueDateEditor = !$scope.showDueDateEditor;
+                }
+
+                // handle card actions
+                $scope.toggleSubscription = function(){
+                    $scope.subscribed = !$scope.subscribed;
+                }
+
+                $scope.archiveCard = function(){
+                    console.log('archiving..');
                 }
             }
         }

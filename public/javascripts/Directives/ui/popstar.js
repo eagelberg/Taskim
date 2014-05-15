@@ -10,8 +10,10 @@ define(['jquery'], function ($) {
                     popstarId: '@',
                     matchTarget: '@',
                     popstarMaxWidth: '@',
+                    popstarMinHeight: '@',
                     popstarAlign: '@',
-                    popstarTitle: '@'
+                    popstarTitle: '@',
+                    popstarClass: '@'
                 },
                 link: function (scope, element, attrs) {
                     //defaults
@@ -19,6 +21,7 @@ define(['jquery'], function ($) {
                     var defaultPopstar = 'popstar';
                     var defaultMatchTarget = 'false';
                     var defaultMaxWidth = 270;
+                    var defaultMinHeight = 52;
                     var defaultAlign = 'left';
 
                     // scope variables
@@ -29,6 +32,7 @@ define(['jquery'], function ($) {
                     scope.fixedTop = 0;
                     scope.fixedLeft = 0;
                     scope.fixedWidth = 0;
+                    scope.fixedHeight = 0;
                     scope.targetIdRep = '#' + scope.targetId;
                     scope.popstarIdRep = '#' + scope.popstarId;
 
@@ -49,6 +53,10 @@ define(['jquery'], function ($) {
                         scope.popstarMaxWidth = defaultMaxWidth;
                     }
 
+                    if (typeof scope.popstarMaxWidth === 'undefined') {
+                        scope.popstarMinHeight = defaultMinHeight;
+                    }
+
                     if (typeof scope.popstarAlign === 'undefined') {
                         scope.popstarAlign = defaultAlign;
                     }
@@ -60,23 +68,16 @@ define(['jquery'], function ($) {
                     // fix popstar position
                     var popstar = $(scope.popstarIdRep);
                     var target = $(scope.targetIdRep);
-
-                    console.log('--- ' + scope.targetId + ' ---');
-
                     var targetHeight = target[0].offsetHeight;
-                    console.log('targetHeight = ' + targetHeight);
-
                     var targetWidth = target[0].offsetWidth;
-                    console.log('targetWidth = ' + targetWidth);
-
                     var targetLeft = target[0].offsetLeft;
-                    console.log('targetLeft = ' + targetLeft);
-
                     var targetTop = target[0].offsetTop;
-                    console.log('targetTop = ' + targetTop);
 
                     // handle width
                     scope.fixedWidth = scope.popstarMaxWidth;
+
+                    // handle height
+                    scope.fixedHeight = scope.popstarMinHeight;
 
                     if (scope.matchTarget === 'true') {
                         console.log('matchTarget to : ' + targetWidth);

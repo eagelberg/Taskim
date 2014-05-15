@@ -15,16 +15,19 @@ define(['angular',
     'javascripts/directives/card/checklistItem',
     'javascripts/directives/card/cardActivitySection',
     'javascripts/directives/card/cardActionSection',
+    'javascripts/directives/card/cardMembersSection',
     'javascripts/directives/card/cardActivity',
     'javascripts/directives/searchBar',
     'javascripts/directives/sidebar',
     'javascripts/directives/member',
     'javascripts/directives/ui/popstar',
     'javascripts/directives/editors/labelEditor',
-    'javascripts/directives/editors/checklistEditor'],
+    'javascripts/directives/editors/checklistEditor',
+    'javascripts/directives/editors/dueDateEditor',
+    'javascripts/directives/editors/memberEditor'],
     function (angular, deck, card, resize, stopEvent, upLevel, onEnter, onEscape, focusMe, addComponent, autoGrow, cardDescriptionSection,
-              cardLabelSection, cardChecklistSection, checklistItem, cardActivitySection, cardActionSection, cardActivity, searchBar,sidebar,
-              member,popstar,labelEditor,checklistEditor) {
+              cardLabelSection, cardChecklistSection, checklistItem, cardActivitySection, cardActionSection,cardMembersSection, cardActivity,
+              searchBar,sidebar, member,popstar,labelEditor,checklistEditor,dueDateEditor,memberEditor) {
         'use strict'
 
         angular.module('directives', [])
@@ -44,6 +47,7 @@ define(['angular',
             .directive('checklistItem', checklistItem)
             .directive('cardActivitySection', cardActivitySection)
             .directive('cardActionSection', cardActionSection)
+            .directive('cardMembersSection', cardMembersSection)
             .directive('cardActivity', cardActivity)
             .directive('searchBar', searchBar)
             .directive('sidebar', sidebar)
@@ -51,4 +55,6 @@ define(['angular',
             .directive('popstar', popstar)
             .directive('labelEditor', labelEditor)
             .directive('checklistEditor', checklistEditor)
+            .directive('dueDateEditor', dueDateEditor)
+            .directive('memberEditor', memberEditor)
     });

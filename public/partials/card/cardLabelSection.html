@@ -13,14 +13,14 @@
             </div></span>
 
             <popstar ng-if='label.selected' show-popstar-value="label.selected" popstar-id="cardLabelEditorDialog"
-                     target-id="labelTarget{{$index}}" popstar-title="Change Labels">
+                     target-id="labelTarget0" popstar-title="Change Labels">
 
                 <label-editor labels="boardLabels" card-labels="card.labels"></label-editor>
             </popstar>
 
         </div>
 
-         <a id="addLabelBtn" class="item-add-button" ng-href="#" ng-click="toggleLabelEditorView()">
+        <a id="addLabelBtn" class="item-add-button" ng-href="#" ng-click="toggleLabelEditorView()">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
 

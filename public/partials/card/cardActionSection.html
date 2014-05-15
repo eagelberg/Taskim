@@ -4,17 +4,16 @@
         <!-- Add section -->
         <h4>Add</h4>
         <!-- TODO : should open a popup open for checklist title (this is just temporary for test) -->
-        <!-- handle checklist editor -->
 
         <!-- new card member button -->
-        <div id="cardMembersBtn">
-            <a href="#" class="button-link" ng-click="toggleCardMembersDialog()">
+        <div id="memberEditorBtn">
+            <a href="#" class="button-link" ng-click="toggleMemberEditor()">
                 <span class="spanned-icon glyphicon glyphicon-user"></span> Members
             </a>
         </div>
 
-        <popstar ng-if='showCardMembersDialog' show-popstar-value="showCardMembersDialog" popstar-id="cardMembersDialog"
-                 target-id="cardMembersBtn">
+        <popstar ng-if='showMemberEditor' show-popstar-value="showMemberEditor" popstar-id="cardMembersDialog"
+                 target-id="memberEditorBtn">
             <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
                    typeahead="member as member.name for member in getMembers($viewValue)"
                    typeahead-min-length="2" typeahead-on-select="acceptMember()">
@@ -22,47 +21,78 @@
             {{memberToAdd}}
         </popstar>
 
-        <!-- new checklist button button -->
-        <div id="newChecklistBtn">
-            <a href="#" class="button-link" ng-click="toggleNewChecklistDialog()">
+        <!-- handle checklist editor -->
+        <div id="checklistEditorBtn">
+            <a href="#" class="button-link" ng-click="toggleChecklistEditor()">
                 <span class="spanned-icon glyphicon glyphicon-th-list"></span> Checklist
             </a>
         </div>
 
 
-        <popstar ng-if='showNewChecklistDialog' show-popstar-value="showNewChecklistDialog" popstar-id="newChecklistDialog"
-                 target-id="newChecklistBtn" popstar-title="Add Checklist">
+        <popstar ng-if='showChecklistEditor' show-popstar-value="showChecklistEditor"
+                 popstar-id="newChecklistDialog"
+                 target-id="checklistEditorBtn" popstar-title="Add Checklist">
 
             <checklist-editor></checklist-editor>
 
         </popstar>
 
         <!-- handle label editor -->
-        <div ng-init="newLabelMode = false">
-
-            <div id="newLabelBtn">
-                <a href="#" class="button-link" ng-click="newLabelMode = !newLabelMode">
-                    <span class="spanned-icon glyphicon glyphicon-tag"></span> Labels
-                </a>
-            </div>
-            <div ng-show="newLabelMode">
-                <!-- TODO : label editor should be a directive -->
-            </div>
+        <div id="labelEditorBtn">
+            <a href="#" class="button-link" ng-click="toggleLabelEditorDialog()">
+                <span class="spanned-icon glyphicon glyphicon-tag"></span> Labels
+            </a>
         </div>
 
-        <popstar ng-if='newLabelMode' show-popstar-value="newLabelMode" popstar-id="newLabelDialog"
-                 target-id="newLabelBtn" popstar-title="Change Labels">
+        <popstar ng-if='showLabelEditor' show-popstar-value="showLabelEditor" popstar-id="newLabelDialog"
+                 target-id="labelEditorBtn" popstar-title="Change Labels">
 
             <label-editor labels="boardLabels" card-labels="card.labels"></label-editor>
 
         </popstar>
 
+        <!-- handle due date editor -->
+        <div id="dueDateBtn">
+            <a href="#" class="button-link" ng-click="toggleDueDateEditor()">
+                <span class="spanned-icon glyphicon glyphicon-time"></span> Due date
+            </a>
+        </div>
+
+        <popstar ng-if='showDueDateEditor' show-popstar-value="showDueDateEditor" popstar-id="dueDateDialog"
+                 target-id="dueDateBtn" popstar-title="Change Due Date" popstar-max-width="320"
+                 popstar-class="due-date-popover">
+
+            <due-date-editor></due-date-editor>
+
+        </popstar>
+
+    </div>
+    <div class="card-actions-container">
 
         <!-- Actions section -->
         <h4>Actions</h4>
-        <!-- TODO : actions are hard coded, should be in a seperate controller (or a global service) -->
-        <button type="button" class="btn btn-default card-action-button">Action 1</button>
-        <button type="button" class="btn btn-default card-action-button">Action 2</button>
-        <button type="button" class="btn btn-default card-action-button">Action 3</button>
+
+        <!-- subscribe button -->
+        <div id="subscribeBtn">
+            <a href="#" class="button-link" ng-click="toggleSubscription()">
+                <span ng-class="{'glyphicon-eye-open': subscribed,'glyphicon-eye-close':!subscribed}"
+                      class="spanned-icon glyphicon"></span>
+
+                <span ng-if="!subscribed">
+                    Subscribe
+                </span>
+
+                <span ng-if="subscribed">
+                    Subscribed
+                </span>
+            </a>
+        </div>
+
+        <!-- archive button -->
+        <div id="archiveBtn">
+            <a href="#" class="button-link" ng-click="archiveCard()">
+                <span class="spanned-icon glyphicon glyphicon-book"></span> Archive
+            </a>
+        </div>
     </div>
 </div>

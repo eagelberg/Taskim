@@ -1,4 +1,5 @@
-<div class="card list-group-item" ng-click="openModal()" ng-mouseover="handleMouseOver()" ng-mouseleave="handleMouseLeave()">
+<div class="card list-group-item" ng-click="openModal()" ng-mouseover="handleMouseOver()"
+     ng-mouseleave="handleMouseLeave()">
     <div ng-show="showCardActions">
     <span class="dropDownContainer dropdown" uplevel stop-event>
         <span class="glyphicon glyphicon-download icon" data-toggle="dropdown"></span>
@@ -10,5 +11,12 @@
         </ul>
     </span>
     </div>
+
+    <!--<div class="list-card-labels clearfix">-->
+        <!--<span ng-repeat="label in card.labels track by label.color" class="card-label card-label-{{label.color}}" title="{{label.title}}">-->
+            <!--{{label.title}}-->
+        <!--</span>-->
+    <!--</div>-->
+
     <p class="card-title">{{card.title}}</p>
 </div>

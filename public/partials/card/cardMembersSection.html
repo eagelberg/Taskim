@@ -1,0 +1,25 @@
+<pre>Members</pre>
+
+<div class="member-panel card-member-panel">
+    <div ng-repeat="member in members">
+                    <span><member id='member{{$index}}' context="card-members" user="member"
+                                  ng-click="toggleMemberInfo()"></member></span>
+    </div>
+
+    <a id="addCardMemberBtn" class="member-add-button" ng-href="#" ng-click="toggleMemberEditor()">
+        <span class="glyphicon glyphicon-plus"></span>
+    </a>
+
+</div>
+
+<popstar ng-if='showMemberInfo' show-popstar-value="showMemberInfo"
+         popstar-id="member" popstar-max-width="100" target-id="member0">
+    <div>
+        {{ boardMember.name }}
+    </div>
+</popstar>
+
+<popstar ng-if='showMemberEditor' show-popstar-value="showMemberEditor" popstar-id="memberEditor"
+         popstar-title="Members" target-id="addCardMemberBtn">
+    <member-editor></member-editor>
+</popstar>

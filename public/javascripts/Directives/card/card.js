@@ -59,7 +59,9 @@ define([], function () {
                             // set active user
                             // TODO : this varibale should be visible by all (rootScope?)
                             $scope.activeUser = micha;
-
+                            $scope.card.members = [];
+                            $scope.card.members.push(micha);
+                            $scope.card.members.push(itay);
 
                             $scope.addChecklist = function (card, checklistTitle) {
                                 card.checklists.push({
