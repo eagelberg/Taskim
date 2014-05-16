@@ -32,6 +32,7 @@ require.config({
         'library/ui-bootstrap-tpls-0.10.0.min': ['angular'],
         'jquery': {exports: 'jQuery'},
         'sortable': ['angular'],
+        'ui-bootstrap':['angular'],
         'library/angular-strap': ['angular']
     },
     priority: [

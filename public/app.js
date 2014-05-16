@@ -4,12 +4,11 @@ define([
     'restangular',
     'library/angular-strap',
     'angular-ui',
-    'library/ui-bootstrap-tpls-0.10.0.min',
+    'ui-bootstrap',
     'library/angular-dragdrop',
     'bootstrap',
     'sortable',
     'jquery-ui',
-    'library/jquery-1.11.0',
     'controllers',
     'services',
     'directives'
