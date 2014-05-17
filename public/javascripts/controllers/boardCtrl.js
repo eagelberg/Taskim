@@ -1,6 +1,6 @@
-define([], function () {
-    return ['$scope', 'boardManager', '$window', '$stateParams', 'userManager','loggedUserService',
-        function ($scope, boardManager, $window, $stateParams, userManager,loggedUserService) {
+define(['jquery'], function ($) {
+    return ['$scope', 'boardManager', '$window', '$stateParams', 'userManager', 'loggedUserService',
+        function ($scope, boardManager, $window, $stateParams, userManager, loggedUserService) {
             $scope.board = {};
             $scope.canvasWidth = 100;
             $scope.isCollapsed = false;
@@ -17,9 +17,11 @@ define([], function () {
             }
 
             $scope.getMembers = function (nameToSearch) {
-                var boardUsersIds = _.pluck($scope.boardUsers,'_id')
+                var boardUsersIds = _.pluck($scope.boardUsers, '_id')
                 return userManager.getAllByFilter(nameToSearch).then(function (result) {
-                    return _.reject(result,function(user){ return _.contains(boardUsersIds,user._id)});
+                    return _.reject(result, function (user) {
+                        return _.contains(boardUsersIds, user._id)
+                    });
                 });
             }
 
@@ -40,18 +42,18 @@ define([], function () {
                 $scope.addMemberClicked();
             }
 
-            $scope.removeUser = function(user){
-                boardManager.removeUserFromBoard($scope.board,user).then(function(){
+            $scope.removeUser = function (user) {
+                boardManager.removeUserFromBoard($scope.board, user).then(function () {
                     $scope.getBoard($stateParams.id);
                     $scope.getBoardMembers($stateParams.id);
                 });
             }
 
-            $scope.isCurrentUserAdmin = function(){
+            $scope.isCurrentUserAdmin = function () {
                 return loggedUserService.loggedUser._id == $scope.board.adminId;
             }
 
-            $scope.isCurrentMemberNotAdmin = function(user){
+            $scope.isCurrentMemberNotAdmin = function (user) {
                 return user._id != $scope.board.adminId;
             }
 
@@ -94,7 +96,7 @@ define([], function () {
             $scope.createNewCard = function (deck, newCardName) {
 
                 if (newCardName) {
-                    var newCard = {title: newCardName, _id: ""};
+                    var newCard = {title: newCardName, _id: "",index : deck.cards.length};
                     deck.cards.push(newCard);
                     $scope.updateBoard();
                 }

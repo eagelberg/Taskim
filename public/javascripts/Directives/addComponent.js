@@ -12,7 +12,10 @@ define([], function () {
                 onSaveTitle: '@',
                 closeOnSave: '@',
                 textAreaRows: '@',
-                stickyTitle: '@'
+                stickyTitle: '@',
+                placeholderValue: '@',
+                inputDisabled: '@',
+                initEditMode: '@'
             },
             controller: function ($scope) {
 
@@ -24,7 +27,12 @@ define([], function () {
                 $scope.inputFocused = false;
                 $scope.textAreaRows = $scope.textAreaRows || 2;
                 $scope.triggerTitle = $scope.triggerTitle || '';
+                $scope.placeholderValue = $scope.placeholderValue || '';
                 $scope.triggerStyleContainer = $scope.triggerStyleContainer || defaultTriggerContainer;
+
+                if(typeof $scope.initEditMode === 'undefined'){
+                    $scope.initEditMode = false;
+                }
 
                 // handle view logic
                 $scope.handleSave = function () {
@@ -44,8 +52,10 @@ define([], function () {
 
                 // handle view UI
                 $scope.switchToEditMode = function () {
-                    $scope.editMode = true;
-                    $scope.setFocused(true);
+                    if (!$scope.inputDisabled) {
+                        $scope.editMode = true;
+                        $scope.setFocused(true);
+                    }
                 }
 
                 $scope.handleClose = function (saveChanges) {
@@ -74,6 +84,11 @@ define([], function () {
 
                 $scope.handleEscape = function () {
                     $scope.handleClose(false);
+                }
+
+                // invoke edit mode in case it is set in initial value
+                if ($scope.initEditMode) {
+                    //$scope.switchToEditMode();
                 }
 
             }

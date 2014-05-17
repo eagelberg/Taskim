@@ -8,11 +8,22 @@ import java.util.List;
 
 public class User {
 
+	@JsonProperty("_id")
 	private String id;
 	private String name;
 	private String password;
-    private String Initials;
+	private String Initials;
+	private UserStatus status;
 	private List<String> boards = new ArrayList<String>();
+
+	// default constructor
+	public User() {
+		setStatus(UserStatus.DISCONNECTED);
+		setName("");
+		setPassword("");
+		setInitials("");
+
+	}
 
 	public List<String> getBoards() {
 		List<String> boardListCopy = new ArrayList<String>();
@@ -58,12 +69,20 @@ public class User {
 		this.id = id;
 	}
 
-    public String getInitials() {
-        return Initials;
-    }
+	public String getInitials() {
+		return Initials;
+	}
 
-    public void setInitials(String initials) {
-        Initials = initials;
-    }
-    //</editor-fold>
+	public void setInitials(String initials) {
+		Initials = initials;
+	}
+
+	public UserStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
+	}
+	//</editor-fold>
 }

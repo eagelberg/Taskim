@@ -14,21 +14,21 @@
             <card-members-section members="card.members"></card-members-section>
 
             <!-- labels section -->
-            <!-- TODO : add labels to MongoDB (currently hard coded) -->
             <card-label-section></card-label-section>
 
             <!-- checklists section -->
-            <!-- TODO : add checklist to MongoDB (currently hard coded) -->
             <card-checklist-section></card-checklist-section>
-
-            <!-- activity section -->
-            <!-- TODO : add activities to MongoDB (currently hard coded) -->
-            <card-activity-section context = 'card' active-user="activeUser" activities="card.activities" card="card"></card-activity-section>
 
         </div>
 
         <!-- action section -->
         <card-action-section></card-action-section>
 
+    </div>
+    <div class="row">
+        <!-- activity section -->
+        <card-activity-section context='card' activities="card.activities"
+                               card="card">
+        </card-activity-section>
     </div>
 </div>

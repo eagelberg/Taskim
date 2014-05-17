@@ -4,7 +4,7 @@
         <pre class="section-title"> <span class="glyphicon glyphicon-th-list"></span> {{ checklist.title }} </pre>
     </div>
 
-    <div collapse="checklist.completed === 0">
+    <div collapse="checklist.completed === 0" ng-init="updateCompleted(checklist)">
         <progressbar class="progress-striped"
                      value="checklist.completed"
                      type="{{checklist.progressBarType}}">
@@ -22,9 +22,9 @@
 
     </div>
 
-    <add-component edited-input="newItemName" input-style="textarea" trigger-title="Add item.."
-                   on-save-title="save" close-on-save="false"
-                   callback-function="addChecklistItem(card,checklist,newItemName)">
+    <add-component edited-input="newItemName" input-style="textarea" trigger-title="Add item.." init-edit-mode="checklist.completed === 0"
+                   on-save-title="save" close-on-save="false" placeholder-value="item description"
+                   callback-function="addChecklistItem(checklist,newItemName)">
     </add-component>
 
 </div>

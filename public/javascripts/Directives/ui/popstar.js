@@ -53,7 +53,7 @@ define(['jquery'], function ($) {
                         scope.popstarMaxWidth = defaultMaxWidth;
                     }
 
-                    if (typeof scope.popstarMaxWidth === 'undefined') {
+                    if (typeof scope.popstarMinHeight === 'undefined') {
                         scope.popstarMinHeight = defaultMinHeight;
                     }
 
@@ -95,11 +95,10 @@ define(['jquery'], function ($) {
                     // handle top
                     scope.fixedTop = targetTop + targetHeight + 2;
 
-                    console.log('fixedWidth = ' + scope.fixedWidth + ',fixedLeft = ' + scope.fixedLeft + ',fixedTop = ' + scope.fixedTop);
-
-
                 },
                 controller: function ($scope) {
+
+                    $scope.isHovered = false;
 
                     $scope.$watch('showPopstarValue', function (showPopstar) {
                         if (typeof showPopstar === 'undefined') {
@@ -120,7 +119,22 @@ define(['jquery'], function ($) {
                     }
 
                     $scope.handleBlur = function () {
-                        //hidePopstar();
+                        console.log("bluring.." + $scope.popstarId);
+                        hidePopstar();
+                    }
+
+                    $scope.handleFocus = function () {
+                        console.log("focusing.." + $scope.popstarId);
+                    }
+
+                    $scope.handleHover = function () {
+                        //console.log("hovering over.." + $scope.popstarId);
+                        $scope.isHovered = true;
+                    }
+
+                    $scope.handleHoverOff = function(){
+                        //console.log("leaving.." + $scope.popstarId);
+                        $scope.isHovered = false;
                     }
 
                     $scope.handleClose = function () {

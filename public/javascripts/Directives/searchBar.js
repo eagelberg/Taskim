@@ -4,15 +4,9 @@ define([], function () {
             restrict: 'AE',
             templateUrl: '/assets/partials/searchBar.html',
             scope: {},
-            controller: function ($scope, boardManager, $log) {
+            controller: function ($scope, boardManager, loggedUserService, $log) {
 
-                // constants
-
-                // tmp
-                var micha = {
-                    name: "Michael Sherman",
-                    initials: 'MS'
-                }
+                $scope.activeUser = loggedUserService.getActiveUser();
 
                 var syncDelay = 30000; // 30s
 
@@ -25,6 +19,9 @@ define([], function () {
 
                 var invokeSearch = function () {
 
+                    console.log("active user = ");
+                    console.log($scope.activeUser);
+
                     var now = new Date().getTime();
 
                     if ($scope.lastSyncTime && (now - $scope.lastSyncTime) < syncDelay) {
@@ -32,11 +29,16 @@ define([], function () {
                         return;
                     }
 
-                    // TODO : fetch real boards (currently fetching a single board from micha's user)
-                    boardManager.getAllBoards(micha).then(function (board) {
-                        var localBoards = [];
-                        localBoards.push(board);
-                        handleSearchResults(localBoards);
+                    // TODO : fetch real boards (currently fetching the last board of the user)
+                    var boardId = $scope.activeUser.boards[$scope.activeUser.boards.length - 1];
+                    console.log("fetching board " + boardId + " ..");
+
+                    boardManager.get(boardId).then(function (board) {
+                        console.log("fetched board " + boardId);
+                        console.log(board);
+                        var userBoards = [];
+                        userBoards.push(board);
+                        handleSearchResults(userBoards);
                     });
                 }
 
@@ -51,6 +53,10 @@ define([], function () {
                     $scope.userChecklists = [];
                     $scope.lastSyncTime = {};
 
+                    // scope ui variables
+                    $scope.searchContentHovered = false;
+                    $scope.focusSearchInput = true;
+
                     // iterate boards
                     boards.forEach(function (board) {
 
@@ -62,10 +68,6 @@ define([], function () {
                                 deck.cards.forEach(function (card) {
                                     card.boardTitle = board.name;
                                     card.deckTitle = deck.name;
-
-                                    // tmp (checklists will be saved in db)
-                                    injectDemoChecklist(card);
-
                                     $scope.userCards.push(card);
 
                                     if (card.checklists) {
@@ -88,31 +90,43 @@ define([], function () {
                     $log.info("synced data!");
                 }
 
-                var injectDemoChecklist = function (card) {
-                    if (!card.checklists) {
-                        card.checklists = [];
+                // handle search content hide on blur
+                $scope.handleBlur = function () {
+                    console.log("bluring search bar");
+                    if (!$scope.searchContentHovered) {
+                        hideSearchContent();
+                        setSearchInputFocused(false);
+                    } else {
+                        setSearchInputFocused(true);
                     }
-                    card.checklists.push({
-                        title: 'become rich',
-                        items: [
-                            {
-                                name: 'rob a bank',
-                                value: false
-                            }
-
-                        ],
-
-                        completed: 0
-                    });
                 }
 
+                $scope.handleSearchContentHoverOn = function () {
+                    console.log("hovering on search content");
+                    $scope.searchContentHovered = true;
+                }
+
+                $scope.handleSearchContentHoverOff = function () {
+                    console.log("hovering off search content");
+                    $scope.searchContentHovered = false;
+                }
+
+                var hideSearchContent = function () {
+                    console.log("hiding search content");
+                    $scope.showSearchResults = false;
+                    $scope.searchQuery = '';
+                }
+
+                var setSearchInputFocused = function (toFocus) {
+                    $scope.focusSearchInput = toFocus;
+                }
 
                 $scope.$watch('searchQuery', function (query) {
                     if (query && query.length > 1) {
                         $scope.showSearchResults = true;
                         invokeSearch();
 
-                    }else{
+                    } else {
                         $scope.showSearchResults = false;
                     }
                 });

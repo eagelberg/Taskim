@@ -3,17 +3,17 @@ define([], function () {
         return {
             restrict: 'AE',
             templateUrl: '/assets/partials/card/cardActivity.html',
-            scope : true,
-            controller: function ($scope,$timeout,$interval,DateService) {
+            scope: true,
+            controller: function ($scope, $timeout, $interval, DateService,boardManager) {
 
                 $scope.parsedDate = '';
                 $scope.isActivity = false;
                 $scope.isComment = false;
 
                 // set activity type
-                if ($scope.activity.type === 'activity') {
+                if ($scope.activity.type === 'ACTIVITY') {
                     $scope.isActivity = true;
-                } else if ($scope.activity.type === 'comment') {
+                } else if ($scope.activity.type === 'COMMENT') {
                     $scope.isComment = true;
                     $scope.comment = $scope.activity.info[0];
                 }
@@ -31,6 +31,8 @@ define([], function () {
 
                 // activity logic handling
                 $scope.updateActivityComment = function (activity, comment) {
+                    activity.info[0] = comment;
+                    boardManager.updateActiveBoard();
                     console.log('updating activity comment to ' + comment);
                 }
             }

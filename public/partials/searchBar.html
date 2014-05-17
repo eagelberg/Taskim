@@ -1,10 +1,9 @@
-<input type="text" id="searchBar"
-       class="form-control search-bar-container"
-       placeholder="search for boards,cards and things"
-       ng-model="searchQuery"/>
+<input type="text" id="searchBar" class="form-control search-bar-container" ng-blur="handleBlur()"
+       placeholder="search for boards,cards and things" ng-model="searchQuery" focus-me="focusSearchInput"/>
 
-<popstar ng-if='showSearchResults' show-popstar-value="showSearchResults"
-                popstar-id="search" target-id="searchBar" match-target="true">
+<popstar ng-if='showSearchResults' show-popstar-value="showSearchResults" ng-mouseenter="handleSearchContentHoverOn()"
+         ng-mouseleave="handleSearchContentHoverOff()" popstar-id="search" target-id="searchBar" match-target="true"
+         popstar-class="search-bar-popover">
 
     <div>
         <h3 ng-show="searchQuery.length > 0 && (filteredBoards.length + filteredCards.length + filteredChecklists.length) === 0">

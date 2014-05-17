@@ -1,4 +1,5 @@
 <div id="{{popstarId}}" class="popstar fancy-scrollbar {{popstarClass}}" ng-blur="handleBlur()"
+     ng-focus="handleFocus()" ng-mouseleave="handleHoverOff()" ng-mouseenter="handleHover()"
      ng-style="{display:fixedDisplay,top:fixedTop,left:fixedLeft,width:fixedWidth}">
     <div ng-show="hasTitle" class="popstar-header">
         <a class="popstar-close-btn" href="#" ng-click="handleClose()">
@@ -6,5 +7,5 @@
         </a>
         <span class="popstar-title">{{popstarTitle}}</span>
     </div>
-    <div ng-transclude></div>
+    <div id="transcludedPart" ng-transclude></div>
 </div>

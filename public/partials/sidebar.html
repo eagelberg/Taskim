@@ -15,7 +15,7 @@
             <h3>Members</h3>
 
             <div class="member-panel">
-                <div ng-repeat="boardMember in boardMembers">
+                <div ng-repeat="boardMember in activeBoard.members">
                     <span><member id='member{{$index}}' context="member-panel" user="boardMember"
                                   ng-click="toggleMemberInfo()"></member></span>
                 </div>
@@ -36,9 +36,8 @@
 
             <popstar ng-if='showNewMemberDialog' show-popstar-value="showNewMemberDialog" match-target="true"
                      popstar-offset="false" popstar-max-width="200" popstar-id="newMemberDialog" popstar-max-width="200" target-id="newMemberBtn">
-                <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
-                       typeahead="member as member.name for member in getMembers($viewValue)"
-                       typeahead-min-length="2" typeahead-on-select="acceptMember()">
+                <!--TODO : should invoke name filter query of user in the DB (currently all board memebers shown) -->
+                <member-editor members="board.members"></member-editor>
             </popstar>
 
         </div>

@@ -14,6 +14,12 @@ public class Deck {
 	private String boardId;
 	private List<Card> cards = new ArrayList<Card>();
 
+	// default constructor
+	public Deck() {
+		this.name = "";
+		this.isArchived = false;
+	}
+
 	public void AddCard(Card card) {
 		cards.add(card);
 	}

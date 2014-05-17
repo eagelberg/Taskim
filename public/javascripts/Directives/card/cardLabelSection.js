@@ -10,9 +10,8 @@ define([], function () {
                 $scope.showLabelEditor = false;
 
                 // label ui handling
-                $scope.toggleLabelEditorView = function () {
-                    initLabelSelected();
-                    $scope.showLabelEditor = true;
+                $scope.toggleLabelEditor = function () {
+                    $scope.showLabelEditor = !$scope.showLabelEditor;
                 }
 
                 // label logic handling
@@ -24,20 +23,9 @@ define([], function () {
                     }
                 }
 
-                $scope.handleLabelSelection = function (label) {
-                    initLabelSelected();
-                    label.selected = true;
-                    $scope.showLabelEditor = false;
-                    console.log($scope.card.labels);
+                $scope.handleLabelSelection = function () {
+                    $scope.showLabelEditor = !$scope.showLabelEditor;
                 }
-
-                var initLabelSelected = function () {
-
-                     $scope.card.labels.forEach(function (label) {
-                        label.selected = false;
-                    });
-                }
-
             }
         }
     }

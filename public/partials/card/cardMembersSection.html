@@ -1,25 +1,28 @@
 <pre>Members</pre>
 
 <div class="member-panel card-member-panel">
-    <div ng-repeat="member in members">
+    <!-- iterate over all card members to pupulate card member panel -->
+    <div ng-repeat="member in card.members">
                     <span><member id='member{{$index}}' context="card-members" user="member"
                                   ng-click="toggleMemberInfo()"></member></span>
+
+        <popstar ng-if='showMemberInfo' show-popstar-value="showMemberInfo" popstar-title="Member Info"
+                 popstar-id="memberPanelInfo" popstar-max-width="100" target-id="member{{$index}}">
+            <div>
+                {{ member.name }}
+            </div>
+        </popstar>
+
     </div>
 
-    <a id="addCardMemberBtn" class="member-add-button" ng-href="#" ng-click="toggleMemberEditor()">
+    <a id="addCardMemberBtn" class="member-add-button" ng-href="#" ng-click="toggleMemberPanelEditor()">
         <span class="glyphicon glyphicon-plus"></span>
     </a>
 
 </div>
 
-<popstar ng-if='showMemberInfo' show-popstar-value="showMemberInfo"
-         popstar-id="member" popstar-max-width="100" target-id="member0">
-    <div>
-        {{ boardMember.name }}
-    </div>
-</popstar>
 
-<popstar ng-if='showMemberEditor' show-popstar-value="showMemberEditor" popstar-id="memberEditor"
-         popstar-title="Members" target-id="addCardMemberBtn">
-    <member-editor></member-editor>
+<popstar ng-if='showMemberPanelEditor' show-popstar-value="showMemberPanelEditor" popstar-id="memberPanelEditor"
+         popstar-title="Members" target-id="addCardMemberBtn" popstar-class="member-editor-popover">
+    <member-editor members="board.members" card="card"></member-editor>
 </popstar>

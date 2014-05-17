@@ -3,15 +3,19 @@ define([], function () {
         return {
             restrict: 'AE',
             templateUrl: '/assets/partials/card/cardMembersSection.html',
-            scope: {
-                members: '='
+            link: function (scope) {
+                scope.showMemberPanelEditor = false;
+                scope.showMemberInfo = false;
+
             },
             controller: function ($scope) {
 
-                $scope.showMemberEditor = false;
+                $scope.toggleMemberPanelEditor = function () {
+                    $scope.showMemberPanelEditor = !$scope.showMemberPanelEditor;
+                }
 
-                $scope.toggleMemberEditor = function(){
-                    $scope.showMemberEditor = !$scope.showMemberEditor;
+                $scope.toggleMemberInfo = function () {
+                    $scope.showMemberInfo = !$scope.showMemberInfo;
                 }
             }
         }

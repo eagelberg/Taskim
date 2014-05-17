@@ -1,13 +1,22 @@
 package Domain.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.mongojack.ObjectId;
+
 /**
  * Created by Micha on 5/1/14.
  */
 public class ChecklistItem {
 
+	@JsonProperty("_id")
 	private String id;
 	private String name;
 	private boolean value;
+
+	// default constructor
+	public ChecklistItem() {
+		initChecklistItem("", false);
+	}
 
 	public ChecklistItem(String name) {
 		initChecklistItem(name, false);
@@ -22,10 +31,14 @@ public class ChecklistItem {
 		this.value = value;
 	}
 
+	@ObjectId
+	@JsonProperty("_id")
 	public String getId() {
 		return id;
 	}
 
+	@ObjectId
+	@JsonProperty("_id")
 	public void setId(String id) {
 		this.id = id;
 	}

@@ -7,20 +7,24 @@ define([], function () {
                 labels: '=',
                 cardLabels: '='
             },
-            controller: function ($scope) {
+            controller: function ($scope, boardManager) {
 
                 // scope variables
                 $scope.labelEditMode = true;
                 $scope.labelTitleEditMode = false;
 
                 $scope.handleLabelSelection = function (label) {
-                    var indexOfLabel = $scope.cardLabels.indexOf(label);
+                    var indexOfLabel = getIndexOfLabel(label);
                     if (indexOfLabel >= 0) {
                         $scope.cardLabels.splice(indexOfLabel, 1);
+                        console.log("removed label " + label.color);
                     } else {
                         $scope.cardLabels.push(label);
+                        console.log("added label " + label.color);
                     }
-                    console.log($scope.cardLabels);
+
+                    boardManager.updateActiveBoard();
+
                 }
 
                 $scope.switchToTitleEditMode = function () {
@@ -28,9 +32,11 @@ define([], function () {
                     $scope.labelTitleEditMode = !$scope.labelTitleEditMode;
                 }
 
-                $scope.handleSave = function () {
-                    console.log("saving label title changes..");
-                    // TODO : save changes
+                $scope.handleSave = function (updatedLabels) {
+                    console.log("updated labels");
+                    console.log(updatedLabels);
+
+                    boardManager.updateActiveBoard();
                     $scope.handleBack();
                 }
 
@@ -39,12 +45,31 @@ define([], function () {
                     $scope.labelTitleEditMode = !$scope.labelTitleEditMode;
                 }
 
-                $scope.isPartOfCardLabel = function (boardLabel) {
-                    if (typeof $scope.cardLabels != 'undefined') {
-                        return $scope.cardLabels.indexOf(boardLabel) >= 0;
+                var getIndexOfLabel = function (labelToFind) {
+                    var index = -1, iterator = 0;
+
+                    if (typeof $scope.cardLabels === 'undefined') {
+                        return index;
                     }
 
-                    return false;
+                    if ($scope.cardLabels.length === 0) {
+                        return index;
+                    }
+
+                    $scope.cardLabels.forEach(function (label) {
+                        if (label.color.toLowerCase().indexOf(labelToFind.color.toLowerCase()) != -1) {
+                            index = iterator;
+                            return;
+                        }
+
+                        iterator++;
+                    });
+
+                    return index;
+                }
+
+                $scope.isPartOfCardLabel = function (boardLabel) {
+                    return getIndexOfLabel(boardLabel) >= 0;
                 }
             }
         }

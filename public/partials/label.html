@@ -1,0 +1,9 @@
+<div id="labelTarget{{$index}}" class="card-label card-label-{{label.color | lowercase}}"
+     title="{{getLabelTitle(label)}}" ng-click="handleLabelSelection(label)">
+    <div ng-if="label.title.length > 0" class="card-label-title">
+        {{ label.title }}
+    </div>
+    <div ng-if="label.title.length === 0">
+        &nbsp;
+    </div>
+</div>

@@ -1,66 +1,70 @@
-<div class="board-info container-fluid"
-     ng-init="focusCardFilter = true;">
-    <div class="row">
-        <div class="col-lg-1">
-            <div class="board-name-container">
-                {{board.name}}
-            </div>
-        </div>
-
-        <input type="text"
-               class="form-control card-filter-container col-lg-2"
-               placeholder="filter cards"
-               focusMe="focusCardFilter"
-               ng-model="cardFilter.value"/>
-
-        <div class="board-options">
-            <a href="#" ng-click="collapse()">show archived decks</a>
-        </div>
-
-        <div class="col-lg-offset-10 col-lg-2">
-            <h3>Members</h3>
-
-            <div class="board-members-section row col-lg-12">
-                <div ng-repeat="user in boardUsers" class="col-lg-3 board-user-container dropDownContainer dropdown">
-                    <div class="member member-initials" data-toggle="dropdown" title="{{user.name}}">
-                        {{user.initials}}
-                    </div>
-                    <ul class="dropdown-menu dropdown-menu-left entity-menu">
-                        <li ng-click="removeUser(user)" ng-show="isCurrentUserAdmin() && isCurrentMemberNotAdmin(user)">
-                            <a href="#">Remove from board</a></li>
-                    </ul>
+<div ng-mouseup="handleBoardMouseUp()">
+    <div class="board-info container-fluid"
+         ng-init="focusCardFilter = true;">
+        <div class="row">
+            <div class="col-lg-1">
+                <div class="board-name-container">
+                    {{board.name}}
                 </div>
             </div>
 
-            <div class="row col-lg-12">
-                <button type="button" class="btn btn-default col-lg-12" ng-click="addMemberClicked()">add members
-                </button>
-                <input type="text" class="form-control" ng-model="memberToAdd" placeholder="enter member name"
-                       ng-show="isMemberAdderOpen"
-                       typeahead="member as member.name for member in getMembers($viewValue)"
-                       typeahead-min-length="2" typeahead-on-select="acceptMember()">
+            <input type="text"
+                   class="form-control card-filter-container col-lg-2"
+                   placeholder="filter cards"
+                   focusMe="focusCardFilter"
+                   ng-model="cardFilter.value"/>
+
+            <div class="board-options">
+                <a href="#" ng-click="collapse()">show archived decks</a>
+            </div>
+
+            <div class="col-lg-offset-10 col-lg-2">
+                <h3>Members</h3>
+
+                <div class="board-members-section row col-lg-12">
+                    <div ng-repeat="user in boardUsers"
+                         class="col-lg-3 board-user-container dropDownContainer dropdown">
+                        <div class="member member-initials" data-toggle="dropdown" title="{{user.name}}">
+                            {{user.initials}}
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-left entity-menu">
+                            <li ng-click="removeUser(user)"
+                                ng-show="isCurrentUserAdmin() && isCurrentMemberNotAdmin(user)">
+                                <a href="#">Remove from board</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row col-lg-12">
+                    <button type="button" class="btn btn-default col-lg-12" ng-click="addMemberClicked()">add members
+                    </button>
+                    <input type="text" class="form-control" ng-model="memberToAdd" placeholder="enter member name"
+                           ng-show="isMemberAdderOpen"
+                           typeahead="member as member.name for member in getMembers($viewValue)"
+                           typeahead-min-length="2" typeahead-on-select="acceptMember()">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
-    <div ng-repeat="deck in board.decks | filter:{isArchived:false}">
-        <deck></deck>
-    </div>
-    <div class="new-deck">
+    <div id='canvas' class="canvas" ng-style="{width: canvasWidth + 'px'}">
+        <div ng-repeat="deck in board.decks | filter:{isArchived:false}">
+            <deck></deck>
+        </div>
+        <div class="new-deck">
 
-        <div class="list-group-item">
+            <div class="list-group-item">
 
-            <add-component edited-input="newDeckName" input-style="text" trigger-title="Add a list.."
-                           on-save-title="save" close-on-save="true" callback-function="createNewDeck(newDeckName)">
-            </add-component>
+                <add-component edited-input="newDeckName" input-style="text" trigger-title="Add a list.." placeholder-value="list name"
+                               on-save-title="save" close-on-save="true" callback-function="createNewDeck(newDeckName)">
+                </add-component>
+
+            </div>
 
         </div>
-
+        <!--<div collapse="isCollapsed" class="collapse">-->
+        <!--<div>hidden content</div>-->
+        <!--</div>-->
     </div>
-    <!--<div collapse="isCollapsed" class="collapse">-->
-    <!--<div>hidden content</div>-->
-    <!--</div>-->
-</div>
 
-<sidebar></sidebar>
+    <sidebar></sidebar>
+</div>

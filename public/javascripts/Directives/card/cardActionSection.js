@@ -6,39 +6,64 @@ define([], function () {
             controller: function ($scope) {
 
                 // scope variables
-                $scope.showMemberEditor = false;
-                $scope.showChecklistEditor = false;
-                $scope.showLabelEditor = false;
-                $scope.showDueDateEditor = false;
+                $scope.showMemberEditor = {value : false};
+                $scope.showChecklistEditor = {value : false};
+                $scope.showLabelEditor = {value : false};
+                $scope.showDueDateEditor = {value : false};
 
                 // demo
                 $scope.subscribed = false;
+                $scope.members = $scope.card.members;
 
                 // editor toggle functions
-                $scope.toggleMemberEditor = function(){
-                    $scope.showMemberEditor = !$scope.showMemberEditor;
+                $scope.toggleMemberEditor = function (forceToggle) {
+                    handleEditorToggle($scope.showMemberEditor,forceToggle);
                 }
 
-                $scope.toggleChecklistEditor = function(){
-                    $scope.showChecklistEditor = !$scope.showChecklistEditor;
+                $scope.toggleChecklistEditor = function (forceToggle) {
+                    handleEditorToggle($scope.showChecklistEditor,forceToggle);
                 }
 
-                $scope.toggleLabelEditorDialog = function(){
-                    $scope.showLabelEditor = !$scope.showLabelEditor;
+                $scope.toggleLabelEditorDialog = function (forceToggle) {
+                    handleEditorToggle($scope.showLabelEditor,forceToggle);
                 }
 
-                $scope.toggleDueDateEditor = function(){
-                    $scope.showDueDateEditor = !$scope.showDueDateEditor;
+                $scope.toggleDueDateEditor = function (forceToggle) {
+                    handleEditorToggle($scope.showDueDateEditor,forceToggle);
+                }
+
+                var handleEditorToggle = function(toggle,forceToggle){
+                    hideAllEditors(toggle);
+
+                    if (typeof forceToggle === 'undefined') {
+                        toggle.value = !toggle.value;
+                    }else{
+                        toggle.value = forceToggle;
+                    }
+                }
+
+                var hideAllEditors = function (currentEditor) {
+
+                    // backup current editor value to restore it later
+                    var currentEditorBackup = currentEditor.value;
+
+                    $scope.showMemberEditor.value = false;
+                    $scope.showChecklistEditor.value = false;
+                    $scope.showLabelEditor.value = false;
+                    $scope.showDueDateEditor.value = false;
+
+                    currentEditor.value = currentEditorBackup;
                 }
 
                 // handle card actions
-                $scope.toggleSubscription = function(){
+                $scope.toggleSubscription = function () {
                     $scope.subscribed = !$scope.subscribed;
                 }
 
-                $scope.archiveCard = function(){
+                $scope.archiveCard = function () {
                     console.log('archiving..');
                 }
+
             }
         }
     }

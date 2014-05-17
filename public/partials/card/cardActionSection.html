@@ -12,13 +12,9 @@
             </a>
         </div>
 
-        <popstar ng-if='showMemberEditor' show-popstar-value="showMemberEditor" popstar-id="cardMembersDialog"
-                 target-id="memberEditorBtn">
-            <input type="text" class="form-control" ng-model="memberToAdd" placeholder="member name"
-                   typeahead="member as member.name for member in getMembers($viewValue)"
-                   typeahead-min-length="2" typeahead-on-select="acceptMember()">
-
-            {{memberToAdd}}
+        <popstar ng-if='showMemberEditor.value' show-popstar-value="showMemberEditor.value" popstar-id="cardMembersDialog"
+                 target-id="memberEditorBtn" popstar-class="member-editor-popover" popstar-title="Members">
+            <member-editor members="board.members" card-members="card.members"></member-editor>
         </popstar>
 
         <!-- handle checklist editor -->
@@ -29,11 +25,10 @@
         </div>
 
 
-        <popstar ng-if='showChecklistEditor' show-popstar-value="showChecklistEditor"
-                 popstar-id="newChecklistDialog"
-                 target-id="checklistEditorBtn" popstar-title="Add Checklist">
+        <popstar ng-if='showChecklistEditor.value' show-popstar-value="showChecklistEditor.value"
+                 popstar-id="newChecklistDialog" target-id="checklistEditorBtn" popstar-title="Add Checklist">
 
-            <checklist-editor></checklist-editor>
+            <checklist-editor card="card" close-editor="toggleChecklistEditor(forceToggle)"></checklist-editor>
 
         </popstar>
 
@@ -44,10 +39,10 @@
             </a>
         </div>
 
-        <popstar ng-if='showLabelEditor' show-popstar-value="showLabelEditor" popstar-id="newLabelDialog"
+        <popstar ng-if='showLabelEditor.value' show-popstar-value="showLabelEditor.value" popstar-id="cardLabelEditorDialog"
                  target-id="labelEditorBtn" popstar-title="Change Labels">
 
-            <label-editor labels="boardLabels" card-labels="card.labels"></label-editor>
+            <label-editor labels="board.labels" card-labels="card.labels"></label-editor>
 
         </popstar>
 
@@ -58,7 +53,7 @@
             </a>
         </div>
 
-        <popstar ng-if='showDueDateEditor' show-popstar-value="showDueDateEditor" popstar-id="dueDateDialog"
+        <popstar ng-if='showDueDateEditor.value' show-popstar-value="showDueDateEditor.value" popstar-id="dueDateDialog"
                  target-id="dueDateBtn" popstar-title="Change Due Date" popstar-max-width="320"
                  popstar-class="due-date-popover">
 

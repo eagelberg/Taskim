@@ -5,7 +5,6 @@ define(['jquery'], function ($) {
             templateUrl: '/assets/partials/card/cardActivitySection.html',
             scope: {
                 context: '@',
-                activeUser: '=',
                 activities: '=',
                 card: '='
             },
@@ -13,18 +12,25 @@ define(['jquery'], function ($) {
                 var sidebar = $('#sidebar');
                 scope.fixedHeight = sidebar[0].offsetHeight * 0.8;
             },
-            controller: function ($scope) {
+            controller: function ($scope, boardManager,loggedUserService) {
 
+                $scope.activeUser = loggedUserService.getActiveUser();
+                $scope.readOnly = false;
 
-                // TODO : should be part of a service
+                if($scope.context === 'sidebar'){
+                    $scope.readOnly = true;
+                }
+
                 $scope.addActivityComment = function (comment) {
                     var now = new Date();
                     $scope.card.activities.push({
                         date: now.getTime(),
                         initiator: $scope.activeUser,
                         info: [comment],
-                        type: 'comment'
+                        type: 'COMMENT'
                     });
+
+                    boardManager.updateActiveBoard();
 
                     console.log("added comment : " + comment);
                 }
