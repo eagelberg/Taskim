@@ -4,7 +4,7 @@ define(['jquery', 'modal-popover'], function ($) {
             restrict: 'AE',
             templateUrl: '/assets/partials/sidebar.html',
             scope: true,
-            controller: function ($scope, boardManager, loggedUserService) {
+            controller: function ($scope, boardManager, loggedUserService,$state) {
 
                 $scope.ShowSidebar = true;
                 $scope.showMemberInfo = false;
@@ -68,6 +68,17 @@ define(['jquery', 'modal-popover'], function ($) {
                     $scope.showNewMemberDialog = !$scope.showNewMemberDialog;
                 }
 
+                $scope.closeBoard = function(){
+                    boardManager.delete($scope.board).then(function () {
+                        $state.go('userPage');
+                    });
+                }
+
+                $scope.leaveBoard = function(){
+                    boardManager.removeUserFromBoard($scope.board, $scope.activeUser).then(function () {
+                        $state.go('userPage');
+                    });
+                }
             }
         }
     }

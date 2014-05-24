@@ -37,4 +37,9 @@ public class BoardsRepository implements IBoardsRepository {
     public List<Board> all() {
         return boardsCollection.find().toArray();
     }
+
+    @Override
+    public void delete(String boardId) {
+        boardsCollection.remove(DBQuery.is("_id",boardId));
+    }
 }

@@ -43,6 +43,10 @@ define([], function () {
         this.removeUserFromBoard = function (board, user) {
             return board.one('Users', user._id).remove();
         }
+
+        this.delete = function(board){
+            return board.remove();
+        }
     }
 });
 

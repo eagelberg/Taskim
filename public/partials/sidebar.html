@@ -42,6 +42,18 @@
 
         </div>
 
+        <div class="sidebar-section" ng-show="isCurrentUserAdmin()">
+            <a href="#" class="button-link" ng-click="closeBoard()">
+                close board
+            </a>
+        </div>
+
+        <div class="sidebar-section" ng-show="!isCurrentUserAdmin()" ng-click="leaveBoard()">
+            <a href="#" class="button-link">
+                leave board
+            </a>
+        </div>
+
         <div class="sidebar-section">
             <card-activity-section context='sidebar' activities="boardActivities">
             </card-activity-section>

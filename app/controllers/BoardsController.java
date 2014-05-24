@@ -70,7 +70,7 @@ public class BoardsController extends Controller {
     public Result create(){
         JsonNode json = request().body().asJson();
         Board board = Json.fromJson(json, Board.class);
-        //todo when we use cas then we should take user from server
+        //TODO when we use cas then we should take user from server
         board.initialize(board.getUsers().get(0));
 
         repository.save(board);
@@ -90,7 +90,8 @@ public class BoardsController extends Controller {
     public Result removeUserFromBoard(String boardId,String userId){
         User user = userRepository.getById(userId);
         Board board = repository.getById(boardId);
-        if ((board != null) && (user != null) && (activeUser.get().getId().equals(board.getAdminId())) && (!board.getAdminId().equals(userId))){
+        if ((board != null) && (user != null) && ((activeUser.get().getId().equals(board.getAdminId())) && (!board.getAdminId().equals(userId))
+                || (activeUser.get().getId().equals(userId)))){
             board.removeUser(userId);
             repository.save(board);
             user.removeBoard(boardId);
@@ -98,5 +99,17 @@ public class BoardsController extends Controller {
             return ok();
         }
         return badRequest("");
+    }
+
+    public Result delete(String boardId){
+        Board board = repository.getById(boardId);
+
+        for (String userId  : board.getUsers()) {
+            User user = userRepository.getById(userId);
+            user.removeBoard(boardId);
+            userRepository.save(user);
+        }
+        repository.delete(boardId);
+        return ok();
     }
 }

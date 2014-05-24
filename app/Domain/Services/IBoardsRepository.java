@@ -13,4 +13,5 @@ public interface IBoardsRepository {
     public Board getById(String objectId);
     public List<Board> getByIds(List<String> objectIds);
     public List<Board> all();
+    public void delete(String boardId);
 }

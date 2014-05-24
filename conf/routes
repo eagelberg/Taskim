@@ -12,6 +12,8 @@ PUT   /Boards/:id                    @controllers.BoardsController.update(id: St
 POST  /Boards                        @controllers.BoardsController.create()
 
 DELETE /Boards/:boardId/Users/:userId @controllers.BoardsController.removeUserFromBoard(boardId: String,userId: String)
+DELETE /Boards/:boardId              @controllers.BoardsController.delete(boardId: String)
+
 #User
 GET   /UserLogin                     @controllers.UserController.login(name: String ?= "",password: String ?= "")
 GET   /User/:id/Boards               @controllers.UserController.getUserBoards(id: String)
