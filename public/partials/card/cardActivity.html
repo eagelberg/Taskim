@@ -25,7 +25,7 @@
     </div>
 
     <add-component edited-input="comment" input-style="textarea" on-save-title="update" trigger-title="{{comment}}"
-                   close-on-save="true" sticky-title="true" trigger-style-container="action-comment"
+                   close-on-save="true" sticky-title="true" trigger-style-container="action-comment" input-disabled="{{readOnly}}"
                    callback-function="updateActivityComment(activity,comment)">
     </add-component>
 

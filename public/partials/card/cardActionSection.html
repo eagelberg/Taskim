@@ -3,7 +3,6 @@
 
         <!-- Add section -->
         <h4>Add</h4>
-        <!-- TODO : should open a popup open for checklist title (this is just temporary for test) -->
 
         <!-- new card member button -->
         <div id="memberEditorBtn">
@@ -57,7 +56,7 @@
                  target-id="dueDateBtn" popstar-title="Change Due Date" popstar-max-width="320"
                  popstar-class="due-date-popover">
 
-            <due-date-editor></due-date-editor>
+            <due-date-editor card="card" close-editor="toggleDueDateEditor(forceToggle)"></due-date-editor>
 
         </popstar>
 
@@ -66,6 +65,20 @@
 
         <!-- Actions section -->
         <h4>Actions</h4>
+
+        <!-- move button -->
+        <div id="moveBtn">
+            <a href="#" class="button-link" ng-click="togglePositionEditor()">
+                <span class="spanned-icon glyphicon glyphicon-arrow-right"></span> Move
+            </a>
+        </div>
+
+        <popstar ng-if='showPositionEditor.value' show-popstar-value="showPositionEditor.value" popstar-id="positionDialog"
+                 target-id="moveBtn" popstar-title="Move Card" popstar-max-width="300">
+
+            <position-editor></position-editor>
+
+        </popstar>
 
         <!-- subscribe button -->
         <div id="subscribeBtn">

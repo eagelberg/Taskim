@@ -1,0 +1,40 @@
+<div class="sidebar-menu-container">
+    <div class="btn-group" dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-primary dropdown-toggle">
+            Menu <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+
+            <!-- filter cards option -->
+            <li><a href="#" ng-click="handleCardFilterOption()">
+                <span class="spanned-icon glyphicon glyphicon-filter"></span>
+                Filter cards
+            </a></li>
+
+            <!-- settings option -->
+            <li><a href="#" ng-click="handleSettingsOption()">
+                <span class="spanned-icon glyphicon glyphicon-cog"></span>
+                Settings
+            </a></li>
+
+            <li class="divider"></li>
+            <!-- subscribe option -->
+            <li><a href="#" ng-disabled="true" ng-click="handleSubscribeOption()">Subscribe</a></li>
+
+            <!-- share option -->
+            <li ng-disabled="true"><a href="#" ng-click="handleShareOption()">Share</a></li>
+
+
+            <li class="divider"></li>
+            <!-- close board option -->
+            <li><a href="#" ng-click="handleCloseBoardOption()">Close Board..</a></li>
+
+            <!-- leave board option -->
+            <li><a href="#" ng-click="handleLeaveBoardOption()">Leave Board..</a></li>
+
+
+        </ul>
+    </div>
+</div>
+
+

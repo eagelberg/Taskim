@@ -1,16 +1,16 @@
 define(['jquery'], function ($) {
     return ['$scope', 'boardManager', '$window', '$stateParams', 'userManager', 'loggedUserService',
-        function ($scope, boardManager, $window, $stateParams, userManager, loggedUserService) {
+        function ($scope,boardManager, $window, $stateParams, userManager, loggedUserService) {
             $scope.board = {};
             $scope.canvasWidth = 100;
             $scope.isCollapsed = false;
             $scope.newDeckName = '';
+            $scope.isMemberAdderOpen = false;
+            $scope.boardUsers = [];
 
             $scope.collapse = function () {
                 $scope.isCollapsed = !$scope.isCollapsed;
             };
-
-            $scope.isMemberAdderOpen = false;
 
             $scope.addMemberClicked = function () {
                 $scope.isMemberAdderOpen = !$scope.isMemberAdderOpen;
@@ -25,7 +25,6 @@ define(['jquery'], function ($) {
                 });
             }
 
-            $scope.boardUsers = [];
             $scope.getBoardMembers = function (boardId) {
                 boardManager.getBoardUsers(boardId).then(function (users) {
                     $scope.boardUsers = users;
@@ -63,7 +62,10 @@ define(['jquery'], function ($) {
             };
 
             $scope.getBoard = function (boardId) {
+                console.log("getBoard : getting board..");
                 boardManager.get(boardId).then(function (board) {
+                    console.log("getBoard : got board!");
+                    boardManager.resolveBoardFetch(board);
                     $scope.setBoard(board);
                 });
             };
@@ -79,7 +81,9 @@ define(['jquery'], function ($) {
             };
 
             $scope.updateBoard = function () {
+                console.log("updateBoard : updating board..");
                 boardManager.update($scope.board).then(function (board) {
+                    console.log("updateBoard : updated board!");
                     $scope.setBoard(board);
                 });
             };

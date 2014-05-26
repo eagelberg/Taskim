@@ -24,10 +24,6 @@ public class Card {
 
 	// default constructor
 	public Card() {
-		Comment comment = new Comment();
-		comment.setContent("test");
-		comments.add(comment);
-
 		setDueDate(new Date());
 		addDemoActivity();
 		addDemoLabels();

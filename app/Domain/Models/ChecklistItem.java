@@ -11,6 +11,7 @@ public class ChecklistItem {
 	@JsonProperty("_id")
 	private String id;
 	private String name;
+	private int index;
 	private boolean value;
 
 	// default constructor
@@ -57,5 +58,13 @@ public class ChecklistItem {
 
 	public void setValue(boolean value) {
 		this.value = value;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 }

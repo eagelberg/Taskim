@@ -64,7 +64,14 @@
 }
 
 .card-title {
-    width: 90%;
+    display: inline;
+    word-wrap: break-word;
+}
+
+.card-header-inline-content {
+    cursor: default;
+    display: inline-block;
+    margin: 4px 6px 0 0;
 }
 
 .signUpAnchor {
@@ -103,11 +110,13 @@
 
 .card-actions-container {
     padding-top: 10px;
+    margin-top: 15px;
 }
 
 .card-modal-container {
     background: #f0f0f0;
     width: 600px;
+    border-radius: 3px;
 }
 
 /* --- nav related --- */
@@ -209,6 +218,11 @@ h3, h4, h5, h6 {
     margin: 0 0 6px
 }
 
+a {
+    color: #444;
+    cursor: pointer;
+}
+
 .header {
     background-color: rgba(29, 71, 109, 0.5);
 }
@@ -281,7 +295,7 @@ h3, h4, h5, h6 {
     overflow: hidden;
     width: 100%;
     height: 50px;
-    margin: 3px;
+    margin-bottom: 5px !important;
     box-shadow: 1px 1px 1px #b7b7b7;
 }
 
@@ -331,6 +345,13 @@ h3, h4, h5, h6 {
 .card-section-divider {
     display: block;
     margin: 1em;
+}
+
+.card-modal-header {
+    margin: 4px 12px 4px 0px;
+    padding: 12px 12px 0;
+    display: inline-block;
+    z-index: 1;
 }
 
 .badge {
@@ -389,9 +410,10 @@ h3, h4, h5, h6 {
     margin-left: 2em;
 }
 
-.search-bar-popover{
+.search-bar-popover {
     overflow-y: auto;
 }
+
 /* --- checklist related --- */
 .checklist-title-container {
     margin: 1em;
@@ -647,6 +669,7 @@ h3, h4, h5, h6 {
     overflow-x: hidden;
     overflow-y: auto !important;
     padding: 2px 8px 0 0;
+    margin: 10px 10px 10px 10px;
     -webkit-transition: max-height 150ms ease-in;
     transition: max-height 150ms ease-in;
 }
@@ -713,15 +736,6 @@ h3, h4, h5, h6 {
     position: absolute;
     right: 0;
     top: 0;
-    /*-webkit-transition-property: -webkit-transform, width;*/
-    /*transition-property: transform, width;*/
-    /*-webkit-transition-duration: 300ms;*/
-    /*transition-duration: 300ms;*/
-    /*-webkit-transition-timing-function: ease-in;*/
-    /*transition-timing-function: ease-in;*/
-    /*-ms-transform: translateX(0);*/
-    /*-webkit-transform: translateX(0);*/
-    /*transform: translateX(0);*/
     width: 246px;
     z-index: 5;
 }
@@ -733,6 +747,45 @@ h3, h4, h5, h6 {
 
 .sidebar-content {
     overflow: hidden;
+}
+
+.sidebar-menu-container{
+    border-radius: 3px;
+    width: 100%;
+    background: #dcdcdc;
+    padding: 2px;
+}
+
+.sidebar-menu-section{
+    border-radius: 3px;
+    color: #939393;
+    border-bottom: 1px solid #dcdcdc;
+    margin: 0;
+    padding: 7px 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.sidebar-menu-section:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: #686868;
+}
+
+.sidebar-menu-title{
+    text-decoration: none;
+    color: #000000;
+}
+
+.sidebar-menu-title:hover{
+    text-decoration: none;
+}
+
+.sidebar-menu-option{
+    display: block;
+    opacity: 1;
+    max-height: 400px;
+    margin-top: 5px;
 }
 
 .sidebar-hide-btn {
@@ -749,13 +802,34 @@ h3, h4, h5, h6 {
 .sidebar-show-btn {
     border-radius: 3px;
     color: #f6f6f6;
-    display: none;
     height: 42px;
     position: absolute;
-    right: 0;
-    top: 0;
+    top: 40px;
+    right: -10px;
+    width: 135px;
     z-index: 4;
-    width: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+    -webkit-transition-property: width, color;
+    transition-property: width, color;
+    -webkit-transition-duration: 100ms;
+    transition-duration: 100ms;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+}
+
+.sidebar-show-btn:hover {
+    background: rgba(66, 66, 66, 0.30)
+}
+
+.sidebar-show-btn .text {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
+
+.sidebar-show-btn {
+    background: transparent;
+    color: rgba(56, 56, 56, 0.70)
 }
 
 .sidebar-hide-btn .spanned-icon {
@@ -778,6 +852,7 @@ h3, h4, h5, h6 {
     width: 26px;
 }
 
+
 .spanned-icon {
     height: 18px;
     font-size: 12px;
@@ -786,9 +861,72 @@ h3, h4, h5, h6 {
     color: #9c9c9c;
 }
 
+.spanned-right-icon {
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    width: 18px;
+    float: right;
+    margin-left: 20px;
+    color: #9c9c9c;
+}
+
 .dark-hover:hover {
     color: #686868;
     text-decoration: none
+}
+
+/* --- setting related --- */
+
+.setting {
+    height: 52px;
+    position: relative;
+    margin-top: 0;
+}
+
+.setting select {
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+}
+
+.setting-label {
+    color: #939393;
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 3px;
+}
+
+.setting-value {
+    display: block;
+    font-size: 18px;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- position editor related --- */
+.position-section-container {
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+
+.position-label-container {
+    width: 300px !important;
+}
+
+.position-inline-content {
+    display: inline;
+    width: 40% !important;
+    margin-right: 20px;
 }
 
 /* --- from trello core.css --- */
@@ -975,7 +1113,7 @@ h3, h4, h5, h6 {
 /* --- comment related --- */
 .new-comment-section {
     display: block;
-    margin-bottom: 2em;
+    margin: 10px 10px 2em 10px;
 }
 
 .new-comment-input {
@@ -1161,4 +1299,3 @@ h3, h4, h5, h6 {
     -webkit-transition-delay: .05s;
     transition-delay: .05s;
 }
-

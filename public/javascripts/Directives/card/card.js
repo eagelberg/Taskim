@@ -28,7 +28,7 @@ define([], function () {
                                 return $scope.board;
                             }
                         },
-                        controller: function ($scope, $modalInstance, card, board,boardManager,loggedUserService) {
+                        controller: function ($scope, $modalInstance, card, board, boardManager, loggedUserService) {
                             $scope.card = card;
                             $scope.board = board;
 

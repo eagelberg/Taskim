@@ -12,6 +12,7 @@ public class Deck {
 	private String name;
 	private boolean isArchived;
 	private String boardId;
+	private int index;
 	private List<Card> cards = new ArrayList<Card>();
 
 	// default constructor
@@ -65,6 +66,14 @@ public class Deck {
 		List<Card> cardListCopy = new ArrayList<Card>();
 		cardListCopy.addAll(cards);
 		return cardListCopy;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	//</editor-fold>
 }

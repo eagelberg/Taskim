@@ -6,10 +6,11 @@ define([], function () {
             controller: function ($scope) {
 
                 // scope variables
-                $scope.showMemberEditor = {value : false};
-                $scope.showChecklistEditor = {value : false};
-                $scope.showLabelEditor = {value : false};
-                $scope.showDueDateEditor = {value : false};
+                $scope.showMemberEditor = {value: false};
+                $scope.showChecklistEditor = {value: false};
+                $scope.showLabelEditor = {value: false};
+                $scope.showDueDateEditor = {value: false};
+                $scope.showPositionEditor = {value: false};
 
                 // demo
                 $scope.subscribed = false;
@@ -17,27 +18,31 @@ define([], function () {
 
                 // editor toggle functions
                 $scope.toggleMemberEditor = function (forceToggle) {
-                    handleEditorToggle($scope.showMemberEditor,forceToggle);
+                    handleEditorToggle($scope.showMemberEditor, forceToggle);
                 }
 
                 $scope.toggleChecklistEditor = function (forceToggle) {
-                    handleEditorToggle($scope.showChecklistEditor,forceToggle);
+                    handleEditorToggle($scope.showChecklistEditor, forceToggle);
                 }
 
                 $scope.toggleLabelEditorDialog = function (forceToggle) {
-                    handleEditorToggle($scope.showLabelEditor,forceToggle);
+                    handleEditorToggle($scope.showLabelEditor, forceToggle);
                 }
 
                 $scope.toggleDueDateEditor = function (forceToggle) {
-                    handleEditorToggle($scope.showDueDateEditor,forceToggle);
+                    handleEditorToggle($scope.showDueDateEditor, forceToggle);
                 }
 
-                var handleEditorToggle = function(toggle,forceToggle){
+                $scope.togglePositionEditor = function (forceToggle) {
+                    handleEditorToggle($scope.showPositionEditor, forceToggle);
+                }
+
+                var handleEditorToggle = function (toggle, forceToggle) {
                     hideAllEditors(toggle);
 
                     if (typeof forceToggle === 'undefined') {
                         toggle.value = !toggle.value;
-                    }else{
+                    } else {
                         toggle.value = forceToggle;
                     }
                 }
@@ -51,6 +56,7 @@ define([], function () {
                     $scope.showChecklistEditor.value = false;
                     $scope.showLabelEditor.value = false;
                     $scope.showDueDateEditor.value = false;
+                    $scope.showPositionEditor.value = false;
 
                     currentEditor.value = currentEditorBackup;
                 }

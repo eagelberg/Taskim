@@ -4,12 +4,8 @@
 <div class="modal-body">
     <form name="boardForm">
         <div ng-class="{'has-error' : boardForm.boardNameInput.$invalid}">
-        <input type="text" name="boardNameInput"
-               ng-model="board.name"
-               class="form-control"
-               required
-               autofocus
-               placeholder="board name"/>
+        <input type="text" name="boardNameInput" ng-model="board.name" class="form-control"
+               required autofocus placeholder="board name"/>
         </div>
     </form>
 </div>

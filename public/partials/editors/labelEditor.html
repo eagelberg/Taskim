@@ -1,0 +1,49 @@
+<div ng-show="labelEditMode" class="content clearfix">
+    <ul class="edit-labels-pop-over">
+        <li ng-repeat="label in labels track by label.color">
+            <a class="long-label card-label-selectable card-label-{{label.color | lowercase}}"
+               ng-click="handleLabelSelection(label)">
+                <div ng-if="label.title.length === 0">
+                    &nbsp;
+                </div>
+                <div ng-if="label.title.length > 0">
+                    {{label.title}}
+                </div>
+                <span ng-show='isPartOfCardLabel(label)'
+                      class="card-label-selectable-icon spanned-icon glyphicon glyphicon-check light">
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <div>
+        <hr>
+        <p class="bottom">
+            <a class="quiet-button full" ng-click="switchToTitleEditMode()">
+                <span class="text">Change label titles…</span>
+            </a>
+        </p>
+    </div>
+</div>
+
+<div ng-show="labelTitleEditMode" class="content clearfix">
+    <ul class="edit-labels-pop-over">
+        <li ng-repeat="label in labels track by label.color">
+            <div class="short-label card-label-{{label.color | lowercase}}">
+                &nbsp;
+            </div>
+             <span>
+                 <input type="text" class="form-control label-title-edit" ng-model="label.title">
+             </span>
+        </li>
+
+        <div class="label-title-edit-footer">
+            <button type="button" class="btn btn-primary" ng-click="handleSave(labels)">
+                Save
+            </button>
+            <button type="button" class="btn btn-default" ng-click="handleBack()">
+                Back
+            </button>
+        </div>
+    </ul>
+</div>

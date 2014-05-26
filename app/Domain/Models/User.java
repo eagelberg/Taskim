@@ -1,5 +1,6 @@
 package Domain.Models;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.mongojack.ObjectId;
 
@@ -24,6 +25,7 @@ public class User {
 		setInitials("");
 
 	}
+
 
 	public List<String> getBoards() {
 		List<String> boardListCopy = new ArrayList<String>();
@@ -85,4 +87,11 @@ public class User {
 		this.status = status;
 	}
 	//</editor-fold>
+
+
+	// this function is used to handle unknown properties send by the client
+	@JsonAnySetter
+	public void handleUnknown(String key, Object value) {
+		// handle unkown property
+	}
 }

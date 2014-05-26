@@ -8,11 +8,11 @@
     <form name="editForm">
         <div ng-class="{'has-error' : editForm.editInput.$invalid, 'edit-input-container' : true}">
 
-            <input type="text" ng-show="inputStyle === 'text'" class="form-control add-component-input-container" ng-disabled="inputDisabled"
+            <input type="text" ng-show="inputStyle === 'text'" class="form-control add-component-input-container"
                    name="editInput" focus-me="inputFocused" on-enter="handleSave()" placeholder="{{placeholderValue}}"
                    required ng-model="editedInput" ng-blur="handleBlur()" on-escape="handleEscape()"/>
 
-            <textarea ng-show="inputStyle === 'textarea'" class="form-control add-component-input-container" auto-grow style="overflow:hidden" ng-disabled="inputDisabled"
+            <textarea ng-show="inputStyle === 'textarea'" class="form-control add-component-input-container" auto-grow style="overflow:hidden"
                       rows="{{textAreaRows}}" name="editInput" focus-me="inputFocused" required placeholder="{{placeholderValue}}"
                       ng-model="editedInput" ng-blur="handleBlur()" on-escape="handleEscape()">
             </textarea>

@@ -1,0 +1,26 @@
+<div class="card-modal-header clearfix">
+    <div class="card-title card-header-inline-content">
+        <h2>{{card.title}}</h2>
+    </div>
+
+    <div class="quiet card-header-inline-content">
+        <p> in list </p>
+    </div>
+
+    <a id='deckLink' class="card-header-inline-content" href="#" ng-click="toggleTitlePositionEditor()">
+        <strong> To do </strong>
+    </a>
+
+    <div class="card-header-inline-content">
+           <span class="spanned-icon glyphicon glyphicon-eye-open">
+                 </span>
+    </div>
+
+    <popstar ng-if='showTitlePositionEditor' show-popstar-value="showTitlePositionEditor" popstar-id="titlePositionDialog"
+             target-id="deckLink" popstar-title="Move Card" popstar-max-width="300">
+
+        <position-editor></position-editor>
+
+    </popstar>
+
+</div>

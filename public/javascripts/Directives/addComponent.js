@@ -29,6 +29,7 @@ define([], function () {
                 $scope.triggerTitle = $scope.triggerTitle || '';
                 $scope.placeholderValue = $scope.placeholderValue || '';
                 $scope.triggerStyleContainer = $scope.triggerStyleContainer || defaultTriggerContainer;
+                $scope.inputDisabled = $scope.inputDisabled || false;
 
                 if(typeof $scope.initEditMode === 'undefined'){
                     $scope.initEditMode = false;
@@ -52,10 +53,11 @@ define([], function () {
 
                 // handle view UI
                 $scope.switchToEditMode = function () {
-                    if (!$scope.inputDisabled) {
+                    console.log($scope.inputDisabled);
+                    //if (!$scope.inputDisabled) {
                         $scope.editMode = true;
                         $scope.setFocused(true);
-                    }
+                    //}
                 }
 
                 $scope.handleClose = function (saveChanges) {

@@ -1,0 +1,38 @@
+<div class="position-section-container">
+    <div class="position-label-container">
+        <div class="button-link setting">
+            <span class="setting-label">Board</span>
+            <span class="setting-value">{{chosenBoard.name}}</span>
+            <select class="form-control" ng-model="chosenBoard"
+                    ng-options="board.name for board in userBoards">
+            </select>
+        </div>
+    </div>
+</div>
+<div class="position-section-container">
+
+    <div class="position-inline-content">
+        <div class="button-link setting">
+            <span class="setting-label">List</span>
+            <span class="setting-value">{{chosedDeck.name}}</span>
+            <select class="form-control" ng-model="chosedDeck"
+                    ng-options="deck.name for deck in board.decks">
+            </select>
+        </div>
+    </div>
+
+    <div class="position-inline-content">
+        <div class="button-link setting">
+            <span class="setting-label">Position</span>
+            <span class="setting-value">{{cardPos}}</span>
+            <select class="form-control" ng-model="cardPos"
+                    ng-options="cardPos for cardPos in cardPosOptions">
+            </select>
+        </div>
+    </div>
+</div>
+<div class="position-section-container">
+    <button class="btn btn-primary" ng-click="moveCard(chosenBoard,chosedDeck,cardPos)">
+        Move
+    </button>
+</div>
